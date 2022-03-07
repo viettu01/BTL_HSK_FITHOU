@@ -1,0 +1,5 @@
+D:\FITHOU\Hướng sự kiện\BTL\TestDatabase\TestDatabase\obj\Debug\netcoreapp3.0\TestDatabase.csproj.AssemblyReference.cache
+D:\FITHOU\Hướng sự kiện\BTL\TestDatabase\TestDatabase\obj\Debug\netcoreapp3.0\TestDatabase.GeneratedMSBuildEditorConfig.editorconfig
+D:\FITHOU\Hướng sự kiện\BTL\TestDatabase\TestDatabase\obj\Debug\netcoreapp3.0\TestDatabase.AssemblyInfoInputs.cache
+D:\FITHOU\Hướng sự kiện\BTL\TestDatabase\TestDatabase\obj\Debug\netcoreapp3.0\TestDatabase.AssemblyInfo.cs
+D:\FITHOU\Hướng sự kiện\BTL\TestDatabase\TestDatabase\obj\Debug\netcoreapp3.0\TestDatabase.csproj.CoreCompileInputs.cache
