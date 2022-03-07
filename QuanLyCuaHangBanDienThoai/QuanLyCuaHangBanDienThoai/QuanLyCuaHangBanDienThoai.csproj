@@ -61,6 +61,7 @@
     <Compile Include="BaoCao.Designer.cs">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillInDao.cs" />
     <Compile Include="CrytalReport\CrystalReportDoanhThuDienThoai.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

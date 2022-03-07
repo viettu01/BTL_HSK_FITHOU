@@ -227,6 +227,37 @@ BEGIN
 END
 
 GO
+--Thủ tục thêm hóa đơn nhập
+CREATE PROC insertBillIn (@accountId INT)
+AS
+BEGIN
+    INSERT dbo.tblBillIn (accountId, createdAt)
+    VALUES (@accountId, GETDATE())
+END
+
+GO
+--Thủ tục thêm chi tiết hóa đơn nhập
+CREATE PROC insertDetailBillIn (@billInId INT, @phoneId VARCHAR(255), @price FLOAT, @quantity INT)
+AS
+BEGIN
+    INSERT dbo.tblDetailBillIn (billInId, phoneId, price, quantity)
+    VALUES (@billInId, @phoneId, @price, @quantity)
+END
+
+GO
+--View hiển thị danh sách hóa đơn
+CREATE VIEW showAllBillIn
+AS
+	SELECT c.id AS [Mã hóa đơn], d.fullName AS [Người tạo], c.createdAt AS [Ngày tạo], ISNULL(SUM(b.quantity * b.price), 0) AS [Thành tiền]
+	FROM dbo.tblPhone a 
+			JOIN dbo.tblDetailBillIn b ON b.phoneId = a.id
+			RIGHT JOIN dbo.tblBillIn c ON c.id = b.billInId
+			JOIN dbo.tblAccount d ON d.id = c.accountId
+	GROUP BY c.id,
+             d.fullName,
+             c.createdAt
+
+GO
 /* Cập nhật số lượng tồn kho sau khi nhập hàng */
 CREATE TRIGGER TrgNhapHang
 ON dbo.tblDetailBillIn
@@ -309,3 +340,10 @@ AS
 	GROUP BY c.id,
              d.fullName,
              c.createdAt
+
+GO
+SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn] FROM dbo.showAllBillIn
+
+SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn max] FROM showAllBillIn
+
+SELECT * FROM dbo.showAllBillIn

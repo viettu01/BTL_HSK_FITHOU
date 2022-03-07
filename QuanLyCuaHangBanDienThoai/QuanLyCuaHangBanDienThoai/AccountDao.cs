@@ -182,7 +182,11 @@ namespace QuanLyCuaHangBanDienThoai
                                 foreach (DataRow dr in dt.Rows)
                                 {
                                     if(dr["Mật khẩu"].Equals(password))
+                                    {
+                                        Program.accountId = int.Parse(dr["ID"].ToString());
+                                        Program.role = dr["Quyền"].ToString();
                                         return 1; //Đúng mật khẩu và tên đăng nhập
+                                    }
                                     else
                                         return 2; //Đúng tên dăng nhập nhưng Sai mật khẩu 
                                 }

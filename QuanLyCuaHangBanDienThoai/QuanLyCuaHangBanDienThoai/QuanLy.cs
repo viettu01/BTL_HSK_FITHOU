@@ -12,9 +12,9 @@ namespace QuanLyCuaHangBanDienThoai
         ProducerDao producerDao = new ProducerDao();
         AccountDao accountDao = new AccountDao();
         CustomerDao customerDao = new CustomerDao();
+        BillInDao billInDao = new BillInDao();
         int idProducer, idAccount, idCustomer;
         String namePhone;
-        DataTable dtDTC = new DataTable();
 
         public QuanLy()
         {
@@ -38,6 +38,7 @@ namespace QuanLyCuaHangBanDienThoai
             loadDataToDataGridView(dtgvKH, customerDao.findAll());
 
             //Quản lý hóa đơn nhập
+            loadDataToDataGridView(dtgvHDN, billInDao.findAll());
             loadDataIdPhoneCombox(cbMaDT);
         }
 
@@ -930,6 +931,23 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
+        private void btnThemHDN_Click(object sender, EventArgs e)
+        {
+            billInDao.insertBillIn(Program.accountId);
+
+            for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
+            {
+                String phoneId = dtgvDSDTC.Rows[rows].Cells[0].Value.ToString();
+                int quantity = int.Parse(dtgvDSDTC.Rows[rows].Cells[2].Value.ToString());
+                double price = double.Parse(dtgvDSDTC.Rows[rows].Cells[3].Value.ToString());
+
+                billInDao.insertDetailBillIn(billInDao.getIdMax(), phoneId, price, quantity);
+            }
+
+            QuanLy_Load(sender, e);
+        }
+    
         #endregion
 
         //Load data

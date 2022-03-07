@@ -8,6 +8,8 @@ namespace QuanLyCuaHangBanDienThoai
 {
     static class Program
     {
+        public static int accountId;
+        public static String role;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,8 +18,8 @@ namespace QuanLyCuaHangBanDienThoai
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuanLyCuaHangDienThoai());
-            //Application.Run(new Login());
+            //Application.Run(new QuanLyCuaHangDienThoai());
+            Application.Run(new Login());
         }
     }
 }
