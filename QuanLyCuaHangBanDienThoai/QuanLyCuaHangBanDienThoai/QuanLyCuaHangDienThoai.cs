@@ -19,6 +19,7 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void QuanLyCuaHangDienThoai_Load(object sender, EventArgs e)
         {
+            //Set màu nền MDI parent
             foreach (Control ctl in this.Controls)
             {
                 if (ctl is MdiClient)
@@ -26,9 +27,15 @@ namespace QuanLyCuaHangBanDienThoai
                     ctl.BackColor = Color.White;
                 }
             }
+
+            //if (Program.role.Equals("Nhân viên"))
+            //{
+            //    toolStripMenuItemQuanLy.Visible = false;
+            //    toolStripMenuItemThongKe.Visible = false;
+            //}
         }
 
-        private void toolStripMenuItemManagement_Click(object sender, EventArgs e)
+        private void toolStripMenuItemQuanLy_Click(object sender, EventArgs e)
         {
             QuanLy quanLy = new QuanLy();
             quanLy.MdiParent = this;
@@ -42,6 +49,12 @@ namespace QuanLyCuaHangBanDienThoai
             thongKeDienThoai.MdiParent = this;
             thongKeDienThoai.Dock = DockStyle.Fill;
             thongKeDienThoai.Show();
+        }
+
+        private void toolStripMenuItemDangXuat_Click(object sender, EventArgs e)
+        {
+            new Login().Show();
+            this.Hide();
         }
     }
 }

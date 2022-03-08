@@ -245,6 +245,25 @@ BEGIN
 END
 
 GO
+--Xóa hóa đơn nhập
+CREATE PROC deleteBillIn (@billInId INT)
+AS
+BEGIN
+    DELETE FROM dbo.tblDetailBillIn WHERE billInId = @billInId
+	DELETE FROM dbo.tblBillIn WHERE id = @billInId
+END
+
+GO
+--Sửa hóa đơn nhập
+CREATE PROC updateBillIn (@billInId INT, @phoneId VARCHAR(255), @quantity INT, @price FLOAT)
+AS
+BEGIN
+    UPDATE dbo.tblDetailBillIn
+	SET quantity = @quantity, price = @price
+	WHERE billInId = @billInId AND phoneId = @phoneId
+END
+
+GO
 --View hiển thị danh sách hóa đơn
 CREATE VIEW showAllBillIn
 AS

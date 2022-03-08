@@ -72,12 +72,50 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
+        public bool updateBillIn(int billInId, String phoneId, double price, int quantity)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "updateBillIn";
+                    cmd.Parameters.AddWithValue("@billInId", billInId);
+                    cmd.Parameters.AddWithValue("@phoneId", phoneId);
+                    cmd.Parameters.AddWithValue("@price", price);
+                    cmd.Parameters.AddWithValue("@quantity", quantity);
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
+        public bool deleteById(int id)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "deleteBillIn";
+                    cmd.Parameters.AddWithValue("@billInId", id);
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
         public int getIdMax()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 String sql = "SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn max] FROM showAllBillIn";
-                //String sql = "SELECT * FROM showAllBillIn";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cnn.Open();
@@ -92,6 +130,26 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
             return -1;
+        }
+
+        public DataTable getAllDetailBillIn(int id)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "SELECT * FROM showAllDetailBillIn WHERE [Mã HĐ] = " + id;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllDetailBillIn"))
+                        {
+                            ad.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -18,8 +18,8 @@ namespace QuanLyCuaHangBanDienThoai
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new QuanLyCuaHangDienThoai());
-            Application.Run(new Login());
+            Application.Run(new QuanLyCuaHangDienThoai());
+            //Application.Run(new Login());
         }
     }
 }

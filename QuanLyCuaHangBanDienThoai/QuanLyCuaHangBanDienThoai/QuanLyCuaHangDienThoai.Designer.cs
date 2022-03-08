@@ -31,13 +31,13 @@ namespace QuanLyCuaHangBanDienThoai
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QuanLyCuaHangDienThoai));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItemManagement = new System.Windows.Forms.ToolStripMenuItem();
-            this.thanhToánToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemQuanLy = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemBanHang = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemThongKe = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemTKDT = new System.Windows.Forms.ToolStripMenuItem();
             this.tàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDangXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,8 +45,8 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemManagement,
-            this.thanhToánToolStripMenuItem,
+            this.toolStripMenuItemQuanLy,
+            this.toolStripMenuItemBanHang,
             this.toolStripMenuItemThongKe,
             this.tàiKhoảnToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -55,18 +55,18 @@ namespace QuanLyCuaHangBanDienThoai
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStripMenuItemManagement
+            // toolStripMenuItemQuanLy
             // 
-            this.toolStripMenuItemManagement.Name = "toolStripMenuItemManagement";
-            this.toolStripMenuItemManagement.Size = new System.Drawing.Size(73, 24);
-            this.toolStripMenuItemManagement.Text = "Quản lý";
-            this.toolStripMenuItemManagement.Click += new System.EventHandler(this.toolStripMenuItemManagement_Click);
+            this.toolStripMenuItemQuanLy.Name = "toolStripMenuItemQuanLy";
+            this.toolStripMenuItemQuanLy.Size = new System.Drawing.Size(73, 24);
+            this.toolStripMenuItemQuanLy.Text = "Quản lý";
+            this.toolStripMenuItemQuanLy.Click += new System.EventHandler(this.toolStripMenuItemQuanLy_Click);
             // 
-            // thanhToánToolStripMenuItem
+            // toolStripMenuItemBanHang
             // 
-            this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
-            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
-            this.thanhToánToolStripMenuItem.Text = "Thanh toán";
+            this.toolStripMenuItemBanHang.Name = "toolStripMenuItemBanHang";
+            this.toolStripMenuItemBanHang.Size = new System.Drawing.Size(85, 24);
+            this.toolStripMenuItemBanHang.Text = "Bán hàng";
             // 
             // toolStripMenuItemThongKe
             // 
@@ -79,7 +79,7 @@ namespace QuanLyCuaHangBanDienThoai
             // toolStripMenuItemTKDT
             // 
             this.toolStripMenuItemTKDT.Name = "toolStripMenuItemTKDT";
-            this.toolStripMenuItemTKDT.Size = new System.Drawing.Size(224, 26);
+            this.toolStripMenuItemTKDT.Size = new System.Drawing.Size(161, 26);
             this.toolStripMenuItemTKDT.Text = "Điện thoại";
             this.toolStripMenuItemTKDT.Click += new System.EventHandler(this.toolStripMenuItemTKDT_Click);
             // 
@@ -87,7 +87,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.tàiKhoảnToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.đổiMậtKhẩuToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
+            this.toolStripMenuItemDangXuat});
             this.tàiKhoảnToolStripMenuItem.Name = "tàiKhoảnToolStripMenuItem";
             this.tàiKhoảnToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.tàiKhoảnToolStripMenuItem.Text = "Tài khoản";
@@ -98,11 +98,12 @@ namespace QuanLyCuaHangBanDienThoai
             this.đổiMậtKhẩuToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
             // 
-            // đăngXuấtToolStripMenuItem
+            // toolStripMenuItemDangXuat
             // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.toolStripMenuItemDangXuat.Name = "toolStripMenuItemDangXuat";
+            this.toolStripMenuItemDangXuat.Size = new System.Drawing.Size(181, 26);
+            this.toolStripMenuItemDangXuat.Text = "Đăng xuất";
+            this.toolStripMenuItemDangXuat.Click += new System.EventHandler(this.toolStripMenuItemDangXuat_Click);
             // 
             // QuanLyCuaHangDienThoai
             // 
@@ -110,7 +111,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1082, 653);
+            this.ClientSize = new System.Drawing.Size(1082, 753);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -130,12 +131,12 @@ namespace QuanLyCuaHangBanDienThoai
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemManagement;
-        private System.Windows.Forms.ToolStripMenuItem thanhToánToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemQuanLy;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemBanHang;
         private System.Windows.Forms.ToolStripMenuItem tàiKhoảnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemThongKe;
         private System.Windows.Forms.ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDangXuat;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemTKDT;
     }
 }

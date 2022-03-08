@@ -13,7 +13,7 @@ namespace QuanLyCuaHangBanDienThoai
         AccountDao accountDao = new AccountDao();
         CustomerDao customerDao = new CustomerDao();
         BillInDao billInDao = new BillInDao();
-        int idProducer, idAccount, idCustomer;
+        int idProducer, idAccount, idCustomer, idBillIn;
         String namePhone;
 
         public QuanLy()
@@ -40,6 +40,7 @@ namespace QuanLyCuaHangBanDienThoai
             //Quản lý hóa đơn nhập
             loadDataToDataGridView(dtgvHDN, billInDao.findAll());
             loadDataIdPhoneCombox(cbMaDT);
+            cbMaDT.Text = "";
         }
 
         #region Quản lý điện thoại
@@ -850,7 +851,7 @@ namespace QuanLyCuaHangBanDienThoai
                     }
                     else if (btnSuaKH.Visible == true)
                     {
-                        if (customerDao.update(idCustomer, name , phone))
+                        if (customerDao.update(idCustomer, name, phone))
                         {
                             MessageBox.Show("Sửa khách hàng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             btnLamMoiNV_Click(sender, e);
@@ -877,24 +878,31 @@ namespace QuanLyCuaHangBanDienThoai
         #region Quản lý hóa đơn nhập
         private void cbMaDT_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = phoneDao.search(cbMaDT.Text, "", "", "", "", "", "", "", "");
-            DataView v = new DataView(dt);
-
-            foreach (DataRowView r in v)
+            if (cbMaDT.Text == "")
             {
-                namePhone = r["Tên ĐT"].ToString();
-                tbDacDiem.Text = namePhone + "/" + r["Màu"] + "/" + r["Rom"] + "/" + r["Ram"];
-                tbGiaNhap.Text = r["Giá"].ToString();
+                tbDacDiem.Text = "";
+                tbGiaNhap.Text = "";
+                nudSoLuong.Value = 1;
+            }
+            else
+            {
+                DataTable dt = phoneDao.search(cbMaDT.Text, "", "", "", "", "", "", "", "");
+                DataView v = new DataView(dt);
+
+                foreach (DataRowView r in v)
+                {
+                    namePhone = r["Tên ĐT"].ToString();
+                    tbDacDiem.Text = namePhone + "/" + r["Màu"] + "/" + r["Rom"] + "/" + r["Ram"];
+                    tbGiaNhap.Text = r["Giá"].ToString();
+                }
             }
         }
 
         private void btnThemDTC_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(dtgvDSDTC.Rows.Count.ToString());
-
             if (dtgvDSDTC.Rows.Count != 1)
             {
-                for (int rows = 0; rows < dtgvDSDTC.Rows.Count-1; rows++)
+                for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
                 {
                     if (dtgvDSDTC.Rows[rows].Cells[0].Value.ToString().Equals(cbMaDT.Text))
                     {
@@ -907,7 +915,7 @@ namespace QuanLyCuaHangBanDienThoai
             }
             String[] row = new string[] { cbMaDT.Text, namePhone, nudSoLuong.Value.ToString(), tbGiaNhap.Text };
             dtgvDSDTC.Rows.Add(row);
-            for (int i = 0; i < dtgvDSDTC.Rows.Count-1; i++)
+            for (int i = 0; i < dtgvDSDTC.Rows.Count - 1; i++)
             {
                 DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
                 dtgvDSDTC[4, i] = linkCell;
@@ -934,20 +942,195 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void btnThemHDN_Click(object sender, EventArgs e)
         {
-            billInDao.insertBillIn(Program.accountId);
+            dtgvDSDTC.Rows.Clear();
 
-            for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
+            cbMaDT.Enabled = true;
+            tbGiaNhap.Enabled = true;
+            nudSoLuong.Enabled = true;
+
+            btnThemDTC.Enabled = true;
+            btnLuuHDN.Enabled = true;
+            btnLamMoiHDN.Enabled = true;
+
+            btnThemHDN.Enabled = false;
+
+            btnTimKiemHDN.Visible = false;
+            btnSuaHDN.Visible = false;
+            btnXoaHDN.Visible = false;
+
+            btnLuuHDN.Text = "Lưu";
+        }
+
+        private void btnSuaHDN_Click(object sender, EventArgs e)
+        {
+            cbMaDT.Enabled = true;
+            tbGiaNhap.Enabled = true;
+            nudSoLuong.Enabled = true;
+
+            btnThemDTC.Enabled = true;
+            btnLuuHDN.Enabled = true;
+            btnLamMoiHDN.Enabled = true;
+
+            btnThemHDN.Enabled = false;
+            btnSuaHDN.Enabled = false;
+
+            btnTimKiemHDN.Visible = false;
+            btnThemHDN.Visible = false;
+            btnXoaHDN.Visible = false;
+
+            btnLuuHDN.Text = "Lưu";
+        }
+
+        private void btnTimKiemHDN_Click(object sender, EventArgs e)
+        {
+            tbMaHD.Enabled = true;
+            tbTenNV.Enabled = true;
+            dtpNgayBDHDN.Enabled = true;
+            dtpNgayKTHDN.Enabled = true;
+
+            btnLuuHDN.Enabled = true;
+            btnLamMoiHDN.Enabled = true;
+
+            btnTimKiemHDN.Visible = false;
+            btnThemHDN.Visible = false;
+            btnXoaHDN.Visible = false;
+
+            btnLuuHDN.Text = "Tìm";
+        }
+
+        private void btnLuuHDN_Click(object sender, EventArgs e)
+        {
+            if (btnTimKiemHDN.Visible == true)
             {
-                String phoneId = dtgvDSDTC.Rows[rows].Cells[0].Value.ToString();
-                int quantity = int.Parse(dtgvDSDTC.Rows[rows].Cells[2].Value.ToString());
-                double price = double.Parse(dtgvDSDTC.Rows[rows].Cells[3].Value.ToString());
-
-                billInDao.insertDetailBillIn(billInDao.getIdMax(), phoneId, price, quantity);
+                //if (name == "" && phone == "")
+                //    MessageBox.Show("Bạn cần nhập thông tin muốn tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //else
+                //    loadDataToDataGridView(dtgvKH, customerDao.search(name, phone));
             }
+            else
+            {
+                if (btnThemHDN.Visible == true)
+                {
+                    if (dtgvDSDTC.Rows.Count <= 1)
+                        MessageBox.Show("Bạn chưa thêm sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        bool check = false;
+                        billInDao.insertBillIn(Program.accountId);
 
+                        for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
+                        {
+                            String phoneId = dtgvDSDTC.Rows[rows].Cells[0].Value.ToString();
+                            int quantity = int.Parse(dtgvDSDTC.Rows[rows].Cells[2].Value.ToString());
+                            double price = double.Parse(dtgvDSDTC.Rows[rows].Cells[3].Value.ToString());
+
+                            check = billInDao.insertDetailBillIn(billInDao.getIdMax(), phoneId, price, quantity);
+                        }
+
+                        if (check)
+                            MessageBox.Show("Thêm hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else if (btnSuaHDN.Visible == true)
+                {
+                    bool check = false;
+
+                    for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
+                    {
+                        String phoneId = dtgvDSDTC.Rows[rows].Cells[0].Value.ToString();
+                        int quantity = int.Parse(dtgvDSDTC.Rows[rows].Cells[2].Value.ToString());
+                        double price = double.Parse(dtgvDSDTC.Rows[rows].Cells[3].Value.ToString());
+
+                        check = billInDao.updateBillIn(idBillIn, phoneId, price, quantity);
+                    }
+
+                    if (check)
+                        MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                QuanLy_Load(sender, e);
+            }
+        }
+
+        private void btnLamMoiHDN_Click(object sender, EventArgs e)
+        {
+            dtgvDSDTC.Rows.Clear();
+
+            cbMaDT.Text = " ";
+            tbDacDiem.Text = "";
+            tbGiaNhap.Text = "";
+            nudSoLuong.Value = 1;
+
+            cbMaDT.Enabled = false;
+            tbGiaNhap.Enabled = false;
+            nudSoLuong.Enabled = false;
+            btnThemDTC.Enabled = false;
+
+            tbMaHD.Enabled = false;
+            tbTenNV.Enabled = false;
+            dtpNgayBDHDN.Enabled = false;
+            dtpNgayKTHDN.Enabled = false;
+
+            btnTimKiemHDN.Visible = true;
+            btnThemHDN.Visible = true;
+            btnSuaHDN.Visible = true;
+            btnXoaHDN.Visible = true;
+
+            btnTimKiemHDN.Enabled = true;
+            btnThemHDN.Enabled = true;
+            btnSuaHDN.Enabled = true;
+            btnXoaHDN.Enabled = false;
+            btnLuuHDN.Enabled = false;
+            btnLamMoiHDN.Enabled = false;
+
+            btnLuuKH.Text = "Lưu";
+
+            errorProvider.Clear();
             QuanLy_Load(sender, e);
         }
-    
+
+        private void btnXoaHDN_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (billInDao.deleteById(idBillIn))
+                {
+                    MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    btnLamMoiHDN_Click(sender, e);
+                }
+                else
+                    MessageBox.Show("Xóa hóa đơn thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtpNgayBDHDN_ValueChanged(object sender, EventArgs e)
+        {
+            dtpNgayBDHDN.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void dtpNgayKTHDN_ValueChanged(object sender, EventArgs e)
+        {
+            dtpNgayKTHDN.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void dtgvHDN_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idBillIn = int.Parse(dtgvHDN.CurrentRow.Cells[0].Value.ToString());
+            dtgvDSDTC.Rows.Clear();
+            foreach (DataRow dr in billInDao.getAllDetailBillIn(idBillIn).Rows)
+            {
+                string idPhone = dr["Mã ĐT"].ToString();
+                string namePhone = dr["Tên ĐT"].ToString();
+                string quantity = dr["Số lượng"].ToString();
+                string price = dr["Giá"].ToString();
+
+                String[] row = new string[] { idPhone, namePhone, quantity, price };
+                dtgvDSDTC.Rows.Add(row);
+            }
+
+            btnXoaHDN.Enabled = true;
+            btnSuaHDN.Enabled = true;
+        }
         #endregion
 
         //Load data

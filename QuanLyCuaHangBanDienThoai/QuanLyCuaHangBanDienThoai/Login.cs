@@ -25,13 +25,9 @@ namespace QuanLyCuaHangBanDienThoai
             String password = tbMatKhau.Text;
 
             if (accountDao.login(username, password) == 0)
-            {
                 errorProviderLogin.SetError(tbTenDangNhap, "Tên đăng nhập không tồn tại");
-            }
             else
-            {
                 errorProviderLogin.SetError(tbTenDangNhap, "");
-            }
 
             if (accountDao.login(username, password) == 2)
             {
@@ -39,9 +35,7 @@ namespace QuanLyCuaHangBanDienThoai
                 tbMatKhau.Text = "";
             }
             else
-            {
                 errorProviderLogin.SetError(tbMatKhau, "");
-            }
 
             if (accountDao.login(username, password) == 1)
             {
