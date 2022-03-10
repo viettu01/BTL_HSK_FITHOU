@@ -23,6 +23,11 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void QuanLy_Load(object sender, EventArgs e)
         {
+            if (Program.role.Equals("Nhân viên"))
+            {
+                tabControl1.TabPages.Remove(tabAccount);
+            }
+
             //Quản lý điện thoại
             producerDao.loadDataProducerCombox(cbHang);
             loadDataToDataGridView(dtgvDienThoai, phoneDao.findAll());
@@ -988,10 +993,11 @@ namespace QuanLyCuaHangBanDienThoai
             dtpNgayBDHDN.Enabled = true;
             dtpNgayKTHDN.Enabled = true;
 
+            btnTimKiemHDN.Enabled = false;
             btnLuuHDN.Enabled = true;
             btnLamMoiHDN.Enabled = true;
 
-            btnTimKiemHDN.Visible = false;
+            btnSuaHDN.Visible = false;
             btnThemHDN.Visible = false;
             btnXoaHDN.Visible = false;
 
@@ -1002,10 +1008,20 @@ namespace QuanLyCuaHangBanDienThoai
         {
             if (btnTimKiemHDN.Visible == true)
             {
-                //if (name == "" && phone == "")
-                //    MessageBox.Show("Bạn cần nhập thông tin muốn tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //else
-                //    loadDataToDataGridView(dtgvKH, customerDao.search(name, phone));
+                String billId = tbMaHD.Text;
+                String nameAccount = tbTenNV.Text;
+                String startDate = dtpNgayBDHDN.Value.Date.ToString("yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US"));
+                String endDate = dtpNgayKTHDN.Value.Date.ToString("yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US"));
+
+                if (dtpNgayBDHDN.Text == " " && dtpNgayKTHDN.Text != " ")
+                {
+                    startDate = "";
+                }
+                
+                if (billId == "" && nameAccount == "" && dtpNgayBDHDN.Text == " " && dtpNgayKTHDN.Text == " ")
+                    MessageBox.Show("Bạn cần nhập thông tin muốn tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    loadDataToDataGridView(dtgvHDN, billInDao.search(billId, nameAccount, startDate, endDate));
             }
             else
             {
@@ -1059,6 +1075,8 @@ namespace QuanLyCuaHangBanDienThoai
             tbDacDiem.Text = "";
             tbGiaNhap.Text = "";
             nudSoLuong.Value = 1;
+            dtpNgayBDHDN.CustomFormat = " ";
+            dtpNgayKTHDN.CustomFormat = " ";
 
             cbMaDT.Enabled = false;
             tbGiaNhap.Enabled = false;

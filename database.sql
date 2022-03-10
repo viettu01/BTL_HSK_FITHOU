@@ -361,6 +361,21 @@ AS
              c.createdAt
 
 GO
+SELECT c.id AS [Mã hóa đơn], d.fullName AS [Nhân viên tạo], c.createdAt AS [Ngày tạo], 
+		a.name AS [Tên sản phẩm], b.quantity AS [Số lượng], b.price AS [Đơn giá], (b.quantity * b.price) AS [Thành tiền]
+FROM dbo.tblPhone a 
+		JOIN dbo.tblDetailBillIn b ON b.phoneId = a.id
+		JOIN dbo.tblBillIn c ON c.id = b.billInId
+		JOIN dbo.tblAccount d ON d.id = c.accountId
+GROUP BY (b.quantity * b.price),
+         c.id,
+         d.fullName,
+         c.createdAt,
+         a.name,
+         b.quantity,
+         b.price
+
+GO
 SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn] FROM dbo.showAllBillIn
 
 SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn max] FROM showAllBillIn

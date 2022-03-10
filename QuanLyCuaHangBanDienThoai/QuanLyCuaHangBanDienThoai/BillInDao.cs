@@ -151,5 +151,45 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
+        public DataTable search(String billId, String nameAcount, String startDate, String endDate)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sqlSearchBillId = "";
+                String sqlSearchDate = "";
+                if (billId != "")
+                {
+                    sqlSearchBillId = " AND [Mã hóa đơn] = " + int.Parse(billId);
+                }
+
+                if (startDate == "" && endDate != "")
+                {
+                    sqlSearchDate = " AND [Ngày tạo] <= '" + DateTime.Parse(endDate) + "'";
+                }
+                else
+                {
+                    sqlSearchDate = " AND [Ngày tạo] BETWEEN '" + startDate + "' AND '" + endDate + "'";
+                }
+                    
+                String sql = "SELECT * FROM showAllBillIn " +
+                    "WHERE [Người tạo] LIKE N'%" + nameAcount + "%'" 
+                            + sqlSearchBillId
+                            + sqlSearchDate;
+                MessageBox.Show(sql);
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllBillIn"))
+                        {
+                            ad.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
