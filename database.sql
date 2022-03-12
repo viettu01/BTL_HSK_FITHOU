@@ -264,7 +264,7 @@ BEGIN
 END
 
 GO
---View hiển thị danh sách hóa đơn
+--View hiển thị danh sách hóa đơn nhập
 CREATE VIEW showAllBillIn
 AS
 	SELECT c.id AS [Mã hóa đơn], d.fullName AS [Người tạo], c.createdAt AS [Ngày tạo], ISNULL(SUM(b.quantity * b.price), 0) AS [Thành tiền]
@@ -275,6 +275,24 @@ AS
 	GROUP BY c.id,
              d.fullName,
              c.createdAt
+
+GO
+--Thủ tục thêm hóa đơn xuất
+CREATE PROC insertBillOut (@accountId INT, @customerId INT)
+AS
+BEGIN
+    INSERT dbo.tblBillOut (accountId, customerId, createdAt)
+    VALUES (@accountId, @customerId, GETDATE())
+END
+
+GO
+--Thủ tục thêm chi tiết hóa đơn xuất
+CREATE PROC insertDetailBillOut (@billOutId INT, @phoneId VARCHAR(255), @quantity INT)
+AS
+BEGIN
+    INSERT dbo.tblDetailBillOut (billOutId, phoneId, quantity)
+    VALUES (@billOutId, @phoneId, @quantity)
+END
 
 GO
 /* Cập nhật số lượng tồn kho sau khi nhập hàng */

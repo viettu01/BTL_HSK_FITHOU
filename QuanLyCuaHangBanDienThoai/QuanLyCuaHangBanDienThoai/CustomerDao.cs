@@ -132,5 +132,25 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
+        public DataTable searchByPhone(String phone)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "SELECT * FROM showAllCustomer WHERE [SĐT] LIKE N'" + phone + "' ";
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllCustomer"))
+                        {
+                            ad.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -69,6 +69,12 @@
     </Compile>
     <Compile Include="BillOutDao.cs" />
     <Compile Include="BillInDao.cs" />
+    <Compile Include="CrytalReport\CrystalReportBillOut.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReportBillOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrytalReport\CrystalReportDoanhThuDienThoai.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +124,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\CrystalReportBillOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReportBillOut.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrytalReport\CrystalReportDoanhThuDienThoai.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -32,15 +32,15 @@ namespace QuanLyCuaHangBanDienThoai
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BanHang));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbTenKH = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSDTKH = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnThanhToan = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtgvDSDTC = new System.Windows.Forms.DataGridView();
+            this.lbTongTien = new System.Windows.Forms.Label();
+            this.dtgvDSDT = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,15 +52,16 @@ namespace QuanLyCuaHangBanDienThoai
             this.tbGiaBan = new System.Windows.Forms.TextBox();
             this.tbDacDiem = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.btnThemDTC = new System.Windows.Forms.Button();
+            this.btnThemDT = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSDTC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSDT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,19 +82,20 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.textBox1);
+            this.panel7.Controls.Add(this.btnLamMoi);
+            this.panel7.Controls.Add(this.tbTenKH);
             this.panel7.Controls.Add(this.label4);
             this.panel7.Controls.Add(this.cbSDTKH);
             this.panel7.Controls.Add(this.label3);
-            this.panel7.Controls.Add(this.button1);
+            this.panel7.Controls.Add(this.btnThanhToan);
             this.panel7.Controls.Add(this.panel1);
-            this.panel7.Controls.Add(this.dtgvDSDTC);
+            this.panel7.Controls.Add(this.dtgvDSDT);
             this.panel7.Controls.Add(this.label25);
             this.panel7.Controls.Add(this.cbMaDT);
             this.panel7.Controls.Add(this.tbGiaBan);
             this.panel7.Controls.Add(this.tbDacDiem);
             this.panel7.Controls.Add(this.label24);
-            this.panel7.Controls.Add(this.btnThemDTC);
+            this.panel7.Controls.Add(this.btnThemDT);
             this.panel7.Controls.Add(this.label23);
             this.panel7.Controls.Add(this.nudSoLuong);
             this.panel7.Controls.Add(this.label22);
@@ -104,14 +106,14 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel7.Size = new System.Drawing.Size(952, 318);
             this.panel7.TabIndex = 16;
             // 
-            // textBox1
+            // tbTenKH
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(85, 57);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(324, 27);
-            this.textBox1.TabIndex = 22;
+            this.tbTenKH.Enabled = false;
+            this.tbTenKH.Location = new System.Drawing.Point(85, 57);
+            this.tbTenKH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbTenKH.Name = "tbTenKH";
+            this.tbTenKH.Size = new System.Drawing.Size(324, 27);
+            this.tbTenKH.TabIndex = 22;
             // 
             // label4
             // 
@@ -131,6 +133,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbSDTKH.Name = "cbSDTKH";
             this.cbSDTKH.Size = new System.Drawing.Size(324, 28);
             this.cbSDTKH.TabIndex = 20;
+            this.cbSDTKH.TextChanged += new System.EventHandler(this.cbSDTKH_TextChanged);
             // 
             // label3
             // 
@@ -142,28 +145,29 @@ namespace QuanLyCuaHangBanDienThoai
             this.label3.TabIndex = 21;
             this.label3.Text = "SĐT KH";
             // 
-            // button1
+            // btnThanhToan
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(797, 278);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 38);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Thanh toán";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThanhToan.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.BackgroundImage")));
+            this.btnThanhToan.Enabled = false;
+            this.btnThanhToan.FlatAppearance.BorderSize = 0;
+            this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThanhToan.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnThanhToan.Location = new System.Drawing.Point(797, 278);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThanhToan.Name = "btnThanhToan";
+            this.btnThanhToan.Size = new System.Drawing.Size(152, 38);
+            this.btnThanhToan.TabIndex = 19;
+            this.btnThanhToan.Text = "Thanh toán";
+            this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lbTongTien);
             this.panel1.Location = new System.Drawing.Point(419, 248);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(530, 25);
@@ -180,42 +184,44 @@ namespace QuanLyCuaHangBanDienThoai
             this.label1.TabIndex = 16;
             this.label1.Text = "Tổng tiền";
             // 
-            // label2
+            // lbTongTien
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(498, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 20);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "0 ₫";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTongTien.AutoSize = true;
+            this.lbTongTien.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbTongTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTongTien.Location = new System.Drawing.Point(498, 0);
+            this.lbTongTien.Name = "lbTongTien";
+            this.lbTongTien.Size = new System.Drawing.Size(32, 20);
+            this.lbTongTien.TabIndex = 17;
+            this.lbTongTien.Text = "0 ₫";
+            this.lbTongTien.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dtgvDSDTC
+            // dtgvDSDT
             // 
-            this.dtgvDSDTC.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dtgvDSDT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgvDSDTC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvDSDTC.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtgvDSDTC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDSDTC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dtgvDSDT.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvDSDT.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dtgvDSDT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvDSDT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column6,
             this.Column5});
-            this.dtgvDSDTC.EnableHeadersVisualStyles = false;
-            this.dtgvDSDTC.Location = new System.Drawing.Point(419, 2);
-            this.dtgvDSDTC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtgvDSDTC.Name = "dtgvDSDTC";
-            this.dtgvDSDTC.RowHeadersVisible = false;
-            this.dtgvDSDTC.RowHeadersWidth = 51;
-            this.dtgvDSDTC.RowTemplate.Height = 24;
-            this.dtgvDSDTC.Size = new System.Drawing.Size(531, 237);
-            this.dtgvDSDTC.TabIndex = 5;
+            this.dtgvDSDT.EnableHeadersVisualStyles = false;
+            this.dtgvDSDT.Location = new System.Drawing.Point(419, 2);
+            this.dtgvDSDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtgvDSDT.Name = "dtgvDSDT";
+            this.dtgvDSDT.RowHeadersVisible = false;
+            this.dtgvDSDT.RowHeadersWidth = 51;
+            this.dtgvDSDT.RowTemplate.Height = 24;
+            this.dtgvDSDT.Size = new System.Drawing.Size(531, 237);
+            this.dtgvDSDT.TabIndex = 5;
+            this.dtgvDSDT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDSDT_CellContentClick);
+            this.dtgvDSDT.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDSDT_CellValueChanged);
             // 
             // Column1
             // 
@@ -276,6 +282,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbMaDT.Name = "cbMaDT";
             this.cbMaDT.Size = new System.Drawing.Size(324, 28);
             this.cbMaDT.TabIndex = 7;
+            this.cbMaDT.TextChanged += new System.EventHandler(this.cbMaDT_TextChanged);
             // 
             // tbGiaBan
             // 
@@ -305,20 +312,21 @@ namespace QuanLyCuaHangBanDienThoai
             this.label24.TabIndex = 13;
             this.label24.Text = "Đơn giá";
             // 
-            // btnThemDTC
+            // btnThemDT
             // 
-            this.btnThemDTC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThemDTC.BackgroundImage")));
-            this.btnThemDTC.FlatAppearance.BorderSize = 0;
-            this.btnThemDTC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThemDTC.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemDTC.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnThemDTC.Location = new System.Drawing.Point(257, 278);
-            this.btnThemDTC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThemDTC.Name = "btnThemDTC";
-            this.btnThemDTC.Size = new System.Drawing.Size(152, 38);
-            this.btnThemDTC.TabIndex = 9;
-            this.btnThemDTC.Text = "Thêm điện thoại";
-            this.btnThemDTC.UseVisualStyleBackColor = true;
+            this.btnThemDT.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThemDT.BackgroundImage")));
+            this.btnThemDT.FlatAppearance.BorderSize = 0;
+            this.btnThemDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnThemDT.Location = new System.Drawing.Point(257, 278);
+            this.btnThemDT.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThemDT.Name = "btnThemDT";
+            this.btnThemDT.Size = new System.Drawing.Size(152, 38);
+            this.btnThemDT.TabIndex = 9;
+            this.btnThemDT.Text = "Thêm điện thoại";
+            this.btnThemDT.UseVisualStyleBackColor = true;
+            this.btnThemDT.Click += new System.EventHandler(this.btnThemDT_Click);
             // 
             // label23
             // 
@@ -371,6 +379,23 @@ namespace QuanLyCuaHangBanDienThoai
             this.crystalReportViewer1.Size = new System.Drawing.Size(957, 317);
             this.crystalReportViewer1.TabIndex = 19;
             // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.AutoSize = true;
+            this.btnLamMoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.BackgroundImage")));
+            this.btnLamMoi.FlatAppearance.BorderSize = 0;
+            this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLamMoi.Location = new System.Drawing.Point(88, 278);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(152, 38);
+            this.btnLamMoi.TabIndex = 24;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
             // BanHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -381,12 +406,13 @@ namespace QuanLyCuaHangBanDienThoai
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BanHang";
             this.Text = "Bán hàng";
+            this.Load += new System.EventHandler(this.BanHang_Load);
             this.groupBox1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSDTC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgvDSDT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoLuong)).EndInit();
             this.ResumeLayout(false);
 
@@ -396,13 +422,13 @@ namespace QuanLyCuaHangBanDienThoai
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataGridView dtgvDSDTC;
+        private System.Windows.Forms.DataGridView dtgvDSDT;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox cbMaDT;
         private System.Windows.Forms.TextBox tbGiaBan;
         private System.Windows.Forms.TextBox tbDacDiem;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Button btnThemDTC;
+        private System.Windows.Forms.Button btnThemDT;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.NumericUpDown nudSoLuong;
         private System.Windows.Forms.Label label22;
@@ -413,13 +439,14 @@ namespace QuanLyCuaHangBanDienThoai
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbTongTien;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnThanhToan;
         private System.Windows.Forms.ComboBox cbSDTKH;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbTenKH;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnLamMoi;
     }
 }

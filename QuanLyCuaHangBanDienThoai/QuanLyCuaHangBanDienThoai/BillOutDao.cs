@@ -53,15 +53,16 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        public bool insertBillOut(int accountId)
+        public bool insertBillOut(int accountId, int customerId)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = cnn.CreateCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "insertBillIn";
+                    cmd.CommandText = "insertBillOut";
                     cmd.Parameters.AddWithValue("@accountId", accountId);
+                    cmd.Parameters.AddWithValue("@customerId", customerId);
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
@@ -71,17 +72,16 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        public bool insertDetailBillOut(int billInId, String phoneId, double price, int quantity)
+        public bool insertDetailBillOut(int billInId, String phoneId, int quantity)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = cnn.CreateCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "insertDetailBillIn";
-                    cmd.Parameters.AddWithValue("@billInId", billInId);
+                    cmd.CommandText = "insertDetailBillOut";
+                    cmd.Parameters.AddWithValue("@billOutId", billInId);
                     cmd.Parameters.AddWithValue("@phoneId", phoneId);
-                    cmd.Parameters.AddWithValue("@price", price);
                     cmd.Parameters.AddWithValue("@quantity", quantity);
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
@@ -135,7 +135,7 @@ namespace QuanLyCuaHangBanDienThoai
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
-                String sql = "SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn max] FROM showAllBillIn";
+                String sql = "SELECT MAX([id]) AS [Mã hóa đơn max] FROM tblBillOut";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cnn.Open();
