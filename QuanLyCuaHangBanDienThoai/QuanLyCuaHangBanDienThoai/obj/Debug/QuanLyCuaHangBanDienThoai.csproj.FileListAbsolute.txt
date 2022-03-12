@@ -66,3 +66,4 @@ C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHa
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.csproj.CopyComplete
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.exe
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.pdb
+D:\FITHOU\Hướng sự kiện\BTL\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.BanHang.resources

@@ -56,5 +56,13 @@ namespace QuanLyCuaHangBanDienThoai
             new Login().Show();
             this.Hide();
         }
+
+        private void toolStripMenuItemBanHang_Click(object sender, EventArgs e)
+        {
+            BanHang banHang = new BanHang();
+            banHang.MdiParent = this;
+            banHang.Dock = DockStyle.Fill;
+            banHang.Show();
+        }
     }
 }

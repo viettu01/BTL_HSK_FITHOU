@@ -55,12 +55,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDao.cs" />
+    <Compile Include="BanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BanHang.Designer.cs">
+      <DependentUpon>BanHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaoCao.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaoCao.Designer.cs">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </Compile>
+    <Compile Include="BillOutDao.cs" />
     <Compile Include="BillInDao.cs" />
     <Compile Include="CrytalReport\CrystalReportDoanhThuDienThoai.cs">
       <AutoGen>True</AutoGen>
@@ -106,6 +113,9 @@
     <Compile Include="VBButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="BanHang.resx">
+      <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
     </EmbeddedResource>

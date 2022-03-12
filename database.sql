@@ -383,11 +383,23 @@ SELECT MAX([Mã hóa đơn]) AS [Mã hóa đơn max] FROM showAllBillIn
 SELECT * FROM dbo.showAllBillIn
 
 GO
-CREATE VIEW showAllDetailBillOut
+ALTER VIEW showAllDetailBillOut
 AS
-	SELECT dbo.tblPhone.id AS [Mã ĐT], dbo.tblPhone.name AS [Tên ĐT], dbo.tblDetailBillOut.quantity AS [Số lượng], 
+	SELECT tblBillOut.id AS [Mã HĐ], dbo.tblPhone.id AS [Mã ĐT], dbo.tblPhone.name AS [Tên ĐT], dbo.tblDetailBillOut.quantity AS [Số lượng], 
 			dbo.tblPhone.price AS [Đơn giá], dbo.tblPhone.price * dbo.tblDetailBillOut.quantity AS [Thành tiền], 
 			IIF(IIF(RIGHT(tblPhone.timeBH, DATALENGTH(tblPhone.timeBH) / 2 - CHARINDEX(' ', tblPhone.timeBH) - 1 + 1) LIKE N'năm', DATEADD(YEAR, CAST(LEFT(tblPhone.timeBH, CHARINDEX(' ',tblPhone.timeBH) - 1) AS INT), createdAt), DATEADD(MONTH, CAST(LEFT(tblPhone.timeBH, CHARINDEX(' ',tblPhone.timeBH) - 1) AS INT), createdAt)) < GETDATE(), N'Hết', N'Còn') AS [Hạn bảo hành]		
 	FROM dbo.tblBillOut 
 			JOIN dbo.tblDetailBillOut ON dbo.tblBillOut.id = dbo.tblDetailBillOut.billOutId 
 			JOIN dbo.tblPhone ON dbo.tblDetailBillOut.phoneId = dbo.tblPhone.id
+
+GO
+CREATE VIEW showAllBillOut
+AS
+	SELECT a.id AS [Mã HĐ], d.fullName AS [Người tạo], a.createdAt AS [Ngày tạo], ISNULL(SUM(c.price * b.quantity), 0) AS [Thành tiền]
+	FROM dbo.tblBillOut a
+			JOIN dbo.tblDetailBillOut b ON b.billOutId = a.id
+			JOIN dbo.tblPhone c ON c.id = b.phoneId
+			JOIN dbo.tblAccount d ON d.id = a.accountId
+	GROUP BY a.id,
+             d.fullName,
+             a.createdAt

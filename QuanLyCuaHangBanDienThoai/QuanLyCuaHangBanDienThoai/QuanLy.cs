@@ -13,7 +13,8 @@ namespace QuanLyCuaHangBanDienThoai
         AccountDao accountDao = new AccountDao();
         CustomerDao customerDao = new CustomerDao();
         BillInDao billInDao = new BillInDao();
-        int idProducer, idAccount, idCustomer, idBillIn;
+        BillOutDao billOutDao = new BillOutDao();
+        int idProducer, idAccount, idCustomer, idBillIn, idBillOut;
         String namePhone;
 
         public QuanLy()
@@ -46,6 +47,11 @@ namespace QuanLyCuaHangBanDienThoai
             loadDataToDataGridView(dtgvHDN, billInDao.findAll());
             loadDataIdPhoneCombox(cbMaDT);
             cbMaDT.Text = "";
+
+            //Quản lý hóa đơn xuất
+            loadDataIdPhoneCombox(cbMaDTHDX);
+            loadDataToDataGridView(dtgvHDX, billOutDao.findAll());
+            cbMaDTHDX.Text = "";
         }
 
         #region Quản lý điện thoại
@@ -988,8 +994,8 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void btnTimKiemHDN_Click(object sender, EventArgs e)
         {
-            tbMaHD.Enabled = true;
-            tbTenNV.Enabled = true;
+            tbMaHDN.Enabled = true;
+            tbTenNVHDN.Enabled = true;
             dtpNgayBDHDN.Enabled = true;
             dtpNgayKTHDN.Enabled = true;
 
@@ -1008,8 +1014,8 @@ namespace QuanLyCuaHangBanDienThoai
         {
             if (btnTimKiemHDN.Visible == true)
             {
-                String billId = tbMaHD.Text;
-                String nameAccount = tbTenNV.Text;
+                String billId = tbMaHDN.Text;
+                String nameAccount = tbTenNVHDN.Text;
                 String startDate = dtpNgayBDHDN.Value.Date.ToString("yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US"));
                 String endDate = dtpNgayKTHDN.Value.Date.ToString("yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US"));
 
@@ -1017,7 +1023,13 @@ namespace QuanLyCuaHangBanDienThoai
                 {
                     startDate = "";
                 }
-                
+
+                if (dtpNgayBDHDN.Text == " " && dtpNgayKTHDN.Text == " ")
+                {
+                    startDate = "";
+                    endDate = "";
+                }
+
                 if (billId == "" && nameAccount == "" && dtpNgayBDHDN.Text == " " && dtpNgayKTHDN.Text == " ")
                     MessageBox.Show("Bạn cần nhập thông tin muốn tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
@@ -1083,8 +1095,8 @@ namespace QuanLyCuaHangBanDienThoai
             nudSoLuong.Enabled = false;
             btnThemDTC.Enabled = false;
 
-            tbMaHD.Enabled = false;
-            tbTenNV.Enabled = false;
+            tbMaHDN.Enabled = false;
+            tbTenNVHDN.Enabled = false;
             dtpNgayBDHDN.Enabled = false;
             dtpNgayKTHDN.Enabled = false;
 
@@ -1095,12 +1107,12 @@ namespace QuanLyCuaHangBanDienThoai
 
             btnTimKiemHDN.Enabled = true;
             btnThemHDN.Enabled = true;
-            btnSuaHDN.Enabled = true;
+            btnSuaHDN.Enabled = false;
             btnXoaHDN.Enabled = false;
             btnLuuHDN.Enabled = false;
             btnLamMoiHDN.Enabled = false;
 
-            btnLuuKH.Text = "Lưu";
+            btnLuuHDN.Text = "Lưu";
 
             errorProvider.Clear();
             QuanLy_Load(sender, e);
@@ -1130,7 +1142,7 @@ namespace QuanLyCuaHangBanDienThoai
         {
             dtpNgayKTHDN.CustomFormat = "dd/MM/yyyy";
         }
-
+        
         private void dtgvHDN_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             idBillIn = int.Parse(dtgvHDN.CurrentRow.Cells[0].Value.ToString());
@@ -1146,8 +1158,145 @@ namespace QuanLyCuaHangBanDienThoai
                 dtgvDSDTC.Rows.Add(row);
             }
 
+            btnLamMoiHDN.Enabled = true;
             btnXoaHDN.Enabled = true;
             btnSuaHDN.Enabled = true;
+        }
+        #endregion
+
+        #region Quản lý hóa đơn xuất
+        private void dtgvHDX_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idBillOut = int.Parse(dtgvHDX.CurrentRow.Cells[0].Value.ToString());
+            dtgvDTHDX.Rows.Clear();
+            foreach (DataRow dr in billOutDao.getAllDetailBillOut(idBillOut).Rows)
+            {
+                string idPhone = dr["Mã ĐT"].ToString();
+                string namePhone = dr["Tên ĐT"].ToString();
+                string quantity = dr["Số lượng"].ToString();
+                string price = dr["Đơn giá"].ToString();
+                string total = dr["Thành tiền"].ToString();
+                string time = dr["Hạn bảo hành"].ToString();
+
+                String[] row = new string[] { idPhone, namePhone, quantity, price , total, time};
+                dtgvDTHDX.Rows.Add(row);
+            }
+
+            btnLamMoiHDX.Enabled = true;
+            cbMaDTHDX.Enabled = true;
+            tbTenDTHDX.Enabled = true;
+            btnTimKiemDTHDX.Enabled = true;
+        }
+
+        private void btnLamMoiHDX_Click(object sender, EventArgs e)
+        {
+            dtgvDTHDX.Rows.Clear();
+
+            cbMaDTHDX.Text = " ";
+            tbTenDTHDX.Text = "";
+            dtpNgayBDHDX.CustomFormat = " ";
+            dtpNgayKTHDX.CustomFormat = " ";
+
+            cbMaDTHDX.Enabled = false;
+            tbTenDTHDX.Enabled = false;
+            btnTimKiemDTHDX.Enabled = false;
+
+
+            tbMaHDX.Enabled = false;
+            tbTenNVHDX.Enabled = false;
+            dtpNgayBDHDX.Enabled = false;
+            dtpNgayKTHDX.Enabled = false;
+
+            btnTimKiemHDX.Visible = true;
+            btnThemHDX.Visible = true;
+            btnSuaHDX.Visible = true;
+            btnXoaHDX.Visible = true;
+
+            btnTimKiemHDX.Enabled = true;
+            btnThemHDX.Enabled = true;
+            btnSuaHDX.Enabled = false;
+            btnXoaHDX.Enabled = false;
+            btnLuuHDX.Enabled = false;
+            btnLamMoiHDX.Enabled = false;
+
+            btnLuuHDX.Text = "Lưu";
+
+            QuanLy_Load(sender, e);
+        }
+
+        private void btnTimKiemDTHDX_Click(object sender, EventArgs e)
+        {
+            String phoneId = cbMaDTHDX.Text;
+            String phoneName = tbTenDTHDX.Text;
+
+            dtgvDTHDX.Rows.Clear();
+            foreach (DataRow dr in billOutDao.searchPhoneInBillOut(idBillOut, phoneId, phoneName).Rows)
+            {
+                string idPhone = dr["Mã ĐT"].ToString();
+                string namePhone = dr["Tên ĐT"].ToString();
+                string quantity = dr["Số lượng"].ToString();
+                string price = dr["Đơn giá"].ToString();
+                string total = dr["Thành tiền"].ToString();
+                string time = dr["Hạn bảo hành"].ToString();
+
+                String[] row = new string[] { idPhone, namePhone, quantity, price, total, time };
+                dtgvDTHDX.Rows.Add(row);
+            }
+        }
+
+        private void btnTimKiemHDX_Click(object sender, EventArgs e)
+        {
+            tbMaHDX.Enabled = true;
+            tbTenNVHDX.Enabled = true;
+            dtpNgayBDHDX.Enabled = true;
+            dtpNgayKTHDX.Enabled = true;
+
+            btnTimKiemHDX.Enabled = false;
+            btnLuuHDX.Enabled = true;
+            btnLamMoiHDX.Enabled = true;
+
+            btnSuaHDX.Visible = false;
+            btnThemHDX.Visible = false;
+            btnXoaHDX.Visible = false;
+
+            btnLuuHDX.Text = "Tìm";
+        }
+
+        private void btnLuuHDX_Click(object sender, EventArgs e)
+        {
+            if (btnTimKiemHDX.Visible == true)
+            {
+                String billId = tbMaHDX.Text;
+                String nameAccount = tbTenNVHDX.Text;
+                String startDate = dtpNgayBDHDX.Value.Date.ToString("yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US"));
+                String endDate = dtpNgayKTHDX.Value.Date.ToString("yyyy-MM-dd", CultureInfo.CreateSpecificCulture("en-US"));
+
+                if (dtpNgayBDHDX.Text == " " && dtpNgayKTHDX.Text != " ")
+                {
+                    startDate = "";
+                }
+
+                if (dtpNgayBDHDX.Text == " " && dtpNgayKTHDX.Text == " ")
+                {
+                    startDate = "";
+                    endDate = "";
+                }
+
+                if (billId == "" && nameAccount == "" && dtpNgayBDHDX.Text == " " && dtpNgayKTHDX.Text == " ")
+                    MessageBox.Show("Bạn cần nhập thông tin muốn tìm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    loadDataToDataGridView(dtgvHDX, billOutDao.search(billId, nameAccount, startDate, endDate));
+            }
+        }
+
+        private void dtpNgayBDHDX_ValueChanged(object sender, EventArgs e)
+        {
+            dtpNgayBDHDX.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void dtpNgayKTHDX_ValueChanged(object sender, EventArgs e)
+        {
+            dtpNgayKTHDX.CustomFormat = "dd/MM/yyyy";
         }
         #endregion
 

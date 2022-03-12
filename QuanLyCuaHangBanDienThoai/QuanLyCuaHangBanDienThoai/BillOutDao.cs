@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace QuanLyCuaHangBanDienThoai
 {
-    class BillInDao
+    class BillOutDao
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
 
@@ -18,12 +18,12 @@ namespace QuanLyCuaHangBanDienThoai
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("SELECT * FROM showAllBillIn", cnn))
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM showAllBillOut", cnn))
                 {
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
-                        using (DataTable dt = new DataTable("showAllBillIn"))
+                        using (DataTable dt = new DataTable("showAllBillOut"))
                         {
                             ad.Fill(dt);
                             return dt;
@@ -33,7 +33,27 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        public bool insertBillIn(int accountId)
+        public DataTable getAllDetailBillOut(int id)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "SELECT * FROM showAllDetailBillOut WHERE [Mã HĐ] = " + id;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllBillOut"))
+                        {
+                            ad.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
+        }
+
+        public bool insertBillOut(int accountId)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
@@ -51,7 +71,7 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        public bool insertDetailBillIn(int billInId, String phoneId, double price, int quantity)
+        public bool insertDetailBillOut(int billInId, String phoneId, double price, int quantity)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
@@ -72,7 +92,7 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        public bool updateBillIn(int billInId, String phoneId, double price, int quantity)
+        public bool updateBillOut(int billInId, String phoneId, double price, int quantity)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
@@ -132,26 +152,6 @@ namespace QuanLyCuaHangBanDienThoai
             return -1;
         }
 
-        public DataTable getAllDetailBillIn(int id)
-        {
-            using (SqlConnection cnn = new SqlConnection(constr))
-            {
-                String sql = "SELECT * FROM showAllDetailBillIn WHERE [Mã HĐ] = " + id;
-                using (SqlCommand cmd = new SqlCommand(sql, cnn))
-                {
-                    cmd.CommandType = CommandType.Text;
-                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                    {
-                        using (DataTable dt = new DataTable("showAllDetailBillIn"))
-                        {
-                            ad.Fill(dt);
-                            return dt;
-                        }
-                    }
-                }
-            }
-        }
-
         public DataTable search(String billId, String nameAcount, String startDate, String endDate)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -160,7 +160,7 @@ namespace QuanLyCuaHangBanDienThoai
                 String sqlSearchDate = "";
                 if (billId != "")
                 {
-                    sqlSearchBillId = " AND [Mã hóa đơn] = " + int.Parse(billId);
+                    sqlSearchBillId = " AND [Mã HĐ] = " + int.Parse(billId);
                 }
 
                 if (startDate == "" && endDate != "")
@@ -176,10 +176,34 @@ namespace QuanLyCuaHangBanDienThoai
                     sqlSearchDate = " AND [Ngày tạo] BETWEEN '" + startDate + "' AND '" + endDate + "'";
                 }
                     
-                String sql = "SELECT * FROM showAllBillIn " +
+                String sql = "SELECT * FROM showAllBillOut " +
                     "WHERE [Người tạo] LIKE N'%" + nameAcount + "%'" 
                             + sqlSearchBillId
                             + sqlSearchDate;
+                MessageBox.Show(sql);
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllBillOut"))
+                        {
+                            ad.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
+        }
+
+        public DataTable searchPhoneInBillOut(int billOutId, String phoneId, String phoneName)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "SELECT * FROM showAllDetailBillOut " +
+                    "WHERE [Mã HĐ] = " + billOutId + " AND [Mã ĐT] LIKE N'%" + phoneId + "%' " +
+                    "AND [Tên ĐT] LIKE N'%" + phoneName + "%'";
+                MessageBox.Show(sql);
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cmd.CommandType = CommandType.Text;
