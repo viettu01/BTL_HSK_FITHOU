@@ -25,6 +25,11 @@ namespace QuanLyCuaHangBanDienThoai
         private void ThongKe_Load(object sender, EventArgs e)
         {
             //producerDao.loadDataProducerCombox(cbHang);
+            ReportDocument rp = new ReportDocument();
+            String path = Path.GetFullPath(@"../../CrytalReport/ThongkeĐT.rpt");
+            rp.Load(path);
+            crvĐT.ReportSource = rp;
+            crvĐT.Refresh();
         }
 
         private void btnInDoanhThuSanPham_Click(object sender, EventArgs e)
@@ -40,6 +45,29 @@ namespace QuanLyCuaHangBanDienThoai
             //baoCao.showReportDoanhThuSanPhamTheoNgay(DateTime.Parse(tbDateStart.Text), DateTime.Parse(tbDateEnd.Text));
             baoCao.showReport("CrystalReportDoanhThuTheoNgay.rpt", filter);
             baoCao.Show();
+        }
+        private void loc(string lenh)
+        {
+            ReportDocument rp = new ReportDocument();
+            String path = Path.GetFullPath(@"../../CrytalReport/ThongketrangthaiĐT.rpt");
+            rp.Load(path);
+            rp.RecordSelectionFormula = lenh;
+            crvĐT.ReportSource = rp;
+            crvĐT.Refresh();
+        }
+
+        private void btnHien_Click(object sender, EventArgs e)
+        {
+           if(cbTrangthai.Text=="Tồn kho")
+            loc("{ showAllPhone.SL}>" + "100");
+           else if(cbTrangthai.Text=="Hết hàng")
+            {
+                loc("{ showAllPhone.SL}=" + "0");
+            }    
+           else if(cbTrangthai.Text == "Sắp hết")
+            {
+                loc("{ showAllPhone.SL}<" + "10");
+            }    
         }
     }
 }

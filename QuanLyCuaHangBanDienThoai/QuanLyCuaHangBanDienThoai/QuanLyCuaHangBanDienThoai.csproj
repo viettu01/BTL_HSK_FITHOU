@@ -69,6 +69,36 @@
     </Compile>
     <Compile Include="BillOutDao.cs" />
     <Compile Include="BillInDao.cs" />
+    <Compile Include="CrytalReport\ThongketrangthaiĐT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongketrangthaiĐT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\ThongkeDoanhThu.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongkeDoanhThu.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\ThongkeKH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongkeKH.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\ThongketheoNV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongketheoNV.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\ThongkeĐT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongkeĐT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrytalReport\CrystalReportBillOut.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +154,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongketrangthaiĐT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongketrangthaiĐT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongkeDoanhThu.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongkeDoanhThu.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongkeKH.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongkeKH.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongketheoNV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongketheoNV.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongkeĐT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongkeĐT.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrytalReport\CrystalReportBillOut.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
