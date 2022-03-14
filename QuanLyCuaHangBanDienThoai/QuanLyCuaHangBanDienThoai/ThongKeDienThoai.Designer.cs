@@ -44,10 +44,10 @@ namespace QuanLyCuaHangBanDienThoai
             // btnInDoanhThuSanPham
             // 
             this.btnInDoanhThuSanPham.AutoSize = true;
-            this.btnInDoanhThuSanPham.Location = new System.Drawing.Point(215, 67);
-            this.btnInDoanhThuSanPham.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInDoanhThuSanPham.Location = new System.Drawing.Point(287, 82);
+            this.btnInDoanhThuSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInDoanhThuSanPham.Name = "btnInDoanhThuSanPham";
-            this.btnInDoanhThuSanPham.Size = new System.Drawing.Size(141, 23);
+            this.btnInDoanhThuSanPham.Size = new System.Drawing.Size(188, 28);
             this.btnInDoanhThuSanPham.TabIndex = 38;
             this.btnInDoanhThuSanPham.Text = "In danh thu các sản phẩm";
             this.btnInDoanhThuSanPham.UseVisualStyleBackColor = true;
@@ -55,47 +55,45 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             // tbDateStart
             // 
-            this.tbDateStart.Location = new System.Drawing.Point(334, 5);
-            this.tbDateStart.Margin = new System.Windows.Forms.Padding(2);
+            this.tbDateStart.Location = new System.Drawing.Point(445, 6);
+            this.tbDateStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbDateStart.Name = "tbDateStart";
-            this.tbDateStart.Size = new System.Drawing.Size(137, 20);
+            this.tbDateStart.Size = new System.Drawing.Size(181, 22);
             this.tbDateStart.TabIndex = 39;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(260, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(347, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(93, 17);
             this.label1.TabIndex = 40;
             this.label1.Text = "Ngày bắt đầu";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(260, 37);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(347, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(95, 17);
             this.label2.TabIndex = 42;
             this.label2.Text = "Ngày kết thúc";
             // 
             // tbDateEnd
             // 
-            this.tbDateEnd.Location = new System.Drawing.Point(334, 35);
-            this.tbDateEnd.Margin = new System.Windows.Forms.Padding(2);
+            this.tbDateEnd.Location = new System.Drawing.Point(445, 43);
+            this.tbDateEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbDateEnd.Name = "tbDateEnd";
-            this.tbDateEnd.Size = new System.Drawing.Size(137, 20);
+            this.tbDateEnd.Size = new System.Drawing.Size(181, 22);
             this.tbDateEnd.TabIndex = 41;
             // 
             // btnDoanhThuTheoNgay
             // 
             this.btnDoanhThuTheoNgay.AutoSize = true;
-            this.btnDoanhThuTheoNgay.Location = new System.Drawing.Point(356, 67);
-            this.btnDoanhThuTheoNgay.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDoanhThuTheoNgay.Location = new System.Drawing.Point(475, 82);
+            this.btnDoanhThuTheoNgay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoanhThuTheoNgay.Name = "btnDoanhThuTheoNgay";
-            this.btnDoanhThuTheoNgay.Size = new System.Drawing.Size(176, 23);
+            this.btnDoanhThuTheoNgay.Size = new System.Drawing.Size(235, 28);
             this.btnDoanhThuTheoNgay.TabIndex = 43;
             this.btnDoanhThuTheoNgay.Text = "In doanh thu sản phẩm theo ngày";
             this.btnDoanhThuTheoNgay.UseVisualStyleBackColor = true;
@@ -104,14 +102,17 @@ namespace QuanLyCuaHangBanDienThoai
             // crvĐT
             // 
             this.crvĐT.ActiveViewIndex = -1;
-            this.crvĐT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.crvĐT.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.crvĐT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvĐT.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crvĐT.Location = new System.Drawing.Point(12, 110);
+            this.crvĐT.Location = new System.Drawing.Point(16, 135);
+            this.crvĐT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.crvĐT.Name = "crvĐT";
-            this.crvĐT.Size = new System.Drawing.Size(675, 327);
+            this.crvĐT.Size = new System.Drawing.Size(899, 402);
             this.crvĐT.TabIndex = 44;
+            this.crvĐT.ToolPanelWidth = 267;
             // 
             // cbTrangthai
             // 
@@ -120,16 +121,18 @@ namespace QuanLyCuaHangBanDienThoai
             "Tồn kho",
             "Hết hàng",
             "Sắp hết"});
-            this.cbTrangthai.Location = new System.Drawing.Point(39, 33);
+            this.cbTrangthai.Location = new System.Drawing.Point(52, 41);
+            this.cbTrangthai.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTrangthai.Name = "cbTrangthai";
-            this.cbTrangthai.Size = new System.Drawing.Size(121, 21);
+            this.cbTrangthai.Size = new System.Drawing.Size(160, 24);
             this.cbTrangthai.TabIndex = 45;
             // 
             // btnHien
             // 
-            this.btnHien.Location = new System.Drawing.Point(39, 66);
+            this.btnHien.Location = new System.Drawing.Point(52, 81);
+            this.btnHien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHien.Name = "btnHien";
-            this.btnHien.Size = new System.Drawing.Size(75, 23);
+            this.btnHien.Size = new System.Drawing.Size(100, 28);
             this.btnHien.TabIndex = 46;
             this.btnHien.Text = "Hien";
             this.btnHien.UseVisualStyleBackColor = true;
@@ -137,9 +140,9 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             // ThongKeDienThoai
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 449);
+            this.ClientSize = new System.Drawing.Size(932, 553);
             this.Controls.Add(this.btnHien);
             this.Controls.Add(this.cbTrangthai);
             this.Controls.Add(this.crvĐT);
@@ -150,7 +153,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.Controls.Add(this.tbDateStart);
             this.Controls.Add(this.btnInDoanhThuSanPham);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ThongKeDienThoai";
             this.Text = "Thống kê";
             this.Load += new System.EventHandler(this.ThongKe_Load);

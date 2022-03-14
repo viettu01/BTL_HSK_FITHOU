@@ -87,10 +87,10 @@
       <DependentUpon>ThongkeKH.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CrytalReport\ThongketheoNV.cs">
+    <Compile Include="CrytalReport\ThongkeNV.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ThongketheoNV.rpt</DependentUpon>
+      <DependentUpon>ThongkeNV.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrytalReport\ThongkeĐT.cs">
@@ -167,9 +167,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ThongkeKH.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrytalReport\ThongketheoNV.rpt">
+    <EmbeddedResource Include="CrytalReport\ThongkeNV.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ThongketheoNV.cs</LastGenOutput>
+      <LastGenOutput>ThongkeNV.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrytalReport\ThongkeĐT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

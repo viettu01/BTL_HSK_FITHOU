@@ -53,6 +53,39 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
+        private void cbSDTKH_Validating(object sender, CancelEventArgs e)
+        {
+            if (!double.TryParse(cbSDTKH.Text, out _))
+                MessageBox.Show("Số điện thoại phải là số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else if (cbSDTKH.Text.Length < 10 || cbSDTKH.Text.Length > 10)
+                MessageBox.Show("Số điện thoại phải đủ 10 số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                DataTable dt = customerDao.searchByPhone(cbSDTKH.Text);
+                DataView v = new DataView(dt);
+                String nameCustomer = "";
+
+                foreach (DataRowView r in v)
+                {
+                    nameCustomer = r["Họ tên"].ToString();
+                }
+                tbTenKH.Text = nameCustomer;
+
+                if (cbSDTKH.Text != "" && nameCustomer == "")
+                {
+                    DialogResult dialogResult = MessageBox.Show("Khách hàng chưa có trong danh sách. Mời bạn thêm mới.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        QuanLy quanLy = new QuanLy();
+                        quanLy.tabControl1.SelectedIndex = 3;
+                        quanLy.mtbSDTKH.Text = cbSDTKH.Text;
+                        quanLy.btnThemKH_Click(sender, e);
+                        quanLy.Show();
+                    }
+                }
+            }
+        }
+
         private void cbMaDT_TextChanged(object sender, EventArgs e)
         {
             if (cbMaDT.Text == "")
@@ -64,6 +97,7 @@ namespace QuanLyCuaHangBanDienThoai
             else
             {
                 String dacDiem = "", price = "";
+                String quantity = "";
                 DataTable dt = phoneDao.searchById(cbMaDT.Text);
                 DataView v = new DataView(dt);
 
@@ -72,9 +106,14 @@ namespace QuanLyCuaHangBanDienThoai
                     namePhone = r["Tên ĐT"].ToString();
                     dacDiem = namePhone + "/" + r["Màu"] + "/" + r["Rom"] + "/" + r["Ram"];
                     price = r["Giá"].ToString();
+                    quantity = r["SL"].ToString();
                 }
                 tbDacDiem.Text = dacDiem;
                 tbGiaBan.Text = price;
+                if (quantity != "" && double.Parse(quantity) == 0) 
+                {
+                    MessageBox.Show("Sản phẩm đã hết. Vui lòng chọn sản phẩm khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -130,6 +169,12 @@ namespace QuanLyCuaHangBanDienThoai
         {
             dtgvDSDT.Rows.Clear();
             btnThanhToan.Enabled = false;
+
+            cbSDTKH.Text = "";
+            tbTenKH.Text = "";
+            cbMaDT.Text = "";
+            tbDacDiem.Text = "";
+            nudSoLuong.Value = 1;
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
@@ -197,6 +242,17 @@ namespace QuanLyCuaHangBanDienThoai
             cbSDTKH.DataSource = v;
             cbSDTKH.DisplayMember = "SĐT";
             cbSDTKH.ValueMember = "SĐT";
+        }
+
+        private void dtgvDSDT_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            double tongTien = 0;
+            for (int rows = 0; rows < dtgvDSDT.Rows.Count - 1; rows++)
+            {
+                double thanhTien = double.Parse(dtgvDSDT.Rows[rows].Cells[4].Value.ToString());
+                tongTien += thanhTien;
+            }
+            lbTongTien.Text = tongTien + " ₫";
         }
     }
 }

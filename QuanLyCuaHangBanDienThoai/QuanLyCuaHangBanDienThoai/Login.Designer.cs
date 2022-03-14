@@ -135,7 +135,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Đăng nhập";
+            this.Text = "Đăng nhập - Quản lý bán điện thoại";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLogin)).EndInit();
             this.ResumeLayout(false);

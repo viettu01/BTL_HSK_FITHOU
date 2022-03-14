@@ -32,6 +32,7 @@ namespace QuanLyCuaHangBanDienThoai
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BanHang));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.tbTenKH = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbSDTKH = new System.Windows.Forms.ComboBox();
@@ -57,7 +58,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.nudSoLuong = new System.Windows.Forms.NumericUpDown();
             this.label22 = new System.Windows.Forms.Label();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.btnLamMoi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -106,6 +106,23 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel7.Size = new System.Drawing.Size(952, 318);
             this.panel7.TabIndex = 16;
             // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.AutoSize = true;
+            this.btnLamMoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.BackgroundImage")));
+            this.btnLamMoi.FlatAppearance.BorderSize = 0;
+            this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLamMoi.Location = new System.Drawing.Point(88, 278);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(152, 38);
+            this.btnLamMoi.TabIndex = 24;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
             // tbTenKH
             // 
             this.tbTenKH.Enabled = false;
@@ -134,6 +151,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbSDTKH.Size = new System.Drawing.Size(324, 28);
             this.cbSDTKH.TabIndex = 20;
             this.cbSDTKH.TextChanged += new System.EventHandler(this.cbSDTKH_TextChanged);
+            this.cbSDTKH.Validating += new System.ComponentModel.CancelEventHandler(this.cbSDTKH_Validating);
             // 
             // label3
             // 
@@ -222,6 +240,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvDSDT.TabIndex = 5;
             this.dtgvDSDT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDSDT_CellContentClick);
             this.dtgvDSDT.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvDSDT_CellValueChanged);
+            this.dtgvDSDT.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtgvDSDT_RowsRemoved);
             // 
             // Column1
             // 
@@ -378,23 +397,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(957, 317);
             this.crystalReportViewer1.TabIndex = 19;
-            // 
-            // btnLamMoi
-            // 
-            this.btnLamMoi.AutoSize = true;
-            this.btnLamMoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLamMoi.BackgroundImage")));
-            this.btnLamMoi.FlatAppearance.BorderSize = 0;
-            this.btnLamMoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLamMoi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLamMoi.Location = new System.Drawing.Point(88, 278);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnLamMoi.Name = "btnLamMoi";
-            this.btnLamMoi.Size = new System.Drawing.Size(152, 38);
-            this.btnLamMoi.TabIndex = 24;
-            this.btnLamMoi.Text = "Làm mới";
-            this.btnLamMoi.UseVisualStyleBackColor = true;
-            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // BanHang
             // 

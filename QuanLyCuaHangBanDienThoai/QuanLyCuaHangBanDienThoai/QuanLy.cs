@@ -733,7 +733,7 @@ namespace QuanLyCuaHangBanDienThoai
         #endregion
 
         #region Quản lý khách hàng
-        private void btnThemKH_Click(object sender, EventArgs e)
+        public void btnThemKH_Click(object sender, EventArgs e)
         {
             mtbHoTenKH.Enabled = true;
             mtbSDTKH.Enabled = true;
@@ -840,7 +840,7 @@ namespace QuanLyCuaHangBanDienThoai
                 else if (!double.TryParse(phone, out _))
                     MessageBox.Show("Số điện thoại phải là số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else if (phone.Length < 10 || phone.Length > 10)
-                    MessageBox.Show("Số điện thoại phải đủ 12 số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Số điện thoại phải đủ 10 số", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                 {
                     if (btnThemKH.Visible == true)
@@ -889,6 +889,7 @@ namespace QuanLyCuaHangBanDienThoai
         #region Quản lý hóa đơn nhập
         private void cbMaDT_TextChanged(object sender, EventArgs e)
         {
+            String dacDiem = "", giaNhap = "";
             if (cbMaDT.Text == "")
             {
                 tbDacDiem.Text = "";
@@ -897,14 +898,39 @@ namespace QuanLyCuaHangBanDienThoai
             }
             else
             {
-                DataTable dt = phoneDao.search(cbMaDT.Text, "", "", "", "", "", "", "", "");
+                DataTable dt = phoneDao.searchById(cbMaDT.Text);
                 DataView v = new DataView(dt);
 
                 foreach (DataRowView r in v)
                 {
                     namePhone = r["Tên ĐT"].ToString();
-                    tbDacDiem.Text = namePhone + "/" + r["Màu"] + "/" + r["Rom"] + "/" + r["Ram"];
-                    tbGiaNhap.Text = r["Giá"].ToString();
+                    dacDiem = namePhone + "/" + r["Màu"] + "/" + r["Rom"] + "/" + r["Ram"];
+                    giaNhap = r["Giá"].ToString();
+                }
+                tbDacDiem.Text = dacDiem;
+                tbGiaNhap.Text = giaNhap;
+            }
+        }
+
+        private void cbMaDT_Validating(object sender, CancelEventArgs e)
+        {
+            DataTable dt = phoneDao.searchById(cbMaDT.Text);
+            DataView v = new DataView(dt);
+            String namePhone = "";
+
+            foreach (DataRowView r in v)
+            {
+                namePhone = r["Tên ĐT"].ToString();
+            }
+
+            if (namePhone == "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Điện thoại chưa có trong danh sách. Mời bạn thêm mới.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.OK)
+                {
+                    tabControl1.SelectedIndex = 0;
+                    mtbMaDT.Text = cbMaDT.Text;
+                    btnThemDT_Click(sender, e);
                 }
             }
         }
