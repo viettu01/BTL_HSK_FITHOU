@@ -421,3 +421,59 @@ AS
 	GROUP BY a.id,
              d.fullName,
              a.createdAt
+
+/*thống kê điện thoại*/
+GO
+create view TKĐT as
+select tblPhone.id as [Mã ĐT],tblPhone.name as [Tên ĐT],tblProducer.name as [Hãng], tblPhone.price as [Giá bán],tblPhone.color as [Màu],tblPhone.rom as[Rom],tblPhone.ram as[Ram],tblPhone.timeBH as[Bảo hành],sum( tblDetailBillOut.quantity) as[SL bán] ,sum(tblPhone.price*tblDetailBillOut.quantity)as [Doanh thu]
+,tblPhone.quantity as[SL trong kho],YEAR(tblBillOut.createdAt) AS [Năm]
+,MONTH(tblBillOut.createdAt) as[Tháng]
+from(tblPhone join tblDetailBillOut on tblPhone.id=tblDetailBillOut.phoneId) join tblBillOut ON dbo.tblBillOut.id = dbo.tblDetailBillOut.billOutId join tblProducer on tblProducer.id=tblPhone.idProducer
+group by tblPhone.id,tblPhone.quantity,YEAR(tblBillOut.createdAt),MONTH(tblBillOut.createdAt),tblPhone.name,tblProducer.name, tblPhone.price,tblPhone.color,tblPhone.rom,tblPhone.ram,tblPhone.timeBH
+go
+create view TKNV as
+select tblAccount.id as [Mã NV],tblAccount.fullName as [Tên NV],DATEDIFF(year,tblAccount.birthday,getDate())as[Tuổi],sum (tblDetailBillOut.quantity)as [SLĐT bán],sum(tblPhone.price*tblDetailBillOut.quantity)[Doanh thu],YEAR(tblBillOut.createdAt) AS [Năm]
+,MONTH(tblBillOut.createdAt) as[Tháng]
+from tblAccount join tblBillOut on tblAccount.id=tblBillOut.accountId join tblDetailBillOut on tblBillOut.id=tblDetailBillOut.billOutId join tblPhone on tblPhone.id=tblDetailBillOut.phoneId
+group by tblAccount.id,tblAccount.fullName,YEAR(tblBillOut.createdAt) ,MONTH(tblBillOut.createdAt) ,DATEDIFF(year,tblAccount.birthday,getDate())
+
+
+SELECT * FROM TKĐT ORDER BY [Doanh thu] DESC
+
+go
+/*thống kê khach hàng*/
+
+create view TKKH as
+select tblCustomer.id as [Mã KH],tblCustomer.name AS[Tên KH],sum (tblDetailBillOut.quantity) AS[SLĐT mua],sum(tblPhone.price*tblDetailBillOut.quantity) as[Tổng tiền],YEAR(tblBillOut.createdAt) AS [Năm]
+,MONTH(tblBillOut.createdAt) as[Tháng]
+from tblCustomer join tblBillOut on tblCustomer.id=tblBillOut.customerId join tblDetailBillOut on tblBillOut.id=tblDetailBillOut.billOutId join tblPhone on tblPhone.id=tblDetailBillOut.phoneId
+group by tblCustomer.id,tblCustomer.name,YEAR(tblBillOut.createdAt) ,MONTH(tblBillOut.createdAt) 
+
+/*thống kê doanh thu*/
+SELECT YEAR(FullDetailBillOut.[Ngày lập])as[Năm],MONTH(FullDetailBillOut.[Ngày lập]) as [Tháng],SUM( FullDetailBillOut.[Thành tiền]) as [Doanh thu]
+FROM FullDetailBillOut
+Group by YEAR(FullDetailBillOut.[Ngày lập]),MONTH(FullDetailBillOut.[Ngày lập]
+order by SUM( FullDetailBillOut.[Thành tiền]) desc
+
+create view TKDT as
+select YEAR(tblBillOut.createdAt) AS [Năm],MONTH(tblBillOut.createdAt) as[Tháng],sum (tblDetailBillOut.quantity) AS[SLĐT bán],sum(tblPhone.price*tblDetailBillOut.quantity) as[Doanh thu]
+from tblDetailBillOut join tblPhone on tblDetailBillOut.phoneId = tblPhone.id join tblBillOut on tblDetailBillOut.billOutId=tblBillOut.id
+group by YEAR(tblBillOut.createdAt) ,MONTH(tblBillOut.createdAt) 
+order by sum(tblPhone.price*tblDetailBillOut.quantity) desc
+select distinct [Năm] from TKĐT
+/*select * from TKĐT
+WHERE [Năm] like '%2022%' and [Tháng]like'%%'
+order by [Doanh thu] desc
+
+select *from TKKH2
+
+create view TKKH2 as
+select tblCustomer.id as [Mã KH],tblCustomer.name AS[Tên KH],sum (tblDetailBillOut.quantity) AS[SLĐT mua],sum(tblPhone.price*tblDetailBillOut.quantity) as[Tổng tiền],YEAR(tblBillOut.createdAt) AS [Năm]
+,MONTH(tblBillOut.createdAt) as[Tháng]
+from tblCustomer join tblBillOut on tblCustomer.id=tblBillOut.customerId join tblDetailBillOut on tblBillOut.id=tblDetailBillOut.billOutId join tblPhone on tblPhone.id=tblDetailBillOut.phoneId
+group by tblCustomer.id,tblCustomer.name,YEAR(tblBillOut.createdAt) ,MONTH(tblBillOut.createdAt) 
+
+select top(1) * from TKDT
+
+group by [Năm],[Tháng],[SLĐT bán],[Doanh thu]
+order by Max([Doanh thu]) desc

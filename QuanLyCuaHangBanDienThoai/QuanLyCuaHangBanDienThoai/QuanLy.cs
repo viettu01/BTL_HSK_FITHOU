@@ -1315,6 +1315,11 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
+        private void cbMaDT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void dtpNgayBDHDX_ValueChanged(object sender, EventArgs e)
         {
             dtpNgayBDHDX.CustomFormat = "dd/MM/yyyy";

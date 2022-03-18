@@ -69,6 +69,62 @@
     </Compile>
     <Compile Include="BillOutDao.cs" />
     <Compile Include="BillInDao.cs" />
+    <Compile Include="CrytalReport\SXTKKH.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SXTKKH.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\SXTKĐT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SXTKĐT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\DataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CrytalReport\SXTKNV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SXTKNV.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\DataSet2.cs">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CrytalReport\DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CrytalReport\DataSet3.cs">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CrytalReport\DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CrytalReport\SXTKDT.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SXTKDT.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\ThongkeTuoiNV.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongkeTuoiNV.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CrytalReport\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="CrytalReport\ThongketrangthaiĐT.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -118,6 +174,24 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomerDao.cs" />
+    <Compile Include="Thongke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Thongke.Designer.cs">
+      <DependentUpon>Thongke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKeSLĐT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeSLĐT.Designer.cs">
+      <DependentUpon>ThongKeSLĐT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKeNhanvien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeNhanvien.Designer.cs">
+      <DependentUpon>ThongKeNhanvien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,11 +214,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThongKeDienThoai.cs">
+    <Compile Include="ThongKeDoanhThu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ThongKeDienThoai.Designer.cs">
-      <DependentUpon>ThongKeDienThoai.cs</DependentUpon>
+    <Compile Include="ThongKeDoanhThu.Designer.cs">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
     </Compile>
     <Compile Include="VBButton.cs">
       <SubType>Component</SubType>
@@ -154,6 +228,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCao.resx">
       <DependentUpon>BaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\SXTKKH.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SXTKKH.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\SXTKĐT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SXTKĐT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\SXTKNV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SXTKNV.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\SXTKDT.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SXTKDT.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongkeTuoiNV.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongkeTuoiNV.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrytalReport\ThongketrangthaiĐT.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -187,6 +281,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReportDoanhThuTheoNgay.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Thongke.resx">
+      <DependentUpon>Thongke.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,9 +302,59 @@
     <EmbeddedResource Include="QuanLyCuaHangDienThoai.resx">
       <DependentUpon>QuanLyCuaHangDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ThongKeDienThoai.resx">
-      <DependentUpon>ThongKeDienThoai.cs</DependentUpon>
+    <EmbeddedResource Include="ThongKeDoanhThu.resx">
+      <DependentUpon>ThongKeDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeNhanvien.resx">
+      <DependentUpon>ThongKeNhanvien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeSLĐT.resx">
+      <DependentUpon>ThongKeSLĐT.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="CrytalReport\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CrytalReport\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CrytalReport\DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet3.xsc">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CrytalReport\DataSet3.xss">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet4.xsc">
+      <DependentUpon>DataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="CrytalReport\DataSet4.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet4.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="CrytalReport\DataSet4.xss">
+      <DependentUpon>DataSet4.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

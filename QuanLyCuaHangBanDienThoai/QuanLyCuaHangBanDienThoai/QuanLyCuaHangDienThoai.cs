@@ -45,10 +45,12 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void toolStripMenuItemTKDT_Click(object sender, EventArgs e)
         {
-            ThongKeDienThoai thongKeDienThoai = new ThongKeDienThoai();
+           /* ThongKeDoanhThu thongKeDienThoai = new ThongKeDoanhThu();
             thongKeDienThoai.MdiParent = this;
             thongKeDienThoai.Dock = DockStyle.Fill;
             thongKeDienThoai.Show();
+*/
+
         }
 
         private void toolStripMenuItemDangXuat_Click(object sender, EventArgs e)
@@ -63,6 +65,33 @@ namespace QuanLyCuaHangBanDienThoai
             banHang.MdiParent = this;
             banHang.Dock = DockStyle.Fill;
             banHang.Show();
+        }
+
+        private void ToolStripMenuItemTKNV_Click(object sender, EventArgs e)
+        {
+            ThongKeNhanvien thongKeNhanvien = new ThongKeNhanvien();
+            thongKeNhanvien.MdiParent = this;
+            thongKeNhanvien.Dock = DockStyle.Fill;
+            thongKeNhanvien.Show();
+
+
+        }
+
+        private void ToolStripMenuItemtrạngTháiSốLượngĐT_Click(object sender, EventArgs e)
+        {
+            ThongKeSLĐT thongKeSLĐT = new ThongKeSLĐT();
+            thongKeSLĐT.MdiParent = this;
+            thongKeSLĐT.Dock = DockStyle.Fill;
+            thongKeSLĐT.Show();
+
+        }
+
+        private void ToolStripMenuItemDoanhThu_Click(object sender, EventArgs e)
+        {
+            Thongke thongKe = new Thongke();
+            thongKe.MdiParent = this;
+            thongKe.Dock = DockStyle.Fill;
+            thongKe.Show();
         }
     }
 }
