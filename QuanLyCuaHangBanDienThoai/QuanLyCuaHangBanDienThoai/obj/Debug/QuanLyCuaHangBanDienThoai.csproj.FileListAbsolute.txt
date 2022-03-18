@@ -130,7 +130,6 @@ D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCu
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Properties.Resources.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuanLy.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuanLyCuaHangDienThoai.resources
-D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeDienThoai.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.csproj.GenerateResource.cache
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.csproj.CoreCompileInputs.cache
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.csproj.CopyComplete
@@ -140,3 +139,7 @@ C:\Users\Admin\source\repos\BTLLLLLLLLLLLLLLLLLLLLLLLLLL\BTL_HSK_FITHOU\QuanLyCu
 C:\Users\Admin\source\repos\BTLLLLLLLLLLLLLLLLLLLLLLLLLL\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeDoanhThu.resources
 C:\Users\Admin\source\repos\BTLLLLLLLLLLLLLLLLLLLLLLLLLL\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeSLĐT.resources
 C:\Users\Admin\source\repos\BTLLLLLLLLLLLLLLLLLLLLLLLLLL\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Thongke.resources
+D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Thongke.resources
+D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeDoanhThu.resources
+D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeNhanvien.resources
+D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeSLĐT.resources

@@ -34,7 +34,7 @@ namespace QuanLyCuaHangBanDienThoai
             InitializeComponent();
         }
         //GIAO DIỆN
-       
+
 
         private void rbNV_CheckedChanged(object sender, EventArgs e)
         {
@@ -159,9 +159,11 @@ namespace QuanLyCuaHangBanDienThoai
             ReportDocument rp = new ReportDocument();
             String path = Path.GetFullPath(TKDT);
             rp.Load(path);
-           
+
             crvDT.ReportSource = rp;
             crvDT.Refresh();
+
+            cbNam.Text = "";
         }
         private void SXDT(string kieu, string loai)
         {
@@ -187,14 +189,14 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        private void Minmax(string tenview, string nam,string kieu,string loai,string kieu2)
+        private void Minmax(string tenview, string nam, string kieu, string loai, string kieu2)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select top(1) * from "+tenview+ " where [Năm] like '%"+nam+"%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by "+kieu2+"(["+loai+"]) "+kieu, cnn))
+                using (SqlCommand cmd = new SqlCommand("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu, cnn))
                 {
-                   MessageBox.Show("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu);
+                    MessageBox.Show("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu);
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
                         DataSet1 ds = new DataSet1();
@@ -264,7 +266,7 @@ namespace QuanLyCuaHangBanDienThoai
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand("select * from TKĐT WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu, cnn))
                 {
-                    
+
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
                         DataSet4 ds = new DataSet4();
@@ -286,10 +288,8 @@ namespace QuanLyCuaHangBanDienThoai
         {
             if (cbNam.Text != "")
             {
-
                 if (cbThang.Text != "")
                 {
-
                     if (cbLoaiSX.Text == "")
                     {
                         if (!rbTang.Checked && !rbGiam.Checked)
@@ -335,24 +335,24 @@ namespace QuanLyCuaHangBanDienThoai
 
                             if (rbGiam.Checked)
                             {
-                                if(!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
+                                if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
                                 {
                                     SXDT("desc", "SLĐT bán");
-                                }  
-                                else if(rbNV.Checked)
+                                }
+                                else if (rbNV.Checked)
                                 {
                                     SXNV("desc", "SLĐT bán");
-                                }  
-                                else if(rbKH.Checked)
+                                }
+                                else if (rbKH.Checked)
                                 {
                                     SXKH("desc", "SLĐT mua");
 
-                                }  
-                                else if(rbĐT.Checked)
+                                }
+                                else if (rbĐT.Checked)
                                 {
                                     SXĐT("desc", "SL bán");
-                                }    
-                               
+                                }
+
                             }
 
                             else if (rbTang.Checked)
@@ -407,7 +407,7 @@ namespace QuanLyCuaHangBanDienThoai
                             else if (rbGiam.Checked)
                             {
 
-                               
+
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
                                 {
                                     SXDT("desc", "Doanh thu");
@@ -442,11 +442,11 @@ namespace QuanLyCuaHangBanDienThoai
                             //locnamthang("{@Nam}=" + cbNam.Text, ten1);
                             if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
                             {
-                                locnamthang("{@Nam}=" + cbNam.Text , TKDT);
+                                locnamthang("{@Nam}=" + cbNam.Text, TKDT);
                             }
                             else if (rbNV.Checked)
                             {
-                                locnamthang("{@Nam}=" + cbNam.Text , TKNV);
+                                locnamthang("{@Nam}=" + cbNam.Text, TKNV);
                             }
                             else if (rbKH.Checked)
                             {
@@ -455,7 +455,7 @@ namespace QuanLyCuaHangBanDienThoai
                             }
                             else if (rbĐT.Checked)
                             {
-                                locnamthang("{@Nam}=" + cbNam.Text , TKDT);
+                                locnamthang("{@Nam}=" + cbNam.Text, TKDT);
                             }
                         }
                         else
@@ -588,32 +588,89 @@ namespace QuanLyCuaHangBanDienThoai
 
                 crvDT.ReportSource = rp;
                 crvDT.Refresh();
-
             }
         }
         private void btnHien_Click(object sender, EventArgs e)
         {
-             loc();
-            SXĐT("desc","SL bán");
-         /*  if(rbMin.Checked)
-            {
-                Minmax("TKDT", cbNam.Text, "asc", cbLoaiSX.Text, "MIN");
-            }
-           else if (rbMax.Checked)
-            {
-                Minmax("TKDT", cbNam.Text, "desc","SLĐT bán", "MAX");
-            }*/
+            loc();
+            //SXĐT("desc", "SL bán");
+            /*  if(rbMin.Checked)
+               {
+                   Minmax("TKDT", cbNam.Text, "asc", cbLoaiSX.Text, "MIN");
+               }
+              else if (rbMax.Checked)
+               {
+                   Minmax("TKDT", cbNam.Text, "desc","SLĐT bán", "MAX");
+               }*/
         }
 
         private void cbLoaiSX_Validating(object sender, CancelEventArgs e)
         {
-            if(cbLoaiSX.Text=="")
+            if (cbLoaiSX.Text == "")
             {
                 rbGiam.Checked = false;
                 rbTang.Checked = false;
-              
-            }    
-           
+
+            }
+
+        }
+
+        private void cbLoaiSX_TextChanged(object sender, EventArgs e)
+        {
+            if (cbLoaiSX.Text != "")
+            {
+                rbTang.Enabled = true;
+                rbGiam.Enabled = true;
+                rbMax.Enabled = true;
+                rbMin.Enabled = true;
+
+                //gbTheo.Enabled = true;
+            }
+            else
+            {
+                rbTang.Enabled = false;
+                rbGiam.Enabled = false;
+                rbMax.Enabled = false;
+                rbMin.Enabled = false;
+
+                //gbTheo.Enabled = false;
+            }
+        }
+
+        private void rbTang_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (!rbTang.Checked && !rbGiam.Checked)
+            {
+                gbTheo.Enabled = false;
+            }
+            else
+            {
+                gbTheo.Enabled = true;
+            }
+        }
+
+        private void rbGiam_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (!rbTang.Checked && !rbGiam.Checked)
+            {
+                gbTheo.Enabled = false;
+            }
+            else
+            {
+                gbTheo.Enabled = true;
+            }
+        }
+
+        private void cbNam_TextChanged(object sender, EventArgs e)
+        {
+            if (cbNam.Text == "")
+            {
+                cbThang.Enabled = false;
+            }
+            else
+            {
+                cbThang.Enabled = true;
+            }
         }
         //chạy code
 

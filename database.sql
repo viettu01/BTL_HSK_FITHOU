@@ -425,13 +425,16 @@ AS
 /*thống kê điện thoại*/
 GO
 create view TKĐT as
-select tblPhone.id as [Mã ĐT],tblPhone.name as [Tên ĐT],tblProducer.name as [Hãng], tblPhone.price as [Giá bán],tblPhone.color as [Màu],tblPhone.rom as[Rom],tblPhone.ram as[Ram],tblPhone.timeBH as[Bảo hành],sum( tblDetailBillOut.quantity) as[SL bán] ,sum(tblPhone.price*tblDetailBillOut.quantity)as [Doanh thu]
+select tblPhone.id as [Mã ĐT], tblPhone.name as [Tên ĐT], tblProducer.name as [Hãng], tblPhone.price as [Giá bán],
+		tblPhone.color as [Màu],tblPhone.rom as[Rom],tblPhone.ram as[Ram],tblPhone.timeBH as[Bảo hành],sum( tblDetailBillOut.quantity) as[SL bán] ,sum(tblPhone.price*tblDetailBillOut.quantity)as [Doanh thu]
 ,tblPhone.quantity as[SL trong kho],YEAR(tblBillOut.createdAt) AS [Năm]
 ,MONTH(tblBillOut.createdAt) as[Tháng]
 from(tblPhone join tblDetailBillOut on tblPhone.id=tblDetailBillOut.phoneId) join tblBillOut ON dbo.tblBillOut.id = dbo.tblDetailBillOut.billOutId join tblProducer on tblProducer.id=tblPhone.idProducer
 group by tblPhone.id,tblPhone.quantity,YEAR(tblBillOut.createdAt),MONTH(tblBillOut.createdAt),tblPhone.name,tblProducer.name, tblPhone.price,tblPhone.color,tblPhone.rom,tblPhone.ram,tblPhone.timeBH
-go
-create view TKNV as
+
+GO
+create view TKNV 
+AS
 select tblAccount.id as [Mã NV],tblAccount.fullName as [Tên NV],DATEDIFF(year,tblAccount.birthday,getDate())as[Tuổi],sum (tblDetailBillOut.quantity)as [SLĐT bán],sum(tblPhone.price*tblDetailBillOut.quantity)[Doanh thu],YEAR(tblBillOut.createdAt) AS [Năm]
 ,MONTH(tblBillOut.createdAt) as[Tháng]
 from tblAccount join tblBillOut on tblAccount.id=tblBillOut.accountId join tblDetailBillOut on tblBillOut.id=tblDetailBillOut.billOutId join tblPhone on tblPhone.id=tblDetailBillOut.phoneId
@@ -459,6 +462,8 @@ create view TKDT as
 select YEAR(tblBillOut.createdAt) AS [Năm],MONTH(tblBillOut.createdAt) as[Tháng],sum (tblDetailBillOut.quantity) AS[SLĐT bán],sum(tblPhone.price*tblDetailBillOut.quantity) as[Doanh thu]
 from tblDetailBillOut join tblPhone on tblDetailBillOut.phoneId = tblPhone.id join tblBillOut on tblDetailBillOut.billOutId=tblBillOut.id
 group by YEAR(tblBillOut.createdAt) ,MONTH(tblBillOut.createdAt) 
+
+
 order by sum(tblPhone.price*tblDetailBillOut.quantity) desc
 select distinct [Năm] from TKĐT
 /*select * from TKĐT

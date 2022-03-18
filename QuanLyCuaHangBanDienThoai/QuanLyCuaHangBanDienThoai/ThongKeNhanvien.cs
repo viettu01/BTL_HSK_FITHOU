@@ -19,10 +19,37 @@ namespace QuanLyCuaHangBanDienThoai
     public partial class ThongKeNhanvien : Form
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
+
         public ThongKeNhanvien()
         {
             InitializeComponent();
         }
+
+        private void ThongKeNhanvien_Load(object sender, EventArgs e)
+        {
+            /* using (SqlConnection cnn = new SqlConnection(constr))
+             {
+                 cnn.Open();
+                 using (SqlCommand cmd = new SqlCommand("select * from TKNV  ", cnn))
+                 {
+                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                     {
+                         DataSet2 ds = new DataSet2();
+                         DataTable dt = new DataTable();
+                         ad.Fill(ds);
+                         //ThongKeDienThoai rpt = new ThongKeDienThoai();
+                         ReportDocument rpt = new ReportDocument();
+                         String path = Path.GetFullPath(@"..\..\CrytalReport\SXTKNV.rpt");
+                         rpt.Load(path);
+                         rpt.SetDataSource(ds.Tables[1]);
+                         crvNV.ReportSource = rpt;
+                         crvNV.Refresh();
+                     }
+                 }
+             }*/
+            sapxep();
+        }
+
         public DataTable findAllTKNV()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -41,25 +68,27 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         private void sapxep()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from TKNV ", cnn))
-
-                using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                using (SqlCommand cmd = new SqlCommand("Select * from TKNV", cnn))
                 {
-                    DataSet2 ds = new DataSet2();
-                    DataTable dt = new DataTable();
-                    ad.Fill(ds);
-                    //ThongKeDienThoai rpt = new ThongKeDienThoai();
-                    ReportDocument rpt = new ReportDocument();
-                    String path = Path.GetFullPath(@"C:\Users\Admin\source\repos\BTLLLLLLLLLLLLLLLLLLLLLLLLLL\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\CrytalReport\SXTKNV.rpt");
-                    rpt.Load(path);
-                    rpt.SetDataSource(ds.Tables[1]);
-                    crvNV.ReportSource = rpt;
-                    crvNV.Refresh();
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        DataSet2 ds = new DataSet2();
+                        DataTable dt = new DataTable();
+                        ad.Fill(ds);
+                        //ThongKeDienThoai rpt = new ThongKeDienThoai();
+                        ReportDocument rpt = new ReportDocument();
+                        String path = Path.GetFullPath(@"..\..\CrytalReport\SXTKNV.rpt");
+                        rpt.Load(path);
+                        rpt.SetDataSource(ds.Tables[1]);
+                        crvNV.ReportSource = rpt;
+                        crvNV.Refresh();
+                    }
                 }
             }
         }
@@ -73,27 +102,23 @@ namespace QuanLyCuaHangBanDienThoai
             crvNV.ReportSource = rp;
             crvNV.Refresh();
         }
+
         private void btnHien_Click(object sender, EventArgs e)
         {
-           
-            
-            
-            if(tbTuoitu.Text!="" &&tbTuoiden.Text!="")
+            if (tbTuoitu.Text != "" && tbTuoiden.Text != "")
             {
                 if (Int32.Parse(tbTuoitu.Text) > Int32.Parse(tbTuoiden.Text))
                 {
-
                     MessageBox.Show("Nhập tuổi từ phải nhỏ hơn tuổi đến");
                 }
                 else
                 {
                     loctuoi("{@Tuoi}>= " + tbTuoitu.Text + " and {@Tuoi} <= " + tbTuoiden.Text);
                 }
-               
-            }    
-            else if(tbTuoitu.Text != "" && tbTuoiden.Text == "")
+            }
+            else if (tbTuoitu.Text != "" && tbTuoiden.Text == "")
             {
-                loctuoi("{@Tuoi}>= " + tbTuoitu.Text );
+                loctuoi("{@Tuoi}>= " + tbTuoitu.Text);
                 MessageBox.Show("{@Tuoi}>= " + tbTuoitu.Text);
             }
             else if (tbTuoitu.Text == "" && tbTuoiden.Text != "")
@@ -103,40 +128,14 @@ namespace QuanLyCuaHangBanDienThoai
             else if (tbTuoitu.Text == "" && tbTuoiden.Text == "")
             {
                 MessageBox.Show("Mời bạn nhập ít nhất 1 trong hai ô để có thể lọc");
-               // sapxep();
+                // sapxep();
             }
-        }
-
-        private void ThongKeNhanvien_Load(object sender, EventArgs e)
-        {
-            /* using (SqlConnection cnn = new SqlConnection(constr))
-             {
-                 cnn.Open();
-                 using (SqlCommand cmd = new SqlCommand("select * from TKNV  ", cnn))
-                 {
-                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                     {
-                         DataSet2 ds = new DataSet2();
-                         DataTable dt = new DataTable();
-                         ad.Fill(ds);
-                         //ThongKeDienThoai rpt = new ThongKeDienThoai();
-                         ReportDocument rpt = new ReportDocument();
-                         String path = Path.GetFullPath(@"C:\Users\Admin\source\repos\BTLLLLLLLLLLLLLLLLLLLLLLLLLL\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\CrytalReport\SXTKNV.rpt");
-                         rpt.Load(path);
-                         rpt.SetDataSource(ds.Tables[1]);
-                         crvNV.ReportSource = rpt;
-                         crvNV.Refresh();
-                     }
-                 }
-             }*/
-            sapxep();
         }
 
         private void tbTuoitu_Validating(object sender, CancelEventArgs e)
         {
             if (!double.TryParse(tbTuoitu.Text, out _))
             {
-                
                 errorProvider1.SetError(tbTuoitu, "Tuổi từ phải là số");
             }
         }
