@@ -143,3 +143,4 @@ D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCu
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeDoanhThu.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeNhanvien.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeSLĐT.resources
+D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.DoiMatKhau.resources

@@ -138,6 +138,44 @@ namespace QuanLyCuaHangBanDienThoai
             return true;
         }
 
+        public bool checkPassword(int id, String password)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select * from showAllAccount where [ID] = " + id, cnn))
+                {
+                    cnn.Open();
+                    using (SqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                            if (String.Equals(rd["Mật khẩu"].ToString(), password, StringComparison.InvariantCultureIgnoreCase))
+                                return true;
+                        }
+                        rd.Close();
+                    }
+                    cnn.Close();
+                }
+            }
+            return false;
+        }
+
+        public bool changePassword(int id, String password)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "UPDATE dbo.tblAccount SET password = '" + password + "' WHERE id = " + id;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
         public DataTable search(String role, String username, String fullName, String phone)
         {
             using (SqlConnection cnn = new SqlConnection(constr))

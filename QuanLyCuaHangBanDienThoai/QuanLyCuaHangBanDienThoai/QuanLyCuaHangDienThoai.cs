@@ -43,16 +43,6 @@ namespace QuanLyCuaHangBanDienThoai
             quanLy.Show();
         }
 
-        private void toolStripMenuItemTKDT_Click(object sender, EventArgs e)
-        {
-           /* ThongKeDoanhThu thongKeDienThoai = new ThongKeDoanhThu();
-            thongKeDienThoai.MdiParent = this;
-            thongKeDienThoai.Dock = DockStyle.Fill;
-            thongKeDienThoai.Show();
-*/
-
-        }
-
         private void toolStripMenuItemDangXuat_Click(object sender, EventArgs e)
         {
             new Login().Show();
@@ -92,6 +82,13 @@ namespace QuanLyCuaHangBanDienThoai
             thongKe.MdiParent = this;
             thongKe.Dock = DockStyle.Fill;
             thongKe.Show();
+        }
+
+        private void ToolStripMenuItemDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            DoiMatKhau doiMatKhau = new DoiMatKhau();
+            doiMatKhau.MdiParent = this;
+            doiMatKhau.Show();
         }
     }
 }
