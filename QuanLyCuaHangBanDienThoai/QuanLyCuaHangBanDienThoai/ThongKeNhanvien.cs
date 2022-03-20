@@ -19,7 +19,7 @@ namespace QuanLyCuaHangBanDienThoai
     public partial class ThongKeNhanvien : Form
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
-
+        bool test = true;
         public ThongKeNhanvien()
         {
             InitializeComponent();
@@ -27,27 +27,14 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void ThongKeNhanvien_Load(object sender, EventArgs e)
         {
-            /* using (SqlConnection cnn = new SqlConnection(constr))
-             {
-                 cnn.Open();
-                 using (SqlCommand cmd = new SqlCommand("select * from TKNV  ", cnn))
-                 {
-                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                     {
-                         DataSet2 ds = new DataSet2();
-                         DataTable dt = new DataTable();
-                         ad.Fill(ds);
-                         //ThongKeDienThoai rpt = new ThongKeDienThoai();
-                         ReportDocument rpt = new ReportDocument();
-                         String path = Path.GetFullPath(@"..\..\CrytalReport\SXTKNV.rpt");
-                         rpt.Load(path);
-                         rpt.SetDataSource(ds.Tables[1]);
-                         crvNV.ReportSource = rpt;
-                         crvNV.Refresh();
-                     }
-                 }
-             }*/
-            sapxep();
+            
+           // sapxep();
+            ReportDocument rp = new ReportDocument();
+            String path = Path.GetFullPath(@"..\..\CrytalReport\ThongkeTuoiNV.rpt");
+            rp.Load(path);
+
+            crvNV.ReportSource = rp;
+            crvNV.Refresh();
         }
 
         public DataTable findAllTKNV()
@@ -105,38 +92,59 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void btnHien_Click(object sender, EventArgs e)
         {
-            if (tbTuoitu.Text != "" && tbTuoiden.Text != "")
+            if (test == true)
             {
-                if (Int32.Parse(tbTuoitu.Text) > Int32.Parse(tbTuoiden.Text))
+                if (tbTuoitu.Text != "" && tbTuoiden.Text != "")
                 {
-                    MessageBox.Show("Nhập tuổi từ phải nhỏ hơn tuổi đến");
+                    if (Int32.Parse(tbTuoitu.Text) > Int32.Parse(tbTuoiden.Text))
+                    {
+                        MessageBox.Show("Nhập tuổi từ phải nhỏ hơn tuổi đến");
+                    }
+                    else
+                    {
+                        loctuoi("{@Tuoi}>= " + tbTuoitu.Text + " and {@Tuoi} <= " + tbTuoiden.Text);
+                    }
                 }
-                else
+                else if (tbTuoitu.Text != "" && tbTuoiden.Text == "")
                 {
-                    loctuoi("{@Tuoi}>= " + tbTuoitu.Text + " and {@Tuoi} <= " + tbTuoiden.Text);
+                    loctuoi("{@Tuoi}>= " + tbTuoitu.Text);
+                    MessageBox.Show("{@Tuoi}>= " + tbTuoitu.Text);
+                }
+                else if (tbTuoitu.Text == "" && tbTuoiden.Text != "")
+                {
+                    loctuoi(" {@Tuoi} <= " + tbTuoiden.Text);
+                }
+                else if (tbTuoitu.Text == "" && tbTuoiden.Text == "")
+                {
+                    MessageBox.Show("Mời bạn nhập ít nhất 1 trong hai ô để có thể lọc");
+                    // sapxep();
                 }
             }
-            else if (tbTuoitu.Text != "" && tbTuoiden.Text == "")
-            {
-                loctuoi("{@Tuoi}>= " + tbTuoitu.Text);
-                MessageBox.Show("{@Tuoi}>= " + tbTuoitu.Text);
-            }
-            else if (tbTuoitu.Text == "" && tbTuoiden.Text != "")
-            {
-                loctuoi(" {@Tuoi} <= " + tbTuoiden.Text);
-            }
-            else if (tbTuoitu.Text == "" && tbTuoiden.Text == "")
-            {
-                MessageBox.Show("Mời bạn nhập ít nhất 1 trong hai ô để có thể lọc");
-                // sapxep();
-            }
+            
         }
 
         private void tbTuoitu_Validating(object sender, CancelEventArgs e)
         {
             if (!double.TryParse(tbTuoitu.Text, out _))
             {
-                errorProvider1.SetError(tbTuoitu, "Tuổi từ phải là số");
+                if (tbTuoitu.Text == "")
+                {
+                    errorProvider1.Clear();
+                    test = true;
+                }
+                else
+                {
+                    errorProvider1.SetError(tbTuoitu, "Tuổi từ phải là số");
+                    test = false;
+                }
+
+
+            }
+            else
+            {
+                //errorProvider1.SetError(tbTuoiden, "");
+                errorProvider1.Clear();
+                test = true;
             }
         }
 
@@ -144,8 +152,25 @@ namespace QuanLyCuaHangBanDienThoai
         {
             if (!double.TryParse(tbTuoiden.Text, out _))
             {
+                if (tbTuoiden.Text == "")
+                {
+                    errorProvider1.Clear();
+                    test = true;
 
-                errorProvider1.SetError(tbTuoiden, "Tuổi đến phải là số");
+                }
+                else
+                {
+                    errorProvider1.SetError(tbTuoiden, "Tuổi đến phải là số");
+                    test = false;
+                }
+
+
+            }
+            else
+            {
+                //errorProvider1.SetError(tbTuoiden, "");
+                errorProvider1.Clear();
+                test = true;
             }
         }
     }

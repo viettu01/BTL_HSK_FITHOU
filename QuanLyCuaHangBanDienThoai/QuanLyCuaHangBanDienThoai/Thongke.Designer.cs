@@ -59,11 +59,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.gbTheo.Controls.Add(this.rbNV);
             this.gbTheo.Controls.Add(this.rbKH);
             this.gbTheo.Enabled = false;
-            this.gbTheo.Location = new System.Drawing.Point(626, 6);
-            this.gbTheo.Margin = new System.Windows.Forms.Padding(4);
+            this.gbTheo.Location = new System.Drawing.Point(470, 5);
             this.gbTheo.Name = "gbTheo";
-            this.gbTheo.Padding = new System.Windows.Forms.Padding(4);
-            this.gbTheo.Size = new System.Drawing.Size(162, 124);
+            this.gbTheo.Size = new System.Drawing.Size(122, 101);
             this.gbTheo.TabIndex = 0;
             this.gbTheo.TabStop = false;
             this.gbTheo.Text = "Theo";
@@ -71,10 +69,9 @@ namespace QuanLyCuaHangBanDienThoai
             // rbĐT
             // 
             this.rbĐT.AutoSize = true;
-            this.rbĐT.Location = new System.Drawing.Point(21, 83);
-            this.rbĐT.Margin = new System.Windows.Forms.Padding(4);
+            this.rbĐT.Location = new System.Drawing.Point(16, 67);
             this.rbĐT.Name = "rbĐT";
-            this.rbĐT.Size = new System.Drawing.Size(93, 21);
+            this.rbĐT.Size = new System.Drawing.Size(73, 17);
             this.rbĐT.TabIndex = 2;
             this.rbĐT.TabStop = true;
             this.rbĐT.Text = "Điện thoại";
@@ -85,10 +82,9 @@ namespace QuanLyCuaHangBanDienThoai
             // rbNV
             // 
             this.rbNV.AutoSize = true;
-            this.rbNV.Location = new System.Drawing.Point(21, 26);
-            this.rbNV.Margin = new System.Windows.Forms.Padding(4);
+            this.rbNV.Location = new System.Drawing.Point(16, 21);
             this.rbNV.Name = "rbNV";
-            this.rbNV.Size = new System.Drawing.Size(93, 21);
+            this.rbNV.Size = new System.Drawing.Size(74, 17);
             this.rbNV.TabIndex = 1;
             this.rbNV.TabStop = true;
             this.rbNV.Text = "Nhân viên";
@@ -99,10 +95,9 @@ namespace QuanLyCuaHangBanDienThoai
             // rbKH
             // 
             this.rbKH.AutoSize = true;
-            this.rbKH.Location = new System.Drawing.Point(21, 55);
-            this.rbKH.Margin = new System.Windows.Forms.Padding(4);
+            this.rbKH.Location = new System.Drawing.Point(16, 45);
             this.rbKH.Name = "rbKH";
-            this.rbKH.Size = new System.Drawing.Size(105, 21);
+            this.rbKH.Size = new System.Drawing.Size(83, 17);
             this.rbKH.TabIndex = 0;
             this.rbKH.TabStop = true;
             this.rbKH.Text = "Khách hàng";
@@ -114,10 +109,9 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.cbNam.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbNam.FormattingEnabled = true;
-            this.cbNam.Location = new System.Drawing.Point(209, 39);
-            this.cbNam.Margin = new System.Windows.Forms.Padding(4);
+            this.cbNam.Location = new System.Drawing.Point(157, 32);
             this.cbNam.Name = "cbNam";
-            this.cbNam.Size = new System.Drawing.Size(160, 24);
+            this.cbNam.Size = new System.Drawing.Size(121, 21);
             this.cbNam.TabIndex = 1;
             this.cbNam.TextChanged += new System.EventHandler(this.cbNam_TextChanged);
             // 
@@ -138,10 +132,9 @@ namespace QuanLyCuaHangBanDienThoai
             "10",
             "11",
             "12"});
-            this.cbThang.Location = new System.Drawing.Point(209, 72);
-            this.cbThang.Margin = new System.Windows.Forms.Padding(4);
+            this.cbThang.Location = new System.Drawing.Point(157, 58);
             this.cbThang.Name = "cbThang";
-            this.cbThang.Size = new System.Drawing.Size(160, 24);
+            this.cbThang.Size = new System.Drawing.Size(121, 21);
             this.cbThang.TabIndex = 2;
             // 
             // cbLoaiSX
@@ -150,10 +143,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbLoaiSX.Items.AddRange(new object[] {
             "Số lượng",
             "Doanh thu"});
-            this.cbLoaiSX.Location = new System.Drawing.Point(49, 20);
-            this.cbLoaiSX.Margin = new System.Windows.Forms.Padding(4);
+            this.cbLoaiSX.Location = new System.Drawing.Point(37, 16);
             this.cbLoaiSX.Name = "cbLoaiSX";
-            this.cbLoaiSX.Size = new System.Drawing.Size(174, 24);
+            this.cbLoaiSX.Size = new System.Drawing.Size(132, 21);
             this.cbLoaiSX.TabIndex = 3;
             this.cbLoaiSX.TextChanged += new System.EventHandler(this.cbLoaiSX_TextChanged);
             this.cbLoaiSX.Validating += new System.ComponentModel.CancelEventHandler(this.cbLoaiSX_Validating);
@@ -162,10 +154,9 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.rbTang.AutoSize = true;
             this.rbTang.Enabled = false;
-            this.rbTang.Location = new System.Drawing.Point(22, 58);
-            this.rbTang.Margin = new System.Windows.Forms.Padding(4);
+            this.rbTang.Location = new System.Drawing.Point(16, 47);
             this.rbTang.Name = "rbTang";
-            this.rbTang.Size = new System.Drawing.Size(90, 21);
+            this.rbTang.Size = new System.Drawing.Size(71, 17);
             this.rbTang.TabIndex = 3;
             this.rbTang.Text = "Tăng dần";
             this.rbTang.UseVisualStyleBackColor = true;
@@ -175,10 +166,9 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.rbGiam.AutoSize = true;
             this.rbGiam.Enabled = false;
-            this.rbGiam.Location = new System.Drawing.Point(120, 57);
-            this.rbGiam.Margin = new System.Windows.Forms.Padding(4);
+            this.rbGiam.Location = new System.Drawing.Point(90, 46);
             this.rbGiam.Name = "rbGiam";
-            this.rbGiam.Size = new System.Drawing.Size(90, 21);
+            this.rbGiam.Size = new System.Drawing.Size(70, 17);
             this.rbGiam.TabIndex = 4;
             this.rbGiam.Text = "Giảm dần";
             this.rbGiam.UseVisualStyleBackColor = true;
@@ -192,12 +182,10 @@ namespace QuanLyCuaHangBanDienThoai
             | System.Windows.Forms.AnchorStyles.Right)));
             this.crvDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crvDT.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crvDT.Location = new System.Drawing.Point(4, 138);
-            this.crvDT.Margin = new System.Windows.Forms.Padding(4);
+            this.crvDT.Location = new System.Drawing.Point(3, 112);
             this.crvDT.Name = "crvDT";
-            this.crvDT.Size = new System.Drawing.Size(1046, 415);
+            this.crvDT.Size = new System.Drawing.Size(785, 338);
             this.crvDT.TabIndex = 5;
-            this.crvDT.ToolPanelWidth = 267;
             // 
             // btnHien
             // 
@@ -206,10 +194,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnHien.FlatAppearance.BorderSize = 0;
             this.btnHien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHien.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnHien.Location = new System.Drawing.Point(796, 54);
-            this.btnHien.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHien.Location = new System.Drawing.Point(597, 44);
             this.btnHien.Name = "btnHien";
-            this.btnHien.Size = new System.Drawing.Size(100, 28);
+            this.btnHien.Size = new System.Drawing.Size(75, 23);
             this.btnHien.TabIndex = 6;
             this.btnHien.Text = "Hiện";
             this.btnHien.UseVisualStyleBackColor = true;
@@ -224,11 +211,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.groupBox2.Controls.Add(this.rbMin);
             this.groupBox2.Controls.Add(this.rbGiam);
             this.groupBox2.Controls.Add(this.cbLoaiSX);
-            this.groupBox2.Location = new System.Drawing.Point(387, 6);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(290, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(231, 124);
+            this.groupBox2.Size = new System.Drawing.Size(173, 101);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sắp xếp";
@@ -236,9 +221,10 @@ namespace QuanLyCuaHangBanDienThoai
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 23);
+            this.label3.Location = new System.Drawing.Point(5, 19);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 17);
+            this.label3.Size = new System.Drawing.Size(27, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Loại";
             // 
@@ -246,35 +232,36 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.rbMax.AutoSize = true;
             this.rbMax.Enabled = false;
-            this.rbMax.Location = new System.Drawing.Point(22, 91);
-            this.rbMax.Margin = new System.Windows.Forms.Padding(4);
+            this.rbMax.Location = new System.Drawing.Point(16, 74);
             this.rbMax.Name = "rbMax";
-            this.rbMax.Size = new System.Drawing.Size(86, 21);
+            this.rbMax.Size = new System.Drawing.Size(68, 17);
             this.rbMax.TabIndex = 8;
             this.rbMax.TabStop = true;
             this.rbMax.Text = "Cao nhất";
             this.rbMax.UseVisualStyleBackColor = true;
+            this.rbMax.CheckedChanged += new System.EventHandler(this.rbMax_CheckedChanged);
             // 
             // rbMin
             // 
             this.rbMin.AutoSize = true;
             this.rbMin.Enabled = false;
-            this.rbMin.Location = new System.Drawing.Point(120, 91);
-            this.rbMin.Margin = new System.Windows.Forms.Padding(4);
+            this.rbMin.Location = new System.Drawing.Point(90, 74);
             this.rbMin.Name = "rbMin";
-            this.rbMin.Size = new System.Drawing.Size(94, 21);
+            this.rbMin.Size = new System.Drawing.Size(74, 17);
             this.rbMin.TabIndex = 9;
             this.rbMin.TabStop = true;
             this.rbMin.Text = "Thấp nhất";
             this.rbMin.UseVisualStyleBackColor = true;
+            this.rbMin.CheckedChanged += new System.EventHandler(this.rbMin_CheckedChanged);
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(153, 42);
+            this.label1.Location = new System.Drawing.Point(115, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Năm";
             // 
@@ -282,17 +269,18 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(153, 75);
+            this.label2.Location = new System.Drawing.Point(115, 61);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "Tháng";
             // 
             // Thongke
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
@@ -302,7 +290,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.Controls.Add(this.cbNam);
             this.Controls.Add(this.gbTheo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Thongke";
             this.Text = "Thống kê doanh thu";
             this.Load += new System.EventHandler(this.Thongke_Load);
