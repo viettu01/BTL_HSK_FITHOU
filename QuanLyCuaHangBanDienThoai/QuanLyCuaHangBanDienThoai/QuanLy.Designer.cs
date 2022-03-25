@@ -63,7 +63,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbMau = new System.Windows.Forms.MaskedTextBox();
             this.mtbRam = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.mtbTGBH = new System.Windows.Forms.MaskedTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.mtbGia = new System.Windows.Forms.MaskedTextBox();
@@ -73,6 +72,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.label6 = new System.Windows.Forms.Label();
             this.mtbGiaMax = new System.Windows.Forms.MaskedTextBox();
             this.lbGiaMax = new System.Windows.Forms.Label();
+            this.mtbTGBH = new System.Windows.Forms.ComboBox();
             this.dtgvDienThoai = new System.Windows.Forms.DataGridView();
             this.tabProducer = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -92,6 +92,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.cbQuyen = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMoK = new System.Windows.Forms.Button();
             this.btnLuuNV = new System.Windows.Forms.Button();
             this.btnLamMoiNV = new System.Windows.Forms.Button();
             this.btnXoaNV = new System.Windows.Forms.Button();
@@ -196,6 +197,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaHDX = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPhone.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -230,6 +232,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHDX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -245,7 +248,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabControl1.Controls.Add(this.tabBillOut);
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.Location = new System.Drawing.Point(1, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(735, 555);
@@ -257,9 +260,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabPhone.Controls.Add(this.dtgvDienThoai);
             this.tabPhone.ImageIndex = 5;
             this.tabPhone.Location = new System.Drawing.Point(4, 27);
-            this.tabPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPhone.Margin = new System.Windows.Forms.Padding(2);
             this.tabPhone.Name = "tabPhone";
-            this.tabPhone.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPhone.Padding = new System.Windows.Forms.Padding(2);
             this.tabPhone.Size = new System.Drawing.Size(727, 524);
             this.tabPhone.TabIndex = 0;
             this.tabPhone.Text = "Điện thoại";
@@ -287,7 +290,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.tableLayoutPanel1.Controls.Add(this.mtbMau, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.mtbRam, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label10, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.mtbTGBH, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.mtbGia, 5, 1);
@@ -295,14 +297,16 @@ namespace QuanLyCuaHangBanDienThoai
             this.tableLayoutPanel1.Controls.Add(this.panel4, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.mtbGiaMax, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.lbGiaMax, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mtbTGBH, 3, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 5);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(722, 130);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -336,7 +340,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbTenDT.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbTenDT.Name = "mtbTenDT";
             this.mtbTenDT.Size = new System.Drawing.Size(139, 20);
-            this.mtbTenDT.TabIndex = 4;
+            this.mtbTenDT.TabIndex = 2;
             this.mtbTenDT.Validating += new System.ComponentModel.CancelEventHandler(this.mtbTenDT_Validating);
             // 
             // label4
@@ -360,7 +364,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbHang.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.cbHang.Name = "cbHang";
             this.cbHang.Size = new System.Drawing.Size(139, 21);
-            this.cbHang.TabIndex = 6;
+            this.cbHang.TabIndex = 3;
             this.cbHang.Validating += new System.ComponentModel.CancelEventHandler(this.cbHang_Validating);
             // 
             // label1
@@ -388,7 +392,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel3.Controls.Add(this.btnXoaDT);
             this.panel3.Controls.Add(this.btnTimKiemDT);
             this.panel3.Location = new System.Drawing.Point(2, 98);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(718, 30);
             this.panel3.TabIndex = 19;
@@ -402,10 +406,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLuuDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLuuDT.Location = new System.Drawing.Point(425, 5);
-            this.btnLuuDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLuuDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuDT.Name = "btnLuuDT";
             this.btnLuuDT.Size = new System.Drawing.Size(68, 20);
-            this.btnLuuDT.TabIndex = 25;
+            this.btnLuuDT.TabIndex = 14;
             this.btnLuuDT.Text = "Lưu";
             this.btnLuuDT.UseVisualStyleBackColor = true;
             this.btnLuuDT.Click += new System.EventHandler(this.btnLuuDT_Click);
@@ -418,10 +422,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuaDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSuaDT.Location = new System.Drawing.Point(281, 5);
-            this.btnSuaDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaDT.Name = "btnSuaDT";
             this.btnSuaDT.Size = new System.Drawing.Size(68, 20);
-            this.btnSuaDT.TabIndex = 24;
+            this.btnSuaDT.TabIndex = 12;
             this.btnSuaDT.Text = "Sửa";
             this.btnSuaDT.UseVisualStyleBackColor = true;
             this.btnSuaDT.Click += new System.EventHandler(this.btnSuaDT_Click);
@@ -434,10 +438,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemDT.Location = new System.Drawing.Point(209, 5);
-            this.btnThemDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemDT.Name = "btnThemDT";
             this.btnThemDT.Size = new System.Drawing.Size(68, 20);
-            this.btnThemDT.TabIndex = 20;
+            this.btnThemDT.TabIndex = 11;
             this.btnThemDT.Text = "Thêm mới";
             this.btnThemDT.UseVisualStyleBackColor = true;
             this.btnThemDT.Click += new System.EventHandler(this.btnThemDT_Click);
@@ -451,10 +455,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoiDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoiDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoiDT.Location = new System.Drawing.Point(497, 5);
-            this.btnLamMoiDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiDT.Name = "btnLamMoiDT";
             this.btnLamMoiDT.Size = new System.Drawing.Size(68, 20);
-            this.btnLamMoiDT.TabIndex = 23;
+            this.btnLamMoiDT.TabIndex = 15;
             this.btnLamMoiDT.Text = "Làm mới";
             this.btnLamMoiDT.UseVisualStyleBackColor = true;
             this.btnLamMoiDT.Click += new System.EventHandler(this.btnLamMoiDT_Click);
@@ -468,10 +472,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnXoaDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXoaDT.Location = new System.Drawing.Point(353, 5);
-            this.btnXoaDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaDT.Name = "btnXoaDT";
             this.btnXoaDT.Size = new System.Drawing.Size(68, 20);
-            this.btnXoaDT.TabIndex = 22;
+            this.btnXoaDT.TabIndex = 13;
             this.btnXoaDT.Text = "Xóa";
             this.btnXoaDT.UseVisualStyleBackColor = true;
             this.btnXoaDT.Click += new System.EventHandler(this.btnXoaDT_Click);
@@ -484,10 +488,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemDT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemDT.Location = new System.Drawing.Point(137, 5);
-            this.btnTimKiemDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemDT.Name = "btnTimKiemDT";
             this.btnTimKiemDT.Size = new System.Drawing.Size(68, 20);
-            this.btnTimKiemDT.TabIndex = 19;
+            this.btnTimKiemDT.TabIndex = 10;
             this.btnTimKiemDT.Text = "Tìm kiếm";
             this.btnTimKiemDT.UseVisualStyleBackColor = true;
             this.btnTimKiemDT.Click += new System.EventHandler(this.btnTimKiemDT_Click);
@@ -511,7 +515,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbMau.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbMau.Name = "mtbMau";
             this.mtbMau.Size = new System.Drawing.Size(139, 20);
-            this.mtbMau.TabIndex = 12;
+            this.mtbMau.TabIndex = 5;
             this.mtbMau.Validating += new System.ComponentModel.CancelEventHandler(this.mtbMau_Validating);
             // 
             // mtbRam
@@ -522,7 +526,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbRam.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbRam.Name = "mtbRam";
             this.mtbRam.Size = new System.Drawing.Size(139, 20);
-            this.mtbRam.TabIndex = 16;
+            this.mtbRam.TabIndex = 7;
             this.mtbRam.Validating += new System.ComponentModel.CancelEventHandler(this.mtbRam_Validating);
             // 
             // label10
@@ -535,17 +539,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.label10.Size = new System.Drawing.Size(69, 13);
             this.label10.TabIndex = 17;
             this.label10.Text = "Thời gian BH";
-            // 
-            // mtbTGBH
-            // 
-            this.mtbTGBH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.mtbTGBH.Enabled = false;
-            this.mtbTGBH.Location = new System.Drawing.Point(326, 70);
-            this.mtbTGBH.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
-            this.mtbTGBH.Name = "mtbTGBH";
-            this.mtbTGBH.Size = new System.Drawing.Size(139, 20);
-            this.mtbTGBH.TabIndex = 18;
-            this.mtbTGBH.Validating += new System.ComponentModel.CancelEventHandler(this.mtbTGBH_Validating);
             // 
             // label9
             // 
@@ -577,7 +570,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbGia.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbGia.Name = "mtbGia";
             this.mtbGia.Size = new System.Drawing.Size(139, 20);
-            this.mtbGia.TabIndex = 10;
+            this.mtbGia.TabIndex = 5;
             this.mtbGia.Validating += new System.ComponentModel.CancelEventHandler(this.mtbGia_Validating);
             // 
             // mtbRom
@@ -588,7 +581,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbRom.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbRom.Name = "mtbRom";
             this.mtbRom.Size = new System.Drawing.Size(139, 20);
-            this.mtbRom.TabIndex = 14;
+            this.mtbRom.TabIndex = 4;
             this.mtbRom.Validating += new System.ComponentModel.CancelEventHandler(this.mtbRom_Validating);
             // 
             // panel4
@@ -596,7 +589,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel4.Controls.Add(this.lbGiaMin);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Location = new System.Drawing.Point(482, 34);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(80, 28);
             this.panel4.TabIndex = 20;
@@ -631,7 +624,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbGiaMax.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbGiaMax.Name = "mtbGiaMax";
             this.mtbGiaMax.Size = new System.Drawing.Size(139, 20);
-            this.mtbGiaMax.TabIndex = 21;
+            this.mtbGiaMax.TabIndex = 9;
             this.mtbGiaMax.Visible = false;
             // 
             // lbGiaMax
@@ -646,6 +639,19 @@ namespace QuanLyCuaHangBanDienThoai
             this.lbGiaMax.Text = "Đến";
             this.lbGiaMax.Visible = false;
             // 
+            // mtbTGBH
+            // 
+            this.mtbTGBH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.mtbTGBH.FormattingEnabled = true;
+            this.mtbTGBH.Items.AddRange(new object[] {
+            "6 tháng",
+            "1 năm"});
+            this.mtbTGBH.Location = new System.Drawing.Point(327, 69);
+            this.mtbTGBH.Name = "mtbTGBH";
+            this.mtbTGBH.Size = new System.Drawing.Size(150, 21);
+            this.mtbTGBH.TabIndex = 8;
+            this.mtbTGBH.Validating += new System.ComponentModel.CancelEventHandler(this.mtbTGBH_Validating_1);
+            // 
             // dtgvDienThoai
             // 
             this.dtgvDienThoai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -656,7 +662,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvDienThoai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvDienThoai.EnableHeadersVisualStyles = false;
             this.dtgvDienThoai.Location = new System.Drawing.Point(2, 137);
-            this.dtgvDienThoai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvDienThoai.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvDienThoai.Name = "dtgvDienThoai";
             this.dtgvDienThoai.RowHeadersVisible = false;
             this.dtgvDienThoai.RowHeadersWidth = 51;
@@ -671,9 +677,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabProducer.Controls.Add(this.dtgvHSX);
             this.tabProducer.ImageIndex = 7;
             this.tabProducer.Location = new System.Drawing.Point(4, 27);
-            this.tabProducer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabProducer.Margin = new System.Windows.Forms.Padding(2);
             this.tabProducer.Name = "tabProducer";
-            this.tabProducer.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabProducer.Padding = new System.Windows.Forms.Padding(2);
             this.tabProducer.Size = new System.Drawing.Size(727, 524);
             this.tabProducer.TabIndex = 1;
             this.tabProducer.Text = "Hãng sản xuất";
@@ -690,7 +696,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tableLayoutPanel2.Controls.Add(this.label20, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 3);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -734,7 +740,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel2.Controls.Add(this.btnTimKiemHSX);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Location = new System.Drawing.Point(2, 26);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(715, 28);
             this.panel2.TabIndex = 2;
@@ -748,10 +754,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLuuHSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuHSX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLuuHSX.Location = new System.Drawing.Point(430, 4);
-            this.btnLuuHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLuuHSX.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuHSX.Name = "btnLuuHSX";
             this.btnLuuHSX.Size = new System.Drawing.Size(68, 20);
-            this.btnLuuHSX.TabIndex = 24;
+            this.btnLuuHSX.TabIndex = 6;
             this.btnLuuHSX.Text = "Lưu";
             this.btnLuuHSX.UseVisualStyleBackColor = true;
             this.btnLuuHSX.Click += new System.EventHandler(this.btnLuuHSX_Click);
@@ -765,10 +771,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoiHSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoiHSX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoiHSX.Location = new System.Drawing.Point(502, 4);
-            this.btnLamMoiHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiHSX.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiHSX.Name = "btnLamMoiHSX";
             this.btnLamMoiHSX.Size = new System.Drawing.Size(68, 20);
-            this.btnLamMoiHSX.TabIndex = 23;
+            this.btnLamMoiHSX.TabIndex = 7;
             this.btnLamMoiHSX.Text = "Làm mới";
             this.btnLamMoiHSX.UseVisualStyleBackColor = true;
             this.btnLamMoiHSX.Click += new System.EventHandler(this.btnLamMoiHSX_Click);
@@ -782,10 +788,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnXoaHSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaHSX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXoaHSX.Location = new System.Drawing.Point(358, 4);
-            this.btnXoaHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaHSX.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHSX.Name = "btnXoaHSX";
             this.btnXoaHSX.Size = new System.Drawing.Size(68, 20);
-            this.btnXoaHSX.TabIndex = 22;
+            this.btnXoaHSX.TabIndex = 5;
             this.btnXoaHSX.Text = "Xóa";
             this.btnXoaHSX.UseVisualStyleBackColor = true;
             this.btnXoaHSX.Click += new System.EventHandler(this.btnXoaHSX_Click);
@@ -799,10 +805,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaHSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuaHSX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSuaHSX.Location = new System.Drawing.Point(286, 4);
-            this.btnSuaHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaHSX.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaHSX.Name = "btnSuaHSX";
             this.btnSuaHSX.Size = new System.Drawing.Size(68, 20);
-            this.btnSuaHSX.TabIndex = 21;
+            this.btnSuaHSX.TabIndex = 4;
             this.btnSuaHSX.Text = "Sửa";
             this.btnSuaHSX.UseVisualStyleBackColor = true;
             this.btnSuaHSX.Click += new System.EventHandler(this.btnSuaHSX_Click);
@@ -815,10 +821,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemHSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemHSX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemHSX.Location = new System.Drawing.Point(214, 4);
-            this.btnThemHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemHSX.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemHSX.Name = "btnThemHSX";
             this.btnThemHSX.Size = new System.Drawing.Size(68, 20);
-            this.btnThemHSX.TabIndex = 20;
+            this.btnThemHSX.TabIndex = 3;
             this.btnThemHSX.Text = "Thêm mới";
             this.btnThemHSX.UseVisualStyleBackColor = true;
             this.btnThemHSX.Click += new System.EventHandler(this.btnThemHSX_Click);
@@ -831,10 +837,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemHSX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemHSX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemHSX.Location = new System.Drawing.Point(142, 4);
-            this.btnTimKiemHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemHSX.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemHSX.Name = "btnTimKiemHSX";
             this.btnTimKiemHSX.Size = new System.Drawing.Size(68, 20);
-            this.btnTimKiemHSX.TabIndex = 19;
+            this.btnTimKiemHSX.TabIndex = 2;
             this.btnTimKiemHSX.Text = "Tìm kiếm";
             this.btnTimKiemHSX.UseVisualStyleBackColor = true;
             this.btnTimKiemHSX.Click += new System.EventHandler(this.btnTimKiemHSX_Click);
@@ -858,7 +864,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvHSX.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvHSX.EnableHeadersVisualStyles = false;
             this.dtgvHSX.Location = new System.Drawing.Point(4, 67);
-            this.dtgvHSX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvHSX.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvHSX.Name = "dtgvHSX";
             this.dtgvHSX.RowHeadersVisible = false;
             this.dtgvHSX.RowHeadersWidth = 51;
@@ -873,7 +879,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabAccount.Controls.Add(this.tableLayoutPanel3);
             this.tabAccount.ImageIndex = 0;
             this.tabAccount.Location = new System.Drawing.Point(4, 27);
-            this.tabAccount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabAccount.Margin = new System.Windows.Forms.Padding(2);
             this.tabAccount.Name = "tabAccount";
             this.tabAccount.Size = new System.Drawing.Size(727, 524);
             this.tabAccount.TabIndex = 2;
@@ -890,7 +896,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvNV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvNV.EnableHeadersVisualStyles = false;
             this.dtgvNV.Location = new System.Drawing.Point(6, 89);
-            this.dtgvNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvNV.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvNV.Name = "dtgvNV";
             this.dtgvNV.RowHeadersVisible = false;
             this.dtgvNV.RowHeadersWidth = 51;
@@ -924,7 +930,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tableLayoutPanel3.Controls.Add(this.mtbHoTenNV, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.dtpNgaySinhNV, 3, 0);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(6, 3);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -948,13 +954,14 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbQuyen.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.cbQuyen.Name = "cbQuyen";
             this.cbQuyen.Size = new System.Drawing.Size(150, 21);
-            this.cbQuyen.TabIndex = 13;
+            this.cbQuyen.TabIndex = 6;
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel3.SetColumnSpan(this.panel1, 6);
+            this.panel1.Controls.Add(this.btnMoK);
             this.panel1.Controls.Add(this.btnLuuNV);
             this.panel1.Controls.Add(this.btnLamMoiNV);
             this.panel1.Controls.Add(this.btnXoaNV);
@@ -963,10 +970,25 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel1.Controls.Add(this.btnTimKiemNV);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Location = new System.Drawing.Point(2, 56);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(714, 23);
             this.panel1.TabIndex = 3;
+            // 
+            // btnMoK
+            // 
+            this.btnMoK.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMoK.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMoK.BackgroundImage")));
+            this.btnMoK.FlatAppearance.BorderSize = 0;
+            this.btnMoK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMoK.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnMoK.Location = new System.Drawing.Point(575, 1);
+            this.btnMoK.Name = "btnMoK";
+            this.btnMoK.Size = new System.Drawing.Size(75, 21);
+            this.btnMoK.TabIndex = 13;
+            this.btnMoK.UseVisualStyleBackColor = true;
+            this.btnMoK.Visible = false;
+            this.btnMoK.Click += new System.EventHandler(this.btnMoK_Click);
             // 
             // btnLuuNV
             // 
@@ -977,10 +999,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLuuNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuNV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLuuNV.Location = new System.Drawing.Point(430, 2);
-            this.btnLuuNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLuuNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuNV.Name = "btnLuuNV";
             this.btnLuuNV.Size = new System.Drawing.Size(68, 20);
-            this.btnLuuNV.TabIndex = 23;
+            this.btnLuuNV.TabIndex = 11;
             this.btnLuuNV.Text = "Lưu";
             this.btnLuuNV.UseVisualStyleBackColor = true;
             this.btnLuuNV.Click += new System.EventHandler(this.btnLuuNV_Click);
@@ -994,10 +1016,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoiNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoiNV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoiNV.Location = new System.Drawing.Point(502, 2);
-            this.btnLamMoiNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiNV.Name = "btnLamMoiNV";
             this.btnLamMoiNV.Size = new System.Drawing.Size(68, 20);
-            this.btnLamMoiNV.TabIndex = 24;
+            this.btnLamMoiNV.TabIndex = 12;
             this.btnLamMoiNV.Text = "Làm mới";
             this.btnLamMoiNV.UseVisualStyleBackColor = true;
             this.btnLamMoiNV.Click += new System.EventHandler(this.btnLamMoiNV_Click);
@@ -1011,10 +1033,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnXoaNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaNV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXoaNV.Location = new System.Drawing.Point(358, 2);
-            this.btnXoaNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaNV.Name = "btnXoaNV";
             this.btnXoaNV.Size = new System.Drawing.Size(68, 20);
-            this.btnXoaNV.TabIndex = 22;
+            this.btnXoaNV.TabIndex = 10;
             this.btnXoaNV.Text = "Xóa";
             this.btnXoaNV.UseVisualStyleBackColor = true;
             this.btnXoaNV.Click += new System.EventHandler(this.btnXoaNV_Click);
@@ -1028,10 +1050,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuaNV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSuaNV.Location = new System.Drawing.Point(286, 2);
-            this.btnSuaNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaNV.Name = "btnSuaNV";
             this.btnSuaNV.Size = new System.Drawing.Size(68, 20);
-            this.btnSuaNV.TabIndex = 21;
+            this.btnSuaNV.TabIndex = 9;
             this.btnSuaNV.Text = "Sửa";
             this.btnSuaNV.UseVisualStyleBackColor = true;
             this.btnSuaNV.Click += new System.EventHandler(this.btnSuaNV_Click);
@@ -1044,10 +1066,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemNV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemNV.Location = new System.Drawing.Point(214, 2);
-            this.btnThemNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemNV.Name = "btnThemNV";
             this.btnThemNV.Size = new System.Drawing.Size(68, 20);
-            this.btnThemNV.TabIndex = 20;
+            this.btnThemNV.TabIndex = 8;
             this.btnThemNV.Text = "Thêm mới";
             this.btnThemNV.UseVisualStyleBackColor = true;
             this.btnThemNV.Click += new System.EventHandler(this.btnThemNV_Click);
@@ -1060,10 +1082,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemNV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemNV.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemNV.Location = new System.Drawing.Point(142, 2);
-            this.btnTimKiemNV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemNV.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemNV.Name = "btnTimKiemNV";
             this.btnTimKiemNV.Size = new System.Drawing.Size(68, 20);
-            this.btnTimKiemNV.TabIndex = 19;
+            this.btnTimKiemNV.TabIndex = 7;
             this.btnTimKiemNV.Text = "Tìm kiếm";
             this.btnTimKiemNV.UseVisualStyleBackColor = true;
             this.btnTimKiemNV.Click += new System.EventHandler(this.btnTimKiemNV_Click);
@@ -1085,7 +1107,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbMK.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbMK.Name = "mtbMK";
             this.mtbMK.Size = new System.Drawing.Size(150, 20);
-            this.mtbMK.TabIndex = 10;
+            this.mtbMK.TabIndex = 5;
             // 
             // mtbTenDN
             // 
@@ -1095,7 +1117,8 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbTenDN.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbTenDN.Name = "mtbTenDN";
             this.mtbTenDN.Size = new System.Drawing.Size(150, 20);
-            this.mtbTenDN.TabIndex = 9;
+            this.mtbTenDN.TabIndex = 4;
+            this.mtbTenDN.TextChanged += new System.EventHandler(this.mtbTenDN_TextChanged);
             // 
             // mtbSDTNV
             // 
@@ -1105,7 +1128,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbSDTNV.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbSDTNV.Name = "mtbSDTNV";
             this.mtbSDTNV.Size = new System.Drawing.Size(150, 20);
-            this.mtbSDTNV.TabIndex = 8;
+            this.mtbSDTNV.TabIndex = 3;
             // 
             // label2
             // 
@@ -1187,7 +1210,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbHoTenNV.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbHoTenNV.Name = "mtbHoTenNV";
             this.mtbHoTenNV.Size = new System.Drawing.Size(150, 20);
-            this.mtbHoTenNV.TabIndex = 6;
+            this.mtbHoTenNV.TabIndex = 1;
             // 
             // dtpNgaySinhNV
             // 
@@ -1199,7 +1222,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtpNgaySinhNV.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.dtpNgaySinhNV.Name = "dtpNgaySinhNV";
             this.dtpNgaySinhNV.Size = new System.Drawing.Size(150, 20);
-            this.dtpNgaySinhNV.TabIndex = 12;
+            this.dtpNgaySinhNV.TabIndex = 2;
             this.dtpNgaySinhNV.ValueChanged += new System.EventHandler(this.dtpNgaySinhNV_ValueChanged);
             // 
             // tabCustomer
@@ -1208,7 +1231,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabCustomer.Controls.Add(this.tableLayoutPanel4);
             this.tabCustomer.ImageIndex = 3;
             this.tabCustomer.Location = new System.Drawing.Point(4, 27);
-            this.tabCustomer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.Size = new System.Drawing.Size(727, 524);
             this.tabCustomer.TabIndex = 3;
@@ -1225,7 +1248,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvKH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvKH.EnableHeadersVisualStyles = false;
             this.dtgvKH.Location = new System.Drawing.Point(6, 63);
-            this.dtgvKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvKH.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvKH.Name = "dtgvKH";
             this.dtgvKH.RowHeadersVisible = false;
             this.dtgvKH.RowHeadersWidth = 51;
@@ -1249,7 +1272,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tableLayoutPanel4.Controls.Add(this.label21, 2, 0);
             this.tableLayoutPanel4.Controls.Add(this.mtbSDTKH, 3, 0);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(6, 2);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -1270,7 +1293,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel5.Controls.Add(this.btnTimKiemKH);
             this.panel5.Controls.Add(this.label16);
             this.panel5.Location = new System.Drawing.Point(2, 26);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(714, 23);
             this.panel5.TabIndex = 3;
@@ -1284,10 +1307,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLuuKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuKH.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLuuKH.Location = new System.Drawing.Point(430, 2);
-            this.btnLuuKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLuuKH.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuKH.Name = "btnLuuKH";
             this.btnLuuKH.Size = new System.Drawing.Size(68, 20);
-            this.btnLuuKH.TabIndex = 23;
+            this.btnLuuKH.TabIndex = 7;
             this.btnLuuKH.Text = "Lưu";
             this.btnLuuKH.UseVisualStyleBackColor = true;
             this.btnLuuKH.Click += new System.EventHandler(this.btnLuuKH_Click);
@@ -1301,10 +1324,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoiKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoiKH.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoiKH.Location = new System.Drawing.Point(502, 2);
-            this.btnLamMoiKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiKH.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiKH.Name = "btnLamMoiKH";
             this.btnLamMoiKH.Size = new System.Drawing.Size(68, 20);
-            this.btnLamMoiKH.TabIndex = 24;
+            this.btnLamMoiKH.TabIndex = 8;
             this.btnLamMoiKH.Text = "Làm mới";
             this.btnLamMoiKH.UseVisualStyleBackColor = true;
             this.btnLamMoiKH.Click += new System.EventHandler(this.btnLamMoiKH_Click);
@@ -1318,10 +1341,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnXoaKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaKH.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXoaKH.Location = new System.Drawing.Point(358, 2);
-            this.btnXoaKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaKH.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaKH.Name = "btnXoaKH";
             this.btnXoaKH.Size = new System.Drawing.Size(68, 20);
-            this.btnXoaKH.TabIndex = 22;
+            this.btnXoaKH.TabIndex = 6;
             this.btnXoaKH.Text = "Xóa";
             this.btnXoaKH.UseVisualStyleBackColor = true;
             this.btnXoaKH.Click += new System.EventHandler(this.btnXoaKH_Click);
@@ -1335,10 +1358,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuaKH.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSuaKH.Location = new System.Drawing.Point(286, 2);
-            this.btnSuaKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaKH.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaKH.Name = "btnSuaKH";
             this.btnSuaKH.Size = new System.Drawing.Size(68, 20);
-            this.btnSuaKH.TabIndex = 21;
+            this.btnSuaKH.TabIndex = 5;
             this.btnSuaKH.Text = "Sửa";
             this.btnSuaKH.UseVisualStyleBackColor = true;
             this.btnSuaKH.Click += new System.EventHandler(this.btnSuaKH_Click);
@@ -1351,10 +1374,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemKH.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemKH.Location = new System.Drawing.Point(214, 2);
-            this.btnThemKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemKH.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemKH.Name = "btnThemKH";
             this.btnThemKH.Size = new System.Drawing.Size(68, 20);
-            this.btnThemKH.TabIndex = 20;
+            this.btnThemKH.TabIndex = 4;
             this.btnThemKH.Text = "Thêm mới";
             this.btnThemKH.UseVisualStyleBackColor = true;
             this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
@@ -1367,10 +1390,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemKH.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemKH.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemKH.Location = new System.Drawing.Point(142, 2);
-            this.btnTimKiemKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemKH.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemKH.Name = "btnTimKiemKH";
             this.btnTimKiemKH.Size = new System.Drawing.Size(68, 20);
-            this.btnTimKiemKH.TabIndex = 19;
+            this.btnTimKiemKH.TabIndex = 3;
             this.btnTimKiemKH.Text = "Tìm kiếm";
             this.btnTimKiemKH.UseVisualStyleBackColor = true;
             this.btnTimKiemKH.Click += new System.EventHandler(this.btnTimKiemKH_Click);
@@ -1404,7 +1427,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbHoTenKH.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbHoTenKH.Name = "mtbHoTenKH";
             this.mtbHoTenKH.Size = new System.Drawing.Size(283, 20);
-            this.mtbHoTenKH.TabIndex = 6;
+            this.mtbHoTenKH.TabIndex = 1;
             // 
             // label21
             // 
@@ -1426,7 +1449,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.mtbSDTKH.Margin = new System.Windows.Forms.Padding(2, 2, 15, 2);
             this.mtbSDTKH.Name = "mtbSDTKH";
             this.mtbSDTKH.Size = new System.Drawing.Size(284, 20);
-            this.mtbSDTKH.TabIndex = 8;
+            this.mtbSDTKH.TabIndex = 2;
             // 
             // tabBillIn
             // 
@@ -1434,7 +1457,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabBillIn.Controls.Add(this.groupBox1);
             this.tabBillIn.ImageIndex = 9;
             this.tabBillIn.Location = new System.Drawing.Point(4, 27);
-            this.tabBillIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabBillIn.Margin = new System.Windows.Forms.Padding(2);
             this.tabBillIn.Name = "tabBillIn";
             this.tabBillIn.Size = new System.Drawing.Size(727, 524);
             this.tabBillIn.TabIndex = 4;
@@ -1448,9 +1471,9 @@ namespace QuanLyCuaHangBanDienThoai
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.panel6);
             this.groupBox2.Location = new System.Drawing.Point(6, 202);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(721, 322);
             this.groupBox2.TabIndex = 18;
             this.groupBox2.TabStop = false;
@@ -1478,7 +1501,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel6.Controls.Add(this.btnThemHDN);
             this.panel6.Controls.Add(this.btnSuaHDN);
             this.panel6.Location = new System.Drawing.Point(4, 17);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(722, 300);
             this.panel6.TabIndex = 4;
@@ -1521,7 +1544,7 @@ namespace QuanLyCuaHangBanDienThoai
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgvHDN.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvHDN.Location = new System.Drawing.Point(5, 61);
-            this.dtgvHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvHDN.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvHDN.Name = "dtgvHDN";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -1544,10 +1567,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtpNgayKTHDN.Enabled = false;
             this.dtpNgayKTHDN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayKTHDN.Location = new System.Drawing.Point(604, 6);
-            this.dtpNgayKTHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNgayKTHDN.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgayKTHDN.Name = "dtpNgayKTHDN";
             this.dtpNgayKTHDN.Size = new System.Drawing.Size(87, 20);
-            this.dtpNgayKTHDN.TabIndex = 30;
+            this.dtpNgayKTHDN.TabIndex = 11;
             this.dtpNgayKTHDN.ValueChanged += new System.EventHandler(this.dtpNgayKTHDN_ValueChanged);
             // 
             // dtpNgayBDHDN
@@ -1557,10 +1580,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtpNgayBDHDN.Enabled = false;
             this.dtpNgayBDHDN.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayBDHDN.Location = new System.Drawing.Point(464, 6);
-            this.dtpNgayBDHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNgayBDHDN.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgayBDHDN.Name = "dtpNgayBDHDN";
             this.dtpNgayBDHDN.Size = new System.Drawing.Size(87, 20);
-            this.dtpNgayBDHDN.TabIndex = 29;
+            this.dtpNgayBDHDN.TabIndex = 10;
             this.dtpNgayBDHDN.ValueChanged += new System.EventHandler(this.dtpNgayBDHDN_ValueChanged);
             // 
             // label28
@@ -1579,10 +1602,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.tbTenNVHDN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tbTenNVHDN.Enabled = false;
             this.tbTenNVHDN.Location = new System.Drawing.Point(216, 6);
-            this.tbTenNVHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTenNVHDN.Margin = new System.Windows.Forms.Padding(2);
             this.tbTenNVHDN.Name = "tbTenNVHDN";
             this.tbTenNVHDN.Size = new System.Drawing.Size(150, 20);
-            this.tbTenNVHDN.TabIndex = 25;
+            this.tbTenNVHDN.TabIndex = 8;
             // 
             // label27
             // 
@@ -1600,10 +1623,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.tbMaHDN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tbMaHDN.Enabled = false;
             this.tbMaHDN.Location = new System.Drawing.Point(64, 6);
-            this.tbMaHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMaHDN.Margin = new System.Windows.Forms.Padding(2);
             this.tbMaHDN.Name = "tbMaHDN";
             this.tbMaHDN.Size = new System.Drawing.Size(87, 20);
-            this.tbMaHDN.TabIndex = 16;
+            this.tbMaHDN.TabIndex = 7;
             // 
             // btnLuuHDN
             // 
@@ -1614,10 +1637,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLuuHDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuHDN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLuuHDN.Location = new System.Drawing.Point(434, 36);
-            this.btnLuuHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLuuHDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuHDN.Name = "btnLuuHDN";
             this.btnLuuHDN.Size = new System.Drawing.Size(68, 20);
-            this.btnLuuHDN.TabIndex = 23;
+            this.btnLuuHDN.TabIndex = 15;
             this.btnLuuHDN.Text = "Lưu";
             this.btnLuuHDN.UseVisualStyleBackColor = true;
             this.btnLuuHDN.Click += new System.EventHandler(this.btnLuuHDN_Click);
@@ -1651,10 +1674,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnXoaHDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaHDN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXoaHDN.Location = new System.Drawing.Point(362, 36);
-            this.btnXoaHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaHDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHDN.Name = "btnXoaHDN";
             this.btnXoaHDN.Size = new System.Drawing.Size(68, 20);
-            this.btnXoaHDN.TabIndex = 22;
+            this.btnXoaHDN.TabIndex = 14;
             this.btnXoaHDN.Text = "Xóa";
             this.btnXoaHDN.UseVisualStyleBackColor = true;
             this.btnXoaHDN.Click += new System.EventHandler(this.btnXoaHDN_Click);
@@ -1668,10 +1691,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoiHDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoiHDN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoiHDN.Location = new System.Drawing.Point(506, 36);
-            this.btnLamMoiHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiHDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiHDN.Name = "btnLamMoiHDN";
             this.btnLamMoiHDN.Size = new System.Drawing.Size(68, 20);
-            this.btnLamMoiHDN.TabIndex = 24;
+            this.btnLamMoiHDN.TabIndex = 16;
             this.btnLamMoiHDN.Text = "Làm mới";
             this.btnLamMoiHDN.UseVisualStyleBackColor = true;
             this.btnLamMoiHDN.Click += new System.EventHandler(this.btnLamMoiHDN_Click);
@@ -1684,10 +1707,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemHDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemHDN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemHDN.Location = new System.Drawing.Point(146, 36);
-            this.btnTimKiemHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemHDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemHDN.Name = "btnTimKiemHDN";
             this.btnTimKiemHDN.Size = new System.Drawing.Size(68, 20);
-            this.btnTimKiemHDN.TabIndex = 19;
+            this.btnTimKiemHDN.TabIndex = 12;
             this.btnTimKiemHDN.Text = "Tìm kiếm";
             this.btnTimKiemHDN.UseVisualStyleBackColor = true;
             this.btnTimKiemHDN.Click += new System.EventHandler(this.btnTimKiemHDN_Click);
@@ -1700,10 +1723,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemHDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemHDN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemHDN.Location = new System.Drawing.Point(218, 36);
-            this.btnThemHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemHDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemHDN.Name = "btnThemHDN";
             this.btnThemHDN.Size = new System.Drawing.Size(68, 20);
-            this.btnThemHDN.TabIndex = 20;
+            this.btnThemHDN.TabIndex = 6;
             this.btnThemHDN.Text = "Thêm mới";
             this.btnThemHDN.UseVisualStyleBackColor = true;
             this.btnThemHDN.Click += new System.EventHandler(this.btnThemHDN_Click);
@@ -1717,10 +1740,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaHDN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuaHDN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSuaHDN.Location = new System.Drawing.Point(290, 36);
-            this.btnSuaHDN.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaHDN.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaHDN.Name = "btnSuaHDN";
             this.btnSuaHDN.Size = new System.Drawing.Size(68, 20);
-            this.btnSuaHDN.TabIndex = 21;
+            this.btnSuaHDN.TabIndex = 13;
             this.btnSuaHDN.Text = "Sửa";
             this.btnSuaHDN.UseVisualStyleBackColor = true;
             this.btnSuaHDN.Click += new System.EventHandler(this.btnSuaHDN_Click);
@@ -1731,9 +1754,9 @@ namespace QuanLyCuaHangBanDienThoai
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel7);
             this.groupBox1.Location = new System.Drawing.Point(6, 3);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(721, 193);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -1753,7 +1776,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel7.Controls.Add(this.label22);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel7.Location = new System.Drawing.Point(2, 17);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(717, 174);
             this.panel7.TabIndex = 16;
@@ -1790,7 +1813,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvDSDTC.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgvDSDTC.EnableHeadersVisualStyles = false;
             this.dtgvDSDTC.Location = new System.Drawing.Point(314, 2);
-            this.dtgvDSDTC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvDSDTC.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvDSDTC.Name = "dtgvDSDTC";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -1855,10 +1878,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbMaDT.Enabled = false;
             this.cbMaDT.FormattingEnabled = true;
             this.cbMaDT.Location = new System.Drawing.Point(64, 8);
-            this.cbMaDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaDT.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaDT.Name = "cbMaDT";
             this.cbMaDT.Size = new System.Drawing.Size(244, 21);
-            this.cbMaDT.TabIndex = 7;
+            this.cbMaDT.TabIndex = 1;
             this.cbMaDT.SelectedIndexChanged += new System.EventHandler(this.cbMaDT_SelectedIndexChanged);
             this.cbMaDT.TextChanged += new System.EventHandler(this.cbMaDT_TextChanged);
             this.cbMaDT.Validating += new System.ComponentModel.CancelEventHandler(this.cbMaDT_Validating);
@@ -1867,19 +1890,19 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.tbGiaNhap.Enabled = false;
             this.tbGiaNhap.Location = new System.Drawing.Point(64, 80);
-            this.tbGiaNhap.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGiaNhap.Margin = new System.Windows.Forms.Padding(2);
             this.tbGiaNhap.Name = "tbGiaNhap";
             this.tbGiaNhap.Size = new System.Drawing.Size(117, 20);
-            this.tbGiaNhap.TabIndex = 14;
+            this.tbGiaNhap.TabIndex = 3;
             // 
             // tbDacDiem
             // 
             this.tbDacDiem.Enabled = false;
             this.tbDacDiem.Location = new System.Drawing.Point(64, 45);
-            this.tbDacDiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbDacDiem.Margin = new System.Windows.Forms.Padding(2);
             this.tbDacDiem.Name = "tbDacDiem";
             this.tbDacDiem.Size = new System.Drawing.Size(244, 20);
-            this.tbDacDiem.TabIndex = 8;
+            this.tbDacDiem.TabIndex = 2;
             // 
             // label24
             // 
@@ -1899,10 +1922,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemDTC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemDTC.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemDTC.Location = new System.Drawing.Point(193, 114);
-            this.btnThemDTC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemDTC.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemDTC.Name = "btnThemDTC";
             this.btnThemDTC.Size = new System.Drawing.Size(114, 31);
-            this.btnThemDTC.TabIndex = 9;
+            this.btnThemDTC.TabIndex = 5;
             this.btnThemDTC.Text = "Thêm điện thoại";
             this.btnThemDTC.UseVisualStyleBackColor = true;
             this.btnThemDTC.Click += new System.EventHandler(this.btnThemDTC_Click);
@@ -1921,7 +1944,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.nudSoLuong.Enabled = false;
             this.nudSoLuong.Location = new System.Drawing.Point(264, 80);
-            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2);
             this.nudSoLuong.Minimum = new decimal(new int[] {
             1,
             0,
@@ -1929,7 +1952,7 @@ namespace QuanLyCuaHangBanDienThoai
             0});
             this.nudSoLuong.Name = "nudSoLuong";
             this.nudSoLuong.Size = new System.Drawing.Size(43, 20);
-            this.nudSoLuong.TabIndex = 10;
+            this.nudSoLuong.TabIndex = 4;
             this.nudSoLuong.Value = new decimal(new int[] {
             1,
             0,
@@ -1952,7 +1975,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.tabBillOut.Controls.Add(this.groupBox3);
             this.tabBillOut.ImageIndex = 8;
             this.tabBillOut.Location = new System.Drawing.Point(4, 27);
-            this.tabBillOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabBillOut.Margin = new System.Windows.Forms.Padding(2);
             this.tabBillOut.Name = "tabBillOut";
             this.tabBillOut.Size = new System.Drawing.Size(727, 524);
             this.tabBillOut.TabIndex = 5;
@@ -1965,9 +1988,9 @@ namespace QuanLyCuaHangBanDienThoai
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.panel9);
             this.groupBox4.Location = new System.Drawing.Point(4, 3);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(721, 193);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
@@ -1983,7 +2006,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel9.Controls.Add(this.label37);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel9.Location = new System.Drawing.Point(2, 17);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(717, 174);
             this.panel9.TabIndex = 16;
@@ -2021,8 +2044,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtgvDTHDX.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgvDTHDX.EnableHeadersVisualStyles = false;
             this.dtgvDTHDX.Location = new System.Drawing.Point(220, 2);
-            this.dtgvDTHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvDTHDX.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvDTHDX.Name = "dtgvDTHDX";
+            this.dtgvDTHDX.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2042,6 +2066,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.Column6.HeaderText = "Mã ĐT";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
@@ -2083,19 +2108,19 @@ namespace QuanLyCuaHangBanDienThoai
             this.cbMaDTHDX.Enabled = false;
             this.cbMaDTHDX.FormattingEnabled = true;
             this.cbMaDTHDX.Location = new System.Drawing.Point(64, 8);
-            this.cbMaDTHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaDTHDX.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaDTHDX.Name = "cbMaDTHDX";
             this.cbMaDTHDX.Size = new System.Drawing.Size(153, 21);
-            this.cbMaDTHDX.TabIndex = 7;
+            this.cbMaDTHDX.TabIndex = 5;
             // 
             // tbTenDTHDX
             // 
             this.tbTenDTHDX.Enabled = false;
             this.tbTenDTHDX.Location = new System.Drawing.Point(64, 45);
-            this.tbTenDTHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTenDTHDX.Margin = new System.Windows.Forms.Padding(2);
             this.tbTenDTHDX.Name = "tbTenDTHDX";
             this.tbTenDTHDX.Size = new System.Drawing.Size(153, 20);
-            this.tbTenDTHDX.TabIndex = 8;
+            this.tbTenDTHDX.TabIndex = 6;
             // 
             // btnTimKiemDTHDX
             // 
@@ -2105,10 +2130,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemDTHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemDTHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemDTHDX.Location = new System.Drawing.Point(102, 81);
-            this.btnTimKiemDTHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemDTHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemDTHDX.Name = "btnTimKiemDTHDX";
             this.btnTimKiemDTHDX.Size = new System.Drawing.Size(114, 31);
-            this.btnTimKiemDTHDX.TabIndex = 9;
+            this.btnTimKiemDTHDX.TabIndex = 7;
             this.btnTimKiemDTHDX.Text = "Tìm kiếm ĐT";
             this.btnTimKiemDTHDX.UseVisualStyleBackColor = true;
             this.btnTimKiemDTHDX.Click += new System.EventHandler(this.btnTimKiemDTHDX_Click);
@@ -2140,9 +2165,9 @@ namespace QuanLyCuaHangBanDienThoai
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.panel8);
             this.groupBox3.Location = new System.Drawing.Point(3, 200);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(721, 322);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
@@ -2170,7 +2195,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel8.Controls.Add(this.btnThemHDX);
             this.panel8.Controls.Add(this.btnSuaHDX);
             this.panel8.Location = new System.Drawing.Point(4, 17);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(722, 300);
             this.panel8.TabIndex = 4;
@@ -2213,7 +2238,7 @@ namespace QuanLyCuaHangBanDienThoai
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dtgvHDX.DefaultCellStyle = dataGridViewCellStyle11;
             this.dtgvHDX.Location = new System.Drawing.Point(5, 61);
-            this.dtgvHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvHDX.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvHDX.Name = "dtgvHDX";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
@@ -2236,10 +2261,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtpNgayKTHDX.Enabled = false;
             this.dtpNgayKTHDX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayKTHDX.Location = new System.Drawing.Point(604, 6);
-            this.dtpNgayKTHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNgayKTHDX.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgayKTHDX.Name = "dtpNgayKTHDX";
             this.dtpNgayKTHDX.Size = new System.Drawing.Size(87, 20);
-            this.dtpNgayKTHDX.TabIndex = 30;
+            this.dtpNgayKTHDX.TabIndex = 4;
             this.dtpNgayKTHDX.ValueChanged += new System.EventHandler(this.dtpNgayKTHDX_ValueChanged);
             // 
             // dtpNgayBDHDX
@@ -2249,10 +2274,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.dtpNgayBDHDX.Enabled = false;
             this.dtpNgayBDHDX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayBDHDX.Location = new System.Drawing.Point(464, 6);
-            this.dtpNgayBDHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpNgayBDHDX.Margin = new System.Windows.Forms.Padding(2);
             this.dtpNgayBDHDX.Name = "dtpNgayBDHDX";
             this.dtpNgayBDHDX.Size = new System.Drawing.Size(87, 20);
-            this.dtpNgayBDHDX.TabIndex = 29;
+            this.dtpNgayBDHDX.TabIndex = 3;
             this.dtpNgayBDHDX.ValueChanged += new System.EventHandler(this.dtpNgayBDHDX_ValueChanged);
             // 
             // label30
@@ -2271,10 +2296,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.tbTenNVHDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tbTenNVHDX.Enabled = false;
             this.tbTenNVHDX.Location = new System.Drawing.Point(216, 6);
-            this.tbTenNVHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTenNVHDX.Margin = new System.Windows.Forms.Padding(2);
             this.tbTenNVHDX.Name = "tbTenNVHDX";
             this.tbTenNVHDX.Size = new System.Drawing.Size(150, 20);
-            this.tbTenNVHDX.TabIndex = 25;
+            this.tbTenNVHDX.TabIndex = 2;
             // 
             // label31
             // 
@@ -2292,10 +2317,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.tbMaHDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tbMaHDX.Enabled = false;
             this.tbMaHDX.Location = new System.Drawing.Point(64, 6);
-            this.tbMaHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbMaHDX.Margin = new System.Windows.Forms.Padding(2);
             this.tbMaHDX.Name = "tbMaHDX";
             this.tbMaHDX.Size = new System.Drawing.Size(87, 20);
-            this.tbMaHDX.TabIndex = 16;
+            this.tbMaHDX.TabIndex = 1;
             // 
             // btnLuuHDX
             // 
@@ -2306,10 +2331,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLuuHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLuuHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLuuHDX.Location = new System.Drawing.Point(434, 36);
-            this.btnLuuHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLuuHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnLuuHDX.Name = "btnLuuHDX";
             this.btnLuuHDX.Size = new System.Drawing.Size(68, 20);
-            this.btnLuuHDX.TabIndex = 23;
+            this.btnLuuHDX.TabIndex = 9;
             this.btnLuuHDX.Text = "Lưu";
             this.btnLuuHDX.UseVisualStyleBackColor = true;
             this.btnLuuHDX.Click += new System.EventHandler(this.btnLuuHDX_Click);
@@ -2343,10 +2368,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnXoaHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnXoaHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnXoaHDX.Location = new System.Drawing.Point(362, 36);
-            this.btnXoaHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaHDX.Name = "btnXoaHDX";
             this.btnXoaHDX.Size = new System.Drawing.Size(68, 20);
-            this.btnXoaHDX.TabIndex = 22;
+            this.btnXoaHDX.TabIndex = 8;
             this.btnXoaHDX.Text = "Xóa";
             this.btnXoaHDX.UseVisualStyleBackColor = true;
             // 
@@ -2359,10 +2384,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoiHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLamMoiHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoiHDX.Location = new System.Drawing.Point(506, 36);
-            this.btnLamMoiHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoiHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoiHDX.Name = "btnLamMoiHDX";
             this.btnLamMoiHDX.Size = new System.Drawing.Size(68, 20);
-            this.btnLamMoiHDX.TabIndex = 24;
+            this.btnLamMoiHDX.TabIndex = 10;
             this.btnLamMoiHDX.Text = "Làm mới";
             this.btnLamMoiHDX.UseVisualStyleBackColor = true;
             this.btnLamMoiHDX.Click += new System.EventHandler(this.btnLamMoiHDX_Click);
@@ -2375,10 +2400,10 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnTimKiemHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimKiemHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnTimKiemHDX.Location = new System.Drawing.Point(146, 36);
-            this.btnTimKiemHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimKiemHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimKiemHDX.Name = "btnTimKiemHDX";
             this.btnTimKiemHDX.Size = new System.Drawing.Size(68, 20);
-            this.btnTimKiemHDX.TabIndex = 19;
+            this.btnTimKiemHDX.TabIndex = 1;
             this.btnTimKiemHDX.Text = "Tìm kiếm";
             this.btnTimKiemHDX.UseVisualStyleBackColor = true;
             this.btnTimKiemHDX.Click += new System.EventHandler(this.btnTimKiemHDX_Click);
@@ -2391,7 +2416,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemHDX.Location = new System.Drawing.Point(218, 36);
-            this.btnThemHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemHDX.Name = "btnThemHDX";
             this.btnThemHDX.Size = new System.Drawing.Size(68, 20);
             this.btnThemHDX.TabIndex = 20;
@@ -2407,7 +2432,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnSuaHDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuaHDX.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSuaHDX.Location = new System.Drawing.Point(290, 36);
-            this.btnSuaHDX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaHDX.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaHDX.Name = "btnSuaHDX";
             this.btnSuaHDX.Size = new System.Drawing.Size(68, 20);
             this.btnSuaHDX.TabIndex = 21;
@@ -2433,6 +2458,10 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // QuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2440,7 +2469,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.ClientSize = new System.Drawing.Size(736, 556);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "QuanLy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý";
@@ -2491,6 +2520,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHDX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2516,7 +2546,6 @@ namespace QuanLyCuaHangBanDienThoai
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.MaskedTextBox mtbRom;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.MaskedTextBox mtbTGBH;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnXoaDT;
         private System.Windows.Forms.Button btnThemDT;
@@ -2649,5 +2678,8 @@ namespace QuanLyCuaHangBanDienThoai
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         public System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.MaskedTextBox mtbSDTKH;
+        private System.Windows.Forms.ComboBox mtbTGBH;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnMoK;
     }
 }

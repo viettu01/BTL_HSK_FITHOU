@@ -149,3 +149,4 @@ C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHa
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeDoanhThu.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeNhanvien.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeSLĐT.resources
+C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuenMK.resources

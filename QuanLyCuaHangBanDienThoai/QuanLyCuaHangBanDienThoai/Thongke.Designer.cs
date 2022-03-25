@@ -72,7 +72,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbĐT.Location = new System.Drawing.Point(16, 67);
             this.rbĐT.Name = "rbĐT";
             this.rbĐT.Size = new System.Drawing.Size(73, 17);
-            this.rbĐT.TabIndex = 2;
+            this.rbĐT.TabIndex = 10;
             this.rbĐT.TabStop = true;
             this.rbĐT.Text = "Điện thoại";
             this.rbĐT.UseVisualStyleBackColor = true;
@@ -85,7 +85,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbNV.Location = new System.Drawing.Point(16, 21);
             this.rbNV.Name = "rbNV";
             this.rbNV.Size = new System.Drawing.Size(74, 17);
-            this.rbNV.TabIndex = 1;
+            this.rbNV.TabIndex = 8;
             this.rbNV.TabStop = true;
             this.rbNV.Text = "Nhân viên";
             this.rbNV.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbKH.Location = new System.Drawing.Point(16, 45);
             this.rbKH.Name = "rbKH";
             this.rbKH.Size = new System.Drawing.Size(83, 17);
-            this.rbKH.TabIndex = 0;
+            this.rbKH.TabIndex = 9;
             this.rbKH.TabStop = true;
             this.rbKH.Text = "Khách hàng";
             this.rbKH.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbTang.Location = new System.Drawing.Point(16, 47);
             this.rbTang.Name = "rbTang";
             this.rbTang.Size = new System.Drawing.Size(71, 17);
-            this.rbTang.TabIndex = 3;
+            this.rbTang.TabIndex = 4;
             this.rbTang.Text = "Tăng dần";
             this.rbTang.UseVisualStyleBackColor = true;
             this.rbTang.CheckedChanged += new System.EventHandler(this.rbTang_CheckedChanged_1);
@@ -169,7 +169,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbGiam.Location = new System.Drawing.Point(90, 46);
             this.rbGiam.Name = "rbGiam";
             this.rbGiam.Size = new System.Drawing.Size(70, 17);
-            this.rbGiam.TabIndex = 4;
+            this.rbGiam.TabIndex = 5;
             this.rbGiam.Text = "Giảm dần";
             this.rbGiam.UseVisualStyleBackColor = true;
             this.rbGiam.CheckedChanged += new System.EventHandler(this.rbGiam_CheckedChanged_1);
@@ -197,7 +197,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnHien.Location = new System.Drawing.Point(597, 44);
             this.btnHien.Name = "btnHien";
             this.btnHien.Size = new System.Drawing.Size(75, 23);
-            this.btnHien.TabIndex = 6;
+            this.btnHien.TabIndex = 11;
             this.btnHien.Text = "Hiện";
             this.btnHien.UseVisualStyleBackColor = true;
             this.btnHien.Click += new System.EventHandler(this.btnHien_Click);
@@ -235,7 +235,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbMax.Location = new System.Drawing.Point(16, 74);
             this.rbMax.Name = "rbMax";
             this.rbMax.Size = new System.Drawing.Size(68, 17);
-            this.rbMax.TabIndex = 8;
+            this.rbMax.TabIndex = 6;
             this.rbMax.TabStop = true;
             this.rbMax.Text = "Cao nhất";
             this.rbMax.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbMin.Location = new System.Drawing.Point(90, 74);
             this.rbMin.Name = "rbMin";
             this.rbMin.Size = new System.Drawing.Size(74, 17);
-            this.rbMin.TabIndex = 9;
+            this.rbMin.TabIndex = 7;
             this.rbMin.TabStop = true;
             this.rbMin.Text = "Thấp nhất";
             this.rbMin.UseVisualStyleBackColor = true;

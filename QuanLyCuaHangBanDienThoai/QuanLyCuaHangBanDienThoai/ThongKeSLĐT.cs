@@ -44,6 +44,11 @@ namespace QuanLyCuaHangBanDienThoai
                 loctrangthai("{ showAllPhone.SL}<" + "10");
             }
         }
+
+        private void crvTTSL_Load(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

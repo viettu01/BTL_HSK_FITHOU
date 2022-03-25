@@ -195,8 +195,8 @@ namespace QuanLyCuaHangBanDienThoai
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand("select top(1) * from TKDT group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by  " + mm + "([" + loai + "]) " + kieu, cnn))
                 {
-                    MessageBox.Show("SELECT TKDT.[Tháng],TKDT.[Năm],[SLĐT bán],[Doanh thu] from TKDT, (select[Năm], " + mm + "([" + loai + "]) as maxtin from TKDT group by [Năm]) a where[" + loai + "] = a.maxtin and TKDT.[Năm] like'%" + cbNam.Text + "%'");
-                    MessageBox.Show("select top(1) * from TKDT group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by  " + mm + "([" + loai + "]) " + kieu);
+                   // MessageBox.Show("SELECT TKDT.[Tháng],TKDT.[Năm],[SLĐT bán],[Doanh thu] from TKDT, (select[Năm], " + mm + "([" + loai + "]) as maxtin from TKDT group by [Năm]) a where[" + loai + "] = a.maxtin and TKDT.[Năm] like'%" + cbNam.Text + "%'");
+                   // MessageBox.Show("select top(1) * from TKDT group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by  " + mm + "([" + loai + "]) " + kieu);
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
                         DataSet1 ds = new DataSet1();
@@ -220,7 +220,7 @@ namespace QuanLyCuaHangBanDienThoai
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu, cnn))
                 {
-                    MessageBox.Show("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu);
+                   // MessageBox.Show("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu);
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
                         DataSet1 ds = new DataSet1();
@@ -267,7 +267,7 @@ namespace QuanLyCuaHangBanDienThoai
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand("select [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm] from TKNV, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKNV group by [Năm], [Tháng])a where TKNV.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKNV.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm]", cnn))
                 {
-                    MessageBox.Show("select [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm] from TKNV, (select[Tháng],[Năm], a.Tháng ([" + loai + "]) as maxtin from TKNV group by [Năm], [Tháng])a where TKNV.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKNV.[Năm] like'%" + cbNam.Text + "%'");
+                   // MessageBox.Show("select [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm] from TKNV, (select[Tháng],[Năm], a.Tháng ([" + loai + "]) as maxtin from TKNV group by [Năm], [Tháng])a where TKNV.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKNV.[Năm] like'%" + cbNam.Text + "%'");
 
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
@@ -317,7 +317,7 @@ namespace QuanLyCuaHangBanDienThoai
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand("select [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm] from TKKH, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKKH group by [Năm], [Tháng])a where TKKH.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKKH.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm]", cnn))
                 {
-                    MessageBox.Show("select [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm] from TKKH, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKKH group by [Năm], [Tháng])a where TKKH.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKKH.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm]");
+                  //  MessageBox.Show("select [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm] from TKKH, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKKH group by [Năm], [Tháng])a where TKKH.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKKH.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm]");
 
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
@@ -366,7 +366,7 @@ namespace QuanLyCuaHangBanDienThoai
                 cnn.Open();
                 using (SqlCommand cmd = new SqlCommand("select [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng] from TKĐT, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKĐT group by [Năm], [Tháng])a where TKĐT.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKĐT.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng]", cnn))
                 {
-                    MessageBox.Show("select [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng] from TKĐT, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKĐT group by [Năm], [Tháng])a where TKĐT.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKĐT.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng]");
+                   // MessageBox.Show("select [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng] from TKĐT, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKĐT group by [Năm], [Tháng])a where TKĐT.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKĐT.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng]");
 
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
@@ -573,7 +573,7 @@ namespace QuanLyCuaHangBanDienThoai
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
                                 {
                                     MinmaxDT("Max", "Doanh thu", "desc");
-                                    MessageBox.Show("fksjkfjksjdf");
+                                  //  MessageBox.Show("fksjkfjksjdf");
                                 }
                                 else if (rbNV.Checked)
                                 {
@@ -593,7 +593,7 @@ namespace QuanLyCuaHangBanDienThoai
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
                                 {
                                     MinmaxDT("Min", "Doanh thu", "asc");
-                                    MessageBox.Show("fksjkfjksjdf");
+                                   // MessageBox.Show("fksjkfjksjdf");
                                 }
                                 else if (rbNV.Checked)
                                 {

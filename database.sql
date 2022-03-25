@@ -19,7 +19,9 @@ CREATE TABLE tblAccount
 	phone VARCHAR(12) NULL,
 	birthday DATETIME NULL
 );
+alter table tblAccount add  status int
 
+select * from tblAccount
 --BẢNG KHÁCH HÀNG--
 CREATE TABLE tblCustomer
 (
@@ -154,19 +156,19 @@ END
 
 GO
 --View xem danh sách tài khoản
-CREATE VIEW showAllAccount
+alter VIEW showAllAccount
 AS
-	SELECT id AS [ID], role AS [Quyền], username AS [Tên đăng nhập], password AS [Mật khẩu], fullName AS [Họ tên], phone AS [SĐT], birthday AS [Ngày sinh]
+	SELECT id AS [ID], role AS [Quyền], username AS [Tên đăng nhập], password AS [Mật khẩu], fullName AS [Họ tên], phone AS [SĐT], birthday AS [Ngày sinh],IIF(status=1,N'Bình thường',N'Khóa') as[Trạng thái]
 	FROM dbo.tblAccount
 
 GO
 --Thủ tục thêm tài khoản
-CREATE PROC insertAccount (@role NVARCHAR(20), @username NVARCHAR(50), @password NVARCHAR(8), 
+alter PROC insertAccount (@role NVARCHAR(20), @username NVARCHAR(50), @password NVARCHAR(8), 
 							@fullName NVARCHAR(30), @phone VARCHAR(12), @birthday DATETIME)
 AS
 BEGIN
-	INSERT INTO dbo.tblAccount (role, username, password, fullName, phone, birthday)
-	VALUES (@role, @username, @password, @fullName, @phone, @birthday)
+	INSERT INTO dbo.tblAccount (role, username, password, fullName, phone, birthday,status)
+	VALUES (@role, @username, @password, @fullName, @phone, @birthday,1)
 END
 
 GO
@@ -481,4 +483,5 @@ group by tblCustomer.id,tblCustomer.name,YEAR(tblBillOut.createdAt) ,MONTH(tblBi
 select top(1) * from TKDT
 
 group by [Năm],[Tháng],[SLĐT bán],[Doanh thu]
-order by Max([Doanh thu]) desc
+order by Max([Doanh thu]) desc*/
+

@@ -45,10 +45,9 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(539, 217);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Location = new System.Drawing.Point(404, 176);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(212, 197);
+            this.pictureBox1.Size = new System.Drawing.Size(159, 160);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -58,22 +57,21 @@ namespace QuanLyCuaHangBanDienThoai
             this.lbQuenMK.BackColor = System.Drawing.Color.White;
             this.lbQuenMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbQuenMK.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbQuenMK.Location = new System.Drawing.Point(311, 393);
-            this.lbQuenMK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbQuenMK.Location = new System.Drawing.Point(233, 319);
             this.lbQuenMK.Name = "lbQuenMK";
-            this.lbQuenMK.Size = new System.Drawing.Size(131, 20);
-            this.lbQuenMK.TabIndex = 6;
+            this.lbQuenMK.Size = new System.Drawing.Size(104, 16);
+            this.lbQuenMK.TabIndex = 4;
             this.lbQuenMK.Text = "Quên mật khẩu?";
+            this.lbQuenMK.Click += new System.EventHandler(this.lbQuenMK_Click);
             // 
             // tbMatKhau
             // 
             this.tbMatKhau.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbMatKhau.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMatKhau.Location = new System.Drawing.Point(123, 264);
-            this.tbMatKhau.Margin = new System.Windows.Forms.Padding(4);
+            this.tbMatKhau.Location = new System.Drawing.Point(92, 214);
             this.tbMatKhau.Name = "tbMatKhau";
-            this.tbMatKhau.Size = new System.Drawing.Size(275, 25);
-            this.tbMatKhau.TabIndex = 8;
+            this.tbMatKhau.Size = new System.Drawing.Size(206, 20);
+            this.tbMatKhau.TabIndex = 2;
             this.tbMatKhau.UseSystemPasswordChar = true;
             // 
             // tbTenDangNhap
@@ -83,11 +81,10 @@ namespace QuanLyCuaHangBanDienThoai
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTenDangNhap.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbTenDangNhap.Font = new System.Drawing.Font("Book Antiqua", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTenDangNhap.Location = new System.Drawing.Point(123, 191);
-            this.tbTenDangNhap.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTenDangNhap.Location = new System.Drawing.Point(92, 155);
             this.tbTenDangNhap.Name = "tbTenDangNhap";
-            this.tbTenDangNhap.Size = new System.Drawing.Size(275, 25);
-            this.tbTenDangNhap.TabIndex = 7;
+            this.tbTenDangNhap.Size = new System.Drawing.Size(206, 20);
+            this.tbTenDangNhap.TabIndex = 1;
             this.tbTenDangNhap.Validating += new System.ComponentModel.CancelEventHandler(this.tbTenDangNhap_Validating);
             // 
             // errorProviderLogin
@@ -108,23 +105,25 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnDangNhap.FlatAppearance.BorderSize = 0;
             this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(72, 326);
+            this.btnDangNhap.Location = new System.Drawing.Point(54, 265);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(373, 47);
-            this.btnDangNhap.TabIndex = 2;
+            this.btnDangNhap.Size = new System.Drawing.Size(280, 38);
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.TextColor = System.Drawing.Color.White;
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(882, 553);
+            this.ClientSize = new System.Drawing.Size(662, 449);
             this.Controls.Add(this.tbMatKhau);
             this.Controls.Add(this.tbTenDangNhap);
             this.Controls.Add(this.lbQuenMK);
@@ -132,6 +131,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -43,6 +43,7 @@ namespace QuanLyCuaHangBanDienThoai
                     cmd.Parameters.AddWithValue("@fullName", fullName);
                     cmd.Parameters.AddWithValue("@phone", phone);
                     cmd.Parameters.AddWithValue("@birthday", birthday);
+                
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
@@ -160,11 +161,65 @@ namespace QuanLyCuaHangBanDienThoai
             return false;
         }
 
+        public bool checkStatus(string username, String status)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select * from showAllAccount where [Tên đăng nhập] = N'" + username + "'", cnn))
+                {
+                    cnn.Open();
+                    using (SqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                            if (String.Equals(rd["Trạng thái"].ToString(), status, StringComparison.InvariantCultureIgnoreCase))
+                                return true;
+                        }
+                        rd.Close();
+                    }
+                    cnn.Close();
+                }
+            }
+            return false;
+        }
+
         public bool changePassword(int id, String password)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 String sql = "UPDATE dbo.tblAccount SET password = '" + password + "' WHERE id = " + id;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
+        public bool changePasswordByPhone(String phone, String password)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "UPDATE dbo.tblAccount SET password = '" + password + "' WHERE phone = " + phone;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
+        public bool changeStatus(String username, int status)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "UPDATE dbo.tblAccount SET status = " +status+ " WHERE username = '" + username+"'";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cnn.Open();
@@ -210,7 +265,7 @@ namespace QuanLyCuaHangBanDienThoai
                     cmd.CommandType = CommandType.Text;
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
-                        using (DataTable dt = new DataTable("showAllPhone"))
+                        using (DataTable dt = new DataTable("showAllAccount"))
                         {
                             ad.Fill(dt);
                             if (dt.Rows.Count == 0)
@@ -219,7 +274,11 @@ namespace QuanLyCuaHangBanDienThoai
                             {
                                 foreach (DataRow dr in dt.Rows)
                                 {
-                                    if(dr["Mật khẩu"].Equals(password))
+                                    if (dr["Trạng thái"].Equals("Khóa"))
+                                    {
+                                        return 3;//tài khoản bị khóa
+                                    }    
+                                    else if(dr["Mật khẩu"].Equals(password))
                                     {
                                         Program.accountId = int.Parse(dr["ID"].ToString());
                                         Program.role = dr["Quyền"].ToString();
