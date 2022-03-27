@@ -20,12 +20,6 @@ namespace QuanLyCuaHangBanDienThoai
             InitializeComponent();
         }
 
-
-        private void QuenMK_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void tbTênĐN_Validating_1(object sender, CancelEventArgs e)
         {
             if (accountDao.checkExistsUsername(tbTênĐN.Text))
@@ -42,23 +36,12 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void txSDT_Validating(object sender, CancelEventArgs e)
         {
-
-
             if (!long.TryParse(tbSDT.Text, out _))
-            {
                 errorProvider1.SetError(tbSDT, "Bạn phải nhập số");
-
-
-            }
             else if (tbSDT.Text.IndexOf("0") != 0)
-            {
                 errorProvider1.SetError(tbSDT, "Moi ban nhap dúng định dang 0XXXXXX");
-            }
             else if (tbSDT.Text.Length != 10)
-            {
                 errorProvider1.SetError(tbSDT, "Bạn phải nhập đủ 10 số");
-            }
-
             else if (accountDao.checkExistsPhone(tbSDT.Text))
             {
                 errorProvider1.SetError(tbSDT, "Số điện thoại không tồn tại");
@@ -91,21 +74,21 @@ namespace QuanLyCuaHangBanDienThoai
 
             return score;
         }
+
         private void tbMKml_Validating(object sender, CancelEventArgs e)
         {
             if(tbMKml.Text!=tbMKm.Text)
             {
                 errorProvider1.SetError(tbMKml, "Mời bạn nhập lại mật khẩu");
                 check = false;
-
             } 
             else
             {
                 errorProvider1.SetError(tbMKml, "");
                 check = true;
             }    
-            
         }
+
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
             if(check==true)
@@ -116,9 +99,7 @@ namespace QuanLyCuaHangBanDienThoai
                 this.Hide();
             }    
             else
-            {
                 MessageBox.Show("Mời bạn kiểm tra dữ liệu");
-            }    
         }
 
         private void tbMKm_Validating(object sender, CancelEventArgs e)

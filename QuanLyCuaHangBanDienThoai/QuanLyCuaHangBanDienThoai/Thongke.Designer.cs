@@ -160,7 +160,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbTang.TabIndex = 4;
             this.rbTang.Text = "Tăng dần";
             this.rbTang.UseVisualStyleBackColor = true;
-            this.rbTang.CheckedChanged += new System.EventHandler(this.rbTang_CheckedChanged_1);
+            this.rbTang.CheckedChanged += new System.EventHandler(this.rbTang_CheckedChanged);
             // 
             // rbGiam
             // 
@@ -172,7 +172,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.rbGiam.TabIndex = 5;
             this.rbGiam.Text = "Giảm dần";
             this.rbGiam.UseVisualStyleBackColor = true;
-            this.rbGiam.CheckedChanged += new System.EventHandler(this.rbGiam_CheckedChanged_1);
+            this.rbGiam.CheckedChanged += new System.EventHandler(this.rbGiam_CheckedChanged);
             // 
             // crvDT
             // 

@@ -23,19 +23,13 @@ namespace QuanLyCuaHangBanDienThoai
         private void btnXacNhan_Click(object sender, EventArgs e)
         {
             if (!account.checkPassword(Program.accountId, mtbOldPassword.Text))
-            {
                 MessageBox.Show("Mật khẩu cũ không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (mtbReNewPassword.Text != mtbNewPassword.Text)
-            {
                 MessageBox.Show("Mật khẩu không khớp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else
             {
                 if(account.changePassword(Program.accountId, mtbReNewPassword.Text))
-                {
                     MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
         }
 

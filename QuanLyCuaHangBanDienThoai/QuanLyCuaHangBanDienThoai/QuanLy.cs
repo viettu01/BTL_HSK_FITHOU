@@ -53,8 +53,6 @@ namespace QuanLyCuaHangBanDienThoai
             loadDataIdPhoneCombox(cbMaDTHDX);
             loadDataToDataGridView(dtgvHDX, billOutDao.findAll());
             cbMaDTHDX.Text = "";
-
-           
         }
 
         #region Quản lý điện thoại
@@ -67,7 +65,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMau.Enabled = true;
             mtbRom.Enabled = true;
             mtbRam.Enabled = true;
-            mtbTGBH.Enabled = true;
+            cbTGBH.Enabled = true;
 
             btnThemDT.Enabled = false;
             btnLuuDT.Enabled = true;
@@ -101,7 +99,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMau.Enabled = true;
             mtbRom.Enabled = true;
             mtbRam.Enabled = true;
-            mtbTGBH.Enabled = true;
+            cbTGBH.Enabled = true;
 
             btnSuaDT.Enabled = false;
             btnLuuDT.Enabled = true;
@@ -142,7 +140,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMau.Enabled = true;
             mtbRom.Enabled = true;
             mtbRam.Enabled = true;
-            mtbTGBH.Enabled = true;
+            cbTGBH.Enabled = true;
 
             btnTimKiemDT.Enabled = false;
             btnLuuDT.Enabled = true;
@@ -166,7 +164,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMau.Text = "";
             mtbRom.Text = "";
             mtbRam.Text = "";
-            mtbTGBH.Text = "";
+            cbTGBH.Text = "";
             cbHang.Text = "";
             mtbGia.Text = "";
 
@@ -177,7 +175,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMau.Enabled = false;
             mtbRom.Enabled = false;
             mtbRam.Enabled = false;
-            mtbTGBH.Enabled = false;
+            cbTGBH.Enabled = false;
 
             btnTimKiemDT.Visible = true;
             btnThemDT.Visible = true;
@@ -208,7 +206,7 @@ namespace QuanLyCuaHangBanDienThoai
             String color = mtbMau.Text;
             String rom = mtbRom.Text;
             String ram = mtbRam.Text;
-            String timeBH = mtbTGBH.Text;
+            String timeBH = cbTGBH.Text;
 
          
             if (btnTimKiemDT.Visible == true)
@@ -274,7 +272,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMau.Text = dtgvDienThoai.CurrentRow.Cells[5].Value.ToString();
             mtbRom.Text = dtgvDienThoai.CurrentRow.Cells[6].Value.ToString();
             mtbRam.Text = dtgvDienThoai.CurrentRow.Cells[7].Value.ToString();
-            mtbTGBH.Text = dtgvDienThoai.CurrentRow.Cells[8].Value.ToString();
+            cbTGBH.Text = dtgvDienThoai.CurrentRow.Cells[8].Value.ToString();
 
             if (btnSuaDT.Enabled == false)
                 mtbMaDT.Enabled = false;
@@ -365,60 +363,42 @@ namespace QuanLyCuaHangBanDienThoai
                     errorProvider.SetError(mtbRam, "");
             }
         }
-        private void mtbTGBH_Validating_1(object sender, CancelEventArgs e)
+
+        private void cbTGBH_Validating(object sender, CancelEventArgs e)
         {
-            if (mtbTGBH.Text != "")
+            if (cbTGBH.Text != "")
             {
-                string timeX = mtbTGBH.Text;
-                timeX = timeX.Trim();
-                Regex trimmer = new Regex(@"\s\s+");
+                string timeX = cbTGBH.Text;
+                timeX = timeX.Trim(); //Xóa khoảng trắng đầu tiên
+
+                //Xóa dấu cách thừa
+                Regex trimmer = new Regex(@"\s\s+"); 
                 timeX = trimmer.Replace(timeX, " ");
-                mtbTGBH.Text = timeX;
+                cbTGBH.Text = timeX;
 
-                String time = mtbTGBH.Text;
-                if (Regex.IsMatch(time, @"^[0-9]{1,2} +"))
+                String time = cbTGBH.Text;
+                if (Regex.IsMatch(time, @"^[0-9]{1,2} +")) //Nếu chuỗi theo format 6 ... hoặc 12 ...
                 {
-
-                    string[] arr = time.Split(' ');                  
+                    string[] arr = time.Split(' '); //Cắt chuỗi có dấu cách VD: 6 tháng = ["6", "tháng"]
                     if (arr.Length == 2)
                     {
                         if (arr[1].Equals("năm") || arr[1].Equals("tháng"))
-                        {
                             errorProvider1.Clear();
-
-                        }
                         else
-                        {
-                            errorProvider1.SetError(mtbTGBH, "Mời bạn nhập đúng định dạng  vd: 6 tháng, 1 năm");
-                            
-                        }
+                            errorProvider1.SetError(cbTGBH, "Mời bạn nhập đúng định dạng  vd: 6 tháng, 1 năm");
                     }
-
                 }
-                else {
-                    errorProvider1.SetError(mtbTGBH, "Mời bạn nhập đúng định dạng  vd: 6 tháng, 1 năm");
-                }
-
-               
-                
-
-            }
-           
-
-
-                if (btnTimKiemDT.Visible != true)
-            {
-                if (mtbTGBH.Text == "")
-                    errorProvider.SetError(mtbTGBH, "Thời gian bảo hành không được để trống");
                 else
-                {
-                   
-                    errorProvider.SetError(mtbTGBH, "");
-
-                }
+                    errorProvider1.SetError(cbTGBH, "Mời bạn nhập đúng định dạng  vd: 6 tháng, 1 năm");
             }
-          
 
+            if (btnTimKiemDT.Visible != true)
+            {
+                if (cbTGBH.Text == "")
+                    errorProvider.SetError(cbTGBH, "Thời gian bảo hành không được để trống");
+                else
+                    errorProvider.SetError(cbTGBH, "");
+            }
         }
         #endregion
 
@@ -626,20 +606,7 @@ namespace QuanLyCuaHangBanDienThoai
 
            
         }
-        private void mtbTenDN_TextChanged(object sender, EventArgs e)
-        {
-           
-            if (accountDao.checkStatus(mtbTenDN.Text, "Bình thường"))
-            {
-                btnMoK.Text = "Khóa";
-                
-            }
-            else
-            {
-                btnMoK.Text = "Mở khóa";
-                
-            }
-        }
+
         private void btnXoaNV_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -707,19 +674,25 @@ namespace QuanLyCuaHangBanDienThoai
             errorProvider.Clear();
             QuanLy_Load(sender, e);
         }
+
+        private void mtbTenDN_TextChanged(object sender, EventArgs e)
+        {
+            if (accountDao.checkStatus(mtbTenDN.Text, "Bình thường"))
+                btnMoK.Text = "Khóa";
+            else
+                btnMoK.Text = "Mở khóa";
+        }
+
         private void btnMoK_Click(object sender, EventArgs e)
         {
             if (btnMoK.Text == "Khóa")
-            {
                 accountDao.changeStatus(mtbTenDN.Text, 0);
-                QuanLy_Load(sender, e);
-            }
             else
-            {
                 accountDao.changeStatus(mtbTenDN.Text, 1);
-                QuanLy_Load(sender, e);
-            }
+
+            QuanLy_Load(sender, e);
         }
+
         private void btnLuuNV_Click(object sender, EventArgs e)
         {
             String fullName = mtbHoTenNV.Text;
@@ -751,13 +724,9 @@ namespace QuanLyCuaHangBanDienThoai
                     if (btnThemNV.Visible == true)
                     {
                         if (!accountDao.checkExistsPhone(phone))
-                        {
                             MessageBox.Show("Số điện thoại đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
                         else if (!accountDao.checkExistsUsername(username))
-                        {
                             MessageBox.Show("Tên đăng nhập đã tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
                         else
                         {
                             if (accountDao.insert(role, username, password, fullName, phone, DateTime.Parse(birthday)))
@@ -766,9 +735,7 @@ namespace QuanLyCuaHangBanDienThoai
                                 btnLamMoiNV_Click(sender, e);
                             }
                             else
-                            {
                                 MessageBox.Show("Thêm tài khoản thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
                         }
                     }
                     else if (btnSuaNV.Visible == true)
@@ -793,6 +760,7 @@ namespace QuanLyCuaHangBanDienThoai
             mtbMK.Text = dtgvNV.CurrentRow.Cells[3].Value.ToString();
             mtbHoTenNV.Text = dtgvNV.CurrentRow.Cells[4].Value.ToString();
             mtbSDTNV.Text = dtgvNV.CurrentRow.Cells[5].Value.ToString();
+
             if (dtgvNV.CurrentRow.Cells[6].Value.ToString() != "")
                 dtpNgaySinhNV.Value = DateTime.Parse(dtgvNV.CurrentRow.Cells[6].Value.ToString());
             else
@@ -1396,23 +1364,6 @@ namespace QuanLyCuaHangBanDienThoai
                     loadDataToDataGridView(dtgvHDX, billOutDao.search(billId, nameAccount, startDate, endDate));
             }
         }
-
-        private void cbMaDT_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mtbTGBH_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
 
         private void dtpNgayBDHDX_ValueChanged(object sender, EventArgs e)
         {

@@ -15,6 +15,7 @@ namespace QuanLyCuaHangBanDienThoai
         AccountDao accountDao = new AccountDao();
 
         int dem = 0;
+
         public Login()
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace QuanLyCuaHangBanDienThoai
             }
             else
                 errorProviderLogin.SetError(tbMatKhau, "");
+
             if (dem > 3)
             {
                 accountDao.changeStatus(tbTenDangNhap.Text, 0);
@@ -45,17 +47,15 @@ namespace QuanLyCuaHangBanDienThoai
 
                 return;
             }
-            if (accountDao.login(username, password) == 1 )
+
+            if (accountDao.login(username, password) == 1)
             {
                 new QuanLyCuaHangDienThoai().Show();
                 this.Hide();
             }
-            if(accountDao.login(username, password) == 3)
-            {
+
+            if (accountDao.login(username, password) == 3)
                 MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu");
-            }
-
-
         }
 
         private void tbTenDangNhap_Validating(object sender, CancelEventArgs e)
@@ -65,21 +65,15 @@ namespace QuanLyCuaHangBanDienThoai
 
 
             if (accountDao.login(username, password) == 0)
-            {
                 errorProviderLogin.SetError(tbTenDangNhap, "Tên đăng nhập không tồn tại");
-            }
             else
-            {
                 errorProviderLogin.SetError(tbTenDangNhap, "");
-            }
         }
 
         private void lbQuenMK_Click(object sender, EventArgs e)
         {
             QuenMK quenMK = new QuenMK();
             quenMK.Show();
-                
         }
-
-       }
+    }
 }

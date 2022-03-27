@@ -146,7 +146,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "QuenMK";
             this.Text = "Quên mật khẩu";
-            this.Load += new System.EventHandler(this.QuenMK_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

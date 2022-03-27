@@ -29,12 +29,24 @@ namespace QuanLyCuaHangBanDienThoai
         String SXTKNV = @"..\..\CrytalReport\SXTKNV.rpt";
         String TKKH = @"..\..\CrytalReport\ThongkeKH.rpt";
         String SXTKKH = @"..\..\CrytalReport\SXTKKH.rpt";
+
         public Thongke()
         {
             InitializeComponent();
         }
-        //GIAO DIỆN
 
+        private void Thongke_Load(object sender, EventArgs e)
+        {
+            loadYearCombox(cbNam);
+            ReportDocument rp = new ReportDocument();
+            String path = Path.GetFullPath(TKDT);
+            rp.Load(path);
+
+            crvDT.ReportSource = rp;
+            crvDT.Refresh();
+
+            cbNam.Text = "";
+        }
 
         private void rbNV_CheckedChanged(object sender, EventArgs e)
         {
@@ -84,11 +96,6 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        private void rbTang_CheckedChanged(object sender, EventArgs e)
-        {
-            isChecked = rbTang.Checked;
-        }
-
         private void rbTang_Click(object sender, EventArgs e)
         {
             if (rbTang.Checked && !isChecked)
@@ -98,11 +105,6 @@ namespace QuanLyCuaHangBanDienThoai
                 rbTang.Checked = true;
                 isChecked = false;
             }
-        }
-
-        private void rbGiam_CheckedChanged(object sender, EventArgs e)
-        {
-            isChecked = rbGiam.Checked;
         }
 
         private void rbGiam_Click(object sender, EventArgs e)
@@ -115,6 +117,7 @@ namespace QuanLyCuaHangBanDienThoai
                 isChecked = false;
             }
         }
+
         public DataTable findAllTKĐT()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -133,6 +136,7 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         public void loadYearCombox(ComboBox cb)
         {
             DataTable dtProducer = findAllTKĐT();
@@ -142,8 +146,8 @@ namespace QuanLyCuaHangBanDienThoai
             cb.DataSource = v;
             cb.DisplayMember = "Năm";
             cb.ValueMember = "Năm";
-
         }
+
         private void locnamthang(string lenh, string ten)
         {
             ReportDocument rp = new ReportDocument();
@@ -153,24 +157,14 @@ namespace QuanLyCuaHangBanDienThoai
             crvDT.ReportSource = rp;
             crvDT.Refresh();
         }
-        private void Thongke_Load(object sender, EventArgs e)
-        {
-            loadYearCombox(cbNam);
-            ReportDocument rp = new ReportDocument();
-            String path = Path.GetFullPath(TKDT);
-            rp.Load(path);
 
-            crvDT.ReportSource = rp;
-            crvDT.Refresh();
-
-            cbNam.Text = "";
-        }
         private void SXDT(string kieu, string loai)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select * from TKDT WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu, cnn))
+                String sql = "select * from TKDT WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
@@ -188,12 +182,14 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         private void MinmaxDT(string mm, string loai, string kieu)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select top(1) * from TKDT group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by  " + mm + "([" + loai + "]) " + kieu, cnn))
+                String sql = "select top(1) * from TKDT group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by  " + mm + "([" + loai + "]) " + kieu;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                    // MessageBox.Show("SELECT TKDT.[Tháng],TKDT.[Năm],[SLĐT bán],[Doanh thu] from TKDT, (select[Năm], " + mm + "([" + loai + "]) as maxtin from TKDT group by [Năm]) a where[" + loai + "] = a.maxtin and TKDT.[Năm] like'%" + cbNam.Text + "%'");
                    // MessageBox.Show("select top(1) * from TKDT group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by  " + mm + "([" + loai + "]) " + kieu);
@@ -213,36 +209,14 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
-        private void Minmax(string tenview, string nam, string kieu, string loai, string kieu2)
-        {
-            using (SqlConnection cnn = new SqlConnection(constr))
-            {
-                cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu, cnn))
-                {
-                   // MessageBox.Show("select top(1) * from " + tenview + " where [Năm] like '%" + nam + "%' group by[Năm],[Tháng],[SLĐT bán],[Doanh thu] order by " + kieu2 + "([" + loai + "]) " + kieu);
-                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
-                    {
-                        DataSet1 ds = new DataSet1();
-                        DataTable dt = new DataTable();
-                        ad.Fill(ds);
-                        //ThongKeDienThoai rpt = new ThongKeDienThoai();
-                        ReportDocument rpt = new ReportDocument();
-                        String path = Path.GetFullPath(SXTKDT);
-                        rpt.Load(path);
-                        rpt.SetDataSource(ds.Tables[4]);
-                        crvDT.ReportSource = rpt;
-                        crvDT.Refresh();
-                    }
-                }
-            }
-        }
+
         private void SXNV(string kieu, string loai)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select * from TKNV WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu, cnn))
+                String sql = "select * from TKNV WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
@@ -260,12 +234,14 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         private void MinmaxNV(string mm, string loai,string thang)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm] from TKNV, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKNV group by [Năm], [Tháng])a where TKNV.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKNV.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm]", cnn))
+                String sql = "select [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm] from TKNV, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKNV group by [Năm], [Tháng])a where TKNV.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKNV.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm]";
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                    // MessageBox.Show("select [Mã NV],[Tên NV],[Tuổi],[SLĐT bán],[Doanh thu],TKNV.[Tháng],TKNV.[Năm] from TKNV, (select[Tháng],[Năm], a.Tháng ([" + loai + "]) as maxtin from TKNV group by [Năm], [Tháng])a where TKNV.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKNV.[Năm] like'%" + cbNam.Text + "%'");
 
@@ -291,7 +267,8 @@ namespace QuanLyCuaHangBanDienThoai
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select * from TKKH WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu, cnn))
+                String sql = "select * from TKKH WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
@@ -315,7 +292,8 @@ namespace QuanLyCuaHangBanDienThoai
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm] from TKKH, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKKH group by [Năm], [Tháng])a where TKKH.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKKH.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm]", cnn))
+                String sql = "select [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm] from TKKH, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKKH group by [Năm], [Tháng])a where TKKH.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKKH.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm]";
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                   //  MessageBox.Show("select [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm] from TKKH, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKKH group by [Năm], [Tháng])a where TKKH.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKKH.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã KH],[Tên KH],[SLĐT mua],[Tổng tiền],TKKH.[Tháng],TKKH.[Năm]");
 
@@ -335,14 +313,15 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         private void SXĐT(string kieu, string loai)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select * from TKĐT WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu, cnn))
+                String sql = "select * from TKĐT WHERE [Năm] like '%" + cbNam.Text + "%' and[Tháng]like'%" + cbThang.Text + "%'order by[" + loai + "] " + kieu;
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
-
                     using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
                     {
                         DataSet4 ds = new DataSet4();
@@ -359,12 +338,14 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         private void MinmaxĐT(string mm, string loai,string thang)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 cnn.Open();
-                using (SqlCommand cmd = new SqlCommand("select [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng] from TKĐT, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKĐT group by [Năm], [Tháng])a where TKĐT.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKĐT.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng]", cnn))
+                String sql = "select [Mã ĐT], [Tên ĐT], [Hãng], [Giá bán], [Màu], [Rom], [Ram], [Bảo hành], [SL bán], [Doanh thu], [SL trong kho], TKĐT.[Năm], TKĐT.[Tháng] from TKĐT, (select[Tháng], [Năm], " + mm + "([" + loai + "]) as maxtin from TKĐT group by [Năm], [Tháng])a where TKĐT.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKĐT.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng]";
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                    // MessageBox.Show("select [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng] from TKĐT, (select[Tháng],[Năm], " + mm + "([" + loai + "]) as maxtin from TKĐT group by [Năm], [Tháng])a where TKĐT.Tháng = " + thang + " and [" + loai + "] = a.maxtin and TKĐT.[Năm] like'%" + cbNam.Text + "%' GROUP BY [Mã ĐT], [Tên ĐT],[Hãng],[Giá bán],[Màu],[Rom],[Ram],[Bảo hành],[SL bán],[Doanh thu],[SL trong kho],TKĐT.[Năm],TKĐT.[Tháng]");
 
@@ -384,6 +365,7 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
         private void loc()
         {
             if (cbNam.Text != "")//năm
@@ -395,450 +377,239 @@ namespace QuanLyCuaHangBanDienThoai
                         if (!rbTang.Checked && !rbGiam.Checked && !rbMin.Checked && !rbMax.Checked)//không có kiểu sx
                         {
                             //locnamthang("{@Nam}=" + cbNam.Text + " and {@Thang}=" + cbThang.Text, ten1);
-                            if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)///
-                            {
+                            if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
                                 locnamthang("{@Nam}=" + cbNam.Text + " and {@Thang}=" + cbThang.Text, TKDT);
-                            }
                             else if (rbNV.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text + " and {@Thang}=" + cbThang.Text, TKNV);
-                            }
                             else if (rbKH.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text + " and {@Thang}=" + cbThang.Text, TKKH);
-
-                            }
                             else if (rbĐT.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text + " and {@Thang}=" + cbThang.Text, TKĐT);
-                            }
                         }
                         else
-                        {
                             MessageBox.Show("Mời bạn nhập kiểu sắp xếp");
-                        }
-
-
-
-
                     }
                     else
                     {
-
                         if (!rbTang.Checked && !rbGiam.Checked && !rbMin.Checked && ! rbMax.Checked)
-                        {
                             MessageBox.Show("Mời bạn chọn kiểu sắp xếp");
-
-                        }
                         if (cbLoaiSX.Text == "Số lượng")
                         {
-
                             if (rbGiam.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("desc", "SLĐT bán");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("desc", "SLĐT bán");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("desc", "SLĐT mua");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("desc", "SL bán");
-                                }
-
                             }
-
                             else if (rbTang.Checked)
                             {
-
-                                // sapxep("asc", ten2, loai1, i, tenv);
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("asc", "SLĐT bán");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("asc", "SLĐT bán");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("asc", "SLĐT mua");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("asc", "SL bán");
-                                }
                             }
                             else if (rbMax.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Max", "SLĐT bán", "desc");
-                                   
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Max", "SLĐT bán",cbThang.Text);
-                                }
                                 else if(rbKH.Checked)
-                                {
                                     MinmaxKH("Max", "SLĐT mua", cbThang.Text);
-                                }    
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Max", "SL bán", cbThang.Text);
-                                }    
                             }
                             else if (rbMin.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Min", "SLĐT bán", "asc");
-                                    
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Min", "SLĐT bán", cbThang.Text);
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Min", "SLĐT mua", cbThang.Text);
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Min", "SL bán", cbThang.Text);
-                                }
                             }
                         }
                         if (cbLoaiSX.Text == "Doanh thu")
-
                         {
-
                             if (rbTang.Checked)
                             {
-
                                 // sapxep("asc", ten2, loai2, i, tenv);
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("asc", "Doanh thu");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("asc", "Doanh thu");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("asc", "Tổng tiền");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("asc", "Doanh thu");
-                                }
                             }
                             else if (rbGiam.Checked)
                             {
-
-
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("desc", "Doanh thu");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("desc", "Doanh thu");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("desc", "Tổng tiền");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("desc", "Doanh thu");
-                                }
-                                MessageBox.Show("ok");
-
+                                //MessageBox.Show("ok");
                             }
                             else if (rbMax.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Max", "Doanh thu", "desc");
-                                  //  MessageBox.Show("fksjkfjksjdf");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Max", "Doanh thu", cbThang.Text);
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Max", "Tổng tiền", cbThang.Text);
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Max", "Doanh thu", cbThang.Text);
-                                }
                             }
                             else if (rbMin.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Min", "Doanh thu", "asc");
-                                   // MessageBox.Show("fksjkfjksjdf");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Min", "Doanh thu", cbThang.Text);
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Min", "Tổng tiền", cbThang.Text);
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Min", "Doanh thu", cbThang.Text);
-                                }
                             }
                         }
                     }
-
                 }
                 else//năm thôi
                 {
-
                     if (cbLoaiSX.Text == "")
                     {
                         if (!rbTang.Checked && !rbGiam.Checked && !rbMin.Checked && !rbMax.Checked)
                         {
-                            //locnamthang("{@Nam}=" + cbNam.Text, ten1);
                             if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text, TKDT);
-                            }
                             else if (rbNV.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text, TKNV);
-                            }
                             else if (rbKH.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text, TKKH);
-
-                            }
                             else if (rbĐT.Checked)
-                            {
                                 locnamthang("{@Nam}=" + cbNam.Text, TKDT);
-                            }
                         }
                         else
-                        {
                             MessageBox.Show("Mời bạn nhập loại sắp xếp");
-                        }
-
-
-
-
                     }
                     else
                     {
-
                         if (!rbTang.Checked && !rbGiam.Checked && !rbMin.Checked && !rbMax.Checked)
-                        {
                             MessageBox.Show("Mời bạn chọn kiểu sắp xếp");
-
-                        }
                         if (cbLoaiSX.Text == "Số lượng")
                         {
-
                             if (rbGiam.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("desc", "SLĐT bán");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("desc", "SLĐT bán");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("desc", "SLĐT mua");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("desc", "SL bán");
-                                }
-
                             }
-
                             else if (rbTang.Checked)
                             {
-
                                 // sapxep("asc", ten2, loai1, i, tenv);
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("asc", "SLĐT bán");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("asc", "SLĐT bán");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("asc", "SLĐT mua");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("asc", "SL bán");
-                                }
                             }
                             else if (rbMax.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Max", "SLĐT bán", "desc");
-                                   
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Max", "SLĐT bán", "a.Tháng");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Max", "SLĐT mua", "a.Tháng");
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Max", "SL bán", "a.Tháng");
-                                }
                             }
                             else if (rbMin.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Min", "SLĐT bán", "asc");
-                                    
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Min", "SLĐT bán", "a.Tháng");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Min", "SLĐT mua", "a.Tháng");
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Min", "SL bán", "a.Tháng");
-                                }
                             }
                         }
                         if (cbLoaiSX.Text == "Doanh thu")
-
                         {
-
                             if (rbTang.Checked)
                             {
-
-                                // sapxep("asc", ten2, loai2, i, tenv);
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("asc", "Doanh thu");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("asc", "Doanh thu");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("asc", "Tổng tiền");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("asc", "Doanh thu");
-                                }
                             }
                             else if (rbGiam.Checked)
                             {
-
-                                //sapxep("desc", ten2, loai2, i, tenv);
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     SXDT("desc", "Doanh thu");
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     SXNV("desc", "Doanh thu");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     SXKH("desc", "Tổng tiền");
-
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     SXĐT("desc", "Doanh thu");
-                                }
-                                MessageBox.Show("ok");
-
                             }
                             else if (rbMax.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Max", "Doanh thu", "desc");
-                                  
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Max", "Doanh thu", "a.Tháng");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Max", "Tổng tiền", "a.Tháng");
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Max", "Doanh thu", "a.Tháng");
-                                }
                             }
                             else if (rbMin.Checked)
                             {
                                 if (!rbNV.Checked && !rbKH.Checked && !rbĐT.Checked)
-                                {
                                     MinmaxDT("Min", "Doanh thu", "asc");
-                                   
-                                }
                                 else if (rbNV.Checked)
-                                {
                                     MinmaxNV("Min", "Doanh thu", "a.Tháng");
-                                }
                                 else if (rbKH.Checked)
-                                {
                                     MinmaxKH("Min", "Tổng tiền", "a.Tháng");
-                                }
                                 else if (rbĐT.Checked)
-                                {
                                     MinmaxĐT("Min", "Doanh thu", "a.Tháng");
-                                }
                             }
                         }
                     }
-
                 }
-
-
             }
             else
             {
@@ -850,18 +621,10 @@ namespace QuanLyCuaHangBanDienThoai
                 crvDT.Refresh();
             }
         }
+
         private void btnHien_Click(object sender, EventArgs e)
         {
             loc();
-            //SXĐT("desc", "SL bán");
-            /*  if(rbMin.Checked)
-               {
-                   Minmax("TKDT", cbNam.Text, "asc", cbLoaiSX.Text, "MIN");
-               }
-              else if (rbMax.Checked)
-               {
-                   Minmax("TKDT", cbNam.Text, "desc","SLĐT bán", "MAX");
-               }*/
         }
 
         private void cbLoaiSX_Validating(object sender, CancelEventArgs e)
@@ -873,7 +636,6 @@ namespace QuanLyCuaHangBanDienThoai
                 rbMax.Checked = false;
                 rbMin.Checked = false;
             }
-
         }
 
         private void cbLoaiSX_TextChanged(object sender, EventArgs e)
@@ -898,67 +660,48 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        private void rbTang_CheckedChanged_1(object sender, EventArgs e)
+        private void rbTang_CheckedChanged(object sender, EventArgs e)
         {
+            isChecked = rbTang.Checked;
+
             if (!rbTang.Checked && !rbGiam.Checked)
-            {
                 gbTheo.Enabled = false;
-            }
             else
-            {
                 gbTheo.Enabled = true;
-            }
         }
 
-        private void rbGiam_CheckedChanged_1(object sender, EventArgs e)
+        private void rbGiam_CheckedChanged(object sender, EventArgs e)
         {
+            isChecked = rbGiam.Checked;
+
             if (!rbTang.Checked && !rbGiam.Checked)
-            {
                 gbTheo.Enabled = false;
-            }
             else
-            {
                 gbTheo.Enabled = true;
-            }
         }
 
         private void cbNam_TextChanged(object sender, EventArgs e)
         {
             if (cbNam.Text == "")
-            {
                 cbThang.Enabled = false;
-            }
             else
-            {
                 cbThang.Enabled = true;
-            }
         }
 
         private void rbMax_CheckedChanged(object sender, EventArgs e)
         {
             if (!rbMax.Checked && !rbMin.Checked)
-            {
                 gbTheo.Enabled = false;
-            }
             else
-            {
                 gbTheo.Enabled = true;
-            }
         }
 
         private void rbMin_CheckedChanged(object sender, EventArgs e)
         {
             if (!rbMax.Checked && !rbMin.Checked)
-            {
                 gbTheo.Enabled = false;
-            }
             else
-            {
                 gbTheo.Enabled = true;
-            }
         }
-
-        //chạy code
-
     }
 }

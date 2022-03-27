@@ -22,6 +22,7 @@ namespace QuanLyCuaHangBanDienThoai
         {
             InitializeComponent();
         }
+
         private void loctrangthai(string lenh)
         {
             ReportDocument rp = new ReportDocument();
@@ -30,25 +31,17 @@ namespace QuanLyCuaHangBanDienThoai
             rp.RecordSelectionFormula = lenh;
             crvTTSL.ReportSource = rp;
             crvTTSL.Refresh();
-}
+        }
+
         private void btnHien_Click(object sender, EventArgs e)
         {
             if (cbTrangThai.Text == "Tồn kho")
                 loctrangthai("{ showAllPhone.SL}>" + "100");
             else if (cbTrangThai.Text == "Hết hàng")
-            {
                 loctrangthai("{ showAllPhone.SL}=" + "0");
-            }
             else if (cbTrangThai.Text == "Sắp hết")
-            {
                 loctrangthai("{ showAllPhone.SL}<" + "10");
-            }
-        }
-
-        private void crvTTSL_Load(object sender, EventArgs e)
-        {
-
         }
     }
-    
+
 }

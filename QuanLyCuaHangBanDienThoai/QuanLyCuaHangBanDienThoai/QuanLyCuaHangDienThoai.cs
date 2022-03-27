@@ -63,8 +63,6 @@ namespace QuanLyCuaHangBanDienThoai
             thongKeNhanvien.MdiParent = this;
             thongKeNhanvien.Dock = DockStyle.Fill;
             thongKeNhanvien.Show();
-
-
         }
 
         private void ToolStripMenuItemtrạngTháiSốLượngĐT_Click(object sender, EventArgs e)
@@ -73,7 +71,6 @@ namespace QuanLyCuaHangBanDienThoai
             thongKeSLĐT.MdiParent = this;
             thongKeSLĐT.Dock = DockStyle.Fill;
             thongKeSLĐT.Show();
-
         }
 
         private void ToolStripMenuItemDoanhThu_Click(object sender, EventArgs e)

@@ -60,7 +60,6 @@ namespace QuanLyCuaHangBanDienThoai
             this.crvTTSL.Name = "crvTTSL";
             this.crvTTSL.Size = new System.Drawing.Size(776, 367);
             this.crvTTSL.TabIndex = 1;
-            this.crvTTSL.Load += new System.EventHandler(this.crvTTSL_Load);
             // 
             // btnHien
             // 

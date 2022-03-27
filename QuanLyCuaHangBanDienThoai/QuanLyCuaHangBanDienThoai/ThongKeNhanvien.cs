@@ -20,6 +20,7 @@ namespace QuanLyCuaHangBanDienThoai
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
         bool test = true;
+
         public ThongKeNhanvien()
         {
             InitializeComponent();
@@ -27,8 +28,7 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void ThongKeNhanvien_Load(object sender, EventArgs e)
         {
-            
-           // sapxep();
+            // sapxep();
             ReportDocument rp = new ReportDocument();
             String path = Path.GetFullPath(@"..\..\CrytalReport\ThongkeTuoiNV.rpt");
             rp.Load(path);
@@ -120,7 +120,6 @@ namespace QuanLyCuaHangBanDienThoai
                     // sapxep();
                 }
             }
-            
         }
 
         private void tbTuoitu_Validating(object sender, CancelEventArgs e)
@@ -137,8 +136,6 @@ namespace QuanLyCuaHangBanDienThoai
                     errorProvider1.SetError(tbTuoitu, "Tuổi từ phải là số");
                     test = false;
                 }
-
-
             }
             else
             {
@@ -156,15 +153,12 @@ namespace QuanLyCuaHangBanDienThoai
                 {
                     errorProvider1.Clear();
                     test = true;
-
                 }
                 else
                 {
                     errorProvider1.SetError(tbTuoiden, "Tuổi đến phải là số");
                     test = false;
                 }
-
-
             }
             else
             {

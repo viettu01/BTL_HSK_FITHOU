@@ -276,7 +276,7 @@ namespace QuanLyCuaHangBanDienThoai
                                 {
                                     if (dr["Trạng thái"].Equals("Khóa"))
                                     {
-                                        return 3;//tài khoản bị khóa
+                                        return 3; //tài khoản bị khóa
                                     }    
                                     else if(dr["Mật khẩu"].Equals(password))
                                     {
