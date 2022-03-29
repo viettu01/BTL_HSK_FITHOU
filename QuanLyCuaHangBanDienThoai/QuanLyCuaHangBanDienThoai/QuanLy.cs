@@ -18,6 +18,8 @@ namespace QuanLyCuaHangBanDienThoai
         int idProducer, idAccount, idCustomer, idBillIn, idBillOut;
         String namePhone;
 
+        bool checkDeletePhoneBillIn = false, checkDeletePhoneBillOut = false;
+
         public QuanLy()
         {
             InitializeComponent();
@@ -664,7 +666,7 @@ namespace QuanLyCuaHangBanDienThoai
 
             btnTimKiemNV.Enabled = true;
             btnThemNV.Enabled = true;
-            btnSuaNV.Enabled = true;
+            btnSuaNV.Enabled = false;
             btnXoaNV.Enabled = false;
             btnLuuNV.Enabled = false;
             btnLamMoiNV.Enabled = false;
@@ -857,7 +859,7 @@ namespace QuanLyCuaHangBanDienThoai
 
             btnTimKiemKH.Enabled = true;
             btnThemKH.Enabled = true;
-            btnSuaKH.Enabled = true;
+            btnSuaKH.Enabled = false;
             btnXoaKH.Enabled = false;
             btnLuuKH.Enabled = false;
             btnLamMoiKH.Enabled = false;
@@ -1016,6 +1018,10 @@ namespace QuanLyCuaHangBanDienThoai
                 {
                     if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
+                        if (checkDeletePhoneBillIn)
+                        {
+                            billInDao.deletePhoneInDetailBillIn(idBillIn, dtgvDSDTC.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        }
                         int rowIndex = e.RowIndex;
                         dtgvDSDTC.Rows.RemoveAt(rowIndex);
                     }
@@ -1186,6 +1192,8 @@ namespace QuanLyCuaHangBanDienThoai
 
             btnLuuHDN.Text = "Lưu";
 
+            checkDeletePhoneBillIn = false;
+
             errorProvider.Clear();
             QuanLy_Load(sender, e);
         }
@@ -1230,6 +1238,15 @@ namespace QuanLyCuaHangBanDienThoai
                 dtgvDSDTC.Rows.Add(row);
             }
 
+            for (int i = 0; i < billInDao.getAllDetailBillIn(idBillIn).Rows.Count; i++)
+            {
+                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                dtgvDSDTC[4, i] = linkCell;
+                dtgvDSDTC[4, i].Value = "Delete";
+            }
+
+            checkDeletePhoneBillIn = true;
+
             btnLamMoiHDN.Enabled = true;
             btnXoaHDN.Enabled = true;
             btnSuaHDN.Enabled = true;
@@ -1237,6 +1254,26 @@ namespace QuanLyCuaHangBanDienThoai
         #endregion
 
         #region Quản lý hóa đơn xuất
+        private void dtgvDTHDX_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                string Task = dtgvDTHDX.Rows[e.RowIndex].Cells[6].Value.ToString();
+                if (Task == "Delete")
+                {
+                    if (MessageBox.Show("Bạn có chắc chắm muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (checkDeletePhoneBillOut)
+                        {
+                            billOutDao.deletePhoneInDetailBillOut(idBillOut, dtgvDTHDX.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        }
+                        int rowIndex = e.RowIndex;
+                        dtgvDTHDX.Rows.RemoveAt(rowIndex);
+                    }
+                }
+            }
+        }
+
         private void dtgvHDX_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             idBillOut = int.Parse(dtgvHDX.CurrentRow.Cells[0].Value.ToString());
@@ -1254,6 +1291,16 @@ namespace QuanLyCuaHangBanDienThoai
                 dtgvDTHDX.Rows.Add(row);
             }
 
+            for (int i = 0; i < billOutDao.getAllDetailBillOut(idBillOut).Rows.Count; i++)
+            {
+                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+                dtgvDTHDX[6, i] = linkCell;
+                dtgvDTHDX[6, i].Value = "Delete";
+            }
+
+            checkDeletePhoneBillOut = true;
+
+            btnXoaHDX.Enabled = true;
             btnLamMoiHDX.Enabled = true;
             cbMaDTHDX.Enabled = true;
             tbTenDTHDX.Enabled = true;
@@ -1280,20 +1327,33 @@ namespace QuanLyCuaHangBanDienThoai
             dtpNgayKTHDX.Enabled = false;
 
             btnTimKiemHDX.Visible = true;
-            btnThemHDX.Visible = true;
-            btnSuaHDX.Visible = true;
             btnXoaHDX.Visible = true;
 
             btnTimKiemHDX.Enabled = true;
-            btnThemHDX.Enabled = true;
-            btnSuaHDX.Enabled = false;
             btnXoaHDX.Enabled = false;
             btnLuuHDX.Enabled = false;
             btnLamMoiHDX.Enabled = false;
 
             btnLuuHDX.Text = "Lưu";
 
+            checkDeletePhoneBillOut = false;
+
             QuanLy_Load(sender, e);
+        }
+
+        private void btnXoaHDX_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (billOutDao.deleteById(idBillOut))
+                {
+                    MessageBox.Show("Xóa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    btnLamMoiHDX_Click(sender, e);
+                }
+                else
+                    MessageBox.Show("Xóa hóa đơn thất bại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnTimKiemDTHDX_Click(object sender, EventArgs e)
@@ -1331,8 +1391,6 @@ namespace QuanLyCuaHangBanDienThoai
             btnLuuHDX.Enabled = true;
             btnLamMoiHDX.Enabled = true;
 
-            btnSuaHDX.Visible = false;
-            btnThemHDX.Visible = false;
             btnXoaHDX.Visible = false;
 
             btnLuuHDX.Text = "Tìm";

@@ -9,7 +9,7 @@ namespace QuanLyCuaHangBanDienThoai
     class AccountDao
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
-        string accountId,lasttimelogin;
+        string lasttimelogin;
         public DataTable findAll()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -43,7 +43,7 @@ namespace QuanLyCuaHangBanDienThoai
                     cmd.Parameters.AddWithValue("@fullName", fullName);
                     cmd.Parameters.AddWithValue("@phone", phone);
                     cmd.Parameters.AddWithValue("@birthday", birthday);
-                
+
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
@@ -66,7 +66,7 @@ namespace QuanLyCuaHangBanDienThoai
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
-                  
+
                     return i > 0;
                 }
             }
@@ -207,7 +207,6 @@ namespace QuanLyCuaHangBanDienThoai
 
         public string checkLasttimeLogin(String username)
         {
-
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 using (SqlCommand cmd = new SqlCommand("select lastloginat from tblAccount where username = N'" + username + "'", cnn))
@@ -263,7 +262,7 @@ namespace QuanLyCuaHangBanDienThoai
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
-                String sql = "UPDATE dbo.tblAccount SET status = " +status+ " WHERE username = N'" + username+"'";
+                String sql = "UPDATE dbo.tblAccount SET status = " + status + " WHERE username = N'" + username + "'";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cnn.Open();
@@ -280,18 +279,18 @@ namespace QuanLyCuaHangBanDienThoai
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 String sql = "UPDATE dbo.tblAccount SET lastloginat = '" + DateTime.Now + "' WHERE username = N'" + username + "'";
-               
-                    using (SqlCommand cmd = new SqlCommand(sql, cnn))
-                    {
-                        cnn.Open();
-                   
-                        int i = cmd.ExecuteNonQuery();
-                        cnn.Close();
 
-                        return i > 0;
-                    }
-          
-                
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cnn.Open();
+
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+
+
             }
         }
         public DataTable search(String role, String username, String fullName, String phone)
@@ -320,7 +319,6 @@ namespace QuanLyCuaHangBanDienThoai
 
         public int login(String username, String password)
         {
-            
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 String sql = "SELECT * FROM showAllAccount WHERE [Tên đăng nhập] = N'" + username + "'";
@@ -336,18 +334,15 @@ namespace QuanLyCuaHangBanDienThoai
                                 return 0; //Tên đăng nhập không tồn tại
                             else
                             {
-                                
                                 foreach (DataRow dr in dt.Rows)
                                 {
                                     //lock 1p khi đn quá 3 lần
-
                                     if (dr["Trạng thái"].Equals("Khóa"))
                                     {
-                                        if(DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse( checkLasttimeLogin(username)))<=0)
+                                        if (DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse(checkLasttimeLogin(username))) <= 0)
                                         {
                                             /*MessageBox.Show(DateTime.Now.AddMinutes(-1).ToString());
                                             MessageBox.Show(checkLasttimeLogin(username).ToString());*/
-
                                             changeStatus(username, 1);
                                             if (dr["Mật khẩu"].Equals(password))
                                             {
@@ -356,7 +351,6 @@ namespace QuanLyCuaHangBanDienThoai
                                                 return 1; //Đúng mật khẩu và tên đăng nhập
                                             }
                                         }
-                                            
                                         return 3; //tài khoản bị khóa
                                     }
                                     else if (dr["Mật khẩu"].Equals(password))

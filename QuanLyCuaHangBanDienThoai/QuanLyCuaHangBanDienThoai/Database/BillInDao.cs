@@ -111,6 +111,25 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
+        public bool deletePhoneInDetailBillIn(int billInId, String phoneId)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "deletePhoneInDetailBillIn";
+                    cmd.Parameters.AddWithValue("@billInId", billInId);
+                    cmd.Parameters.AddWithValue("@phoneId", phoneId);
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
         public int getIdMax()
         {
             using (SqlConnection cnn = new SqlConnection(constr))

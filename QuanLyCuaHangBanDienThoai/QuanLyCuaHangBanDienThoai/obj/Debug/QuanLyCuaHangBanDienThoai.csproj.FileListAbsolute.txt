@@ -123,7 +123,6 @@ D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCu
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.csproj.AssemblyReference.cache
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.BanHang.resources
-D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.BaoCao.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Login.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Properties.Resources.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuanLy.resources
@@ -149,3 +148,4 @@ C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHa
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuenMK.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuenMK.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongkeHoaDon.resources
+D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongkeHoaDon.resources

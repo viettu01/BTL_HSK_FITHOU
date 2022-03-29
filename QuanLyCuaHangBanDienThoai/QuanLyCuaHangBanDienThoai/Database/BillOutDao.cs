@@ -92,26 +92,26 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
-        public bool updateBillOut(int billInId, String phoneId, double price, int quantity)
-        {
-            using (SqlConnection cnn = new SqlConnection(constr))
-            {
-                using (SqlCommand cmd = cnn.CreateCommand())
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "updateBillIn";
-                    cmd.Parameters.AddWithValue("@billInId", billInId);
-                    cmd.Parameters.AddWithValue("@phoneId", phoneId);
-                    cmd.Parameters.AddWithValue("@price", price);
-                    cmd.Parameters.AddWithValue("@quantity", quantity);
-                    cnn.Open();
-                    int i = cmd.ExecuteNonQuery();
-                    cnn.Close();
+        //public bool updateBillOut(int billInId, String phoneId, double price, int quantity)
+        //{
+        //    using (SqlConnection cnn = new SqlConnection(constr))
+        //    {
+        //        using (SqlCommand cmd = cnn.CreateCommand())
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.CommandText = "updateBillIn";
+        //            cmd.Parameters.AddWithValue("@billInId", billInId);
+        //            cmd.Parameters.AddWithValue("@phoneId", phoneId);
+        //            cmd.Parameters.AddWithValue("@price", price);
+        //            cmd.Parameters.AddWithValue("@quantity", quantity);
+        //            cnn.Open();
+        //            int i = cmd.ExecuteNonQuery();
+        //            cnn.Close();
 
-                    return i > 0;
-                }
-            }
-        }
+        //            return i > 0;
+        //        }
+        //    }
+        //}
 
         public bool deleteById(int id)
         {
@@ -120,8 +120,8 @@ namespace QuanLyCuaHangBanDienThoai
                 using (SqlCommand cmd = cnn.CreateCommand())
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "deleteBillIn";
-                    cmd.Parameters.AddWithValue("@billInId", id);
+                    cmd.CommandText = "deleteBillOut";
+                    cmd.Parameters.AddWithValue("@billOutId", id);
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
@@ -130,6 +130,26 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
+
+        public bool deletePhoneInDetailBillOut(int billOutId, String phoneId)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "deletePhoneInDetailBillOut";
+                    cmd.Parameters.AddWithValue("@billOutId", billOutId);
+                    cmd.Parameters.AddWithValue("@phoneId", phoneId);
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+
+                    return i > 0;
+                }
+            }
+        }
+
 
         public int getIdMax()
         {
