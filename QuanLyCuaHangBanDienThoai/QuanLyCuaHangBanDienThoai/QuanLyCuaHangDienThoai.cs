@@ -87,5 +87,13 @@ namespace QuanLyCuaHangBanDienThoai
             doiMatKhau.MdiParent = this;
             doiMatKhau.Show();
         }
+
+        private void ToolStripMenuItemHoaDon_Click(object sender, EventArgs e)
+        {
+            ThongkeHoaDon thongkeHoaDon = new ThongkeHoaDon();
+            thongkeHoaDon.MdiParent = this;
+            thongkeHoaDon.Dock = DockStyle.Fill;
+            thongkeHoaDon.Show();
+        }
     }
 }

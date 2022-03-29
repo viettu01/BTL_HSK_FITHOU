@@ -52,6 +52,8 @@ namespace QuanLyCuaHangBanDienThoai
             {
                 new QuanLyCuaHangDienThoai().Show();
                 this.Hide();
+                accountDao.insertDetail(Int32.Parse( accountDao.checkID(username)));
+
             }
 
             if (accountDao.login(username, password) == 3)
@@ -68,6 +70,8 @@ namespace QuanLyCuaHangBanDienThoai
                 errorProviderLogin.SetError(tbTenDangNhap, "Tên đăng nhập không tồn tại");
             else
                 errorProviderLogin.SetError(tbTenDangNhap, "");
+
+            MessageBox.Show(accountDao.checkID(username));
         }
 
         private void lbQuenMK_Click(object sender, EventArgs e)

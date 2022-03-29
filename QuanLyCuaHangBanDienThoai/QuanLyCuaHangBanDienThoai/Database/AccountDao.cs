@@ -9,7 +9,7 @@ namespace QuanLyCuaHangBanDienThoai
     class AccountDao
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
-
+        string accountId;
         public DataTable findAll()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -48,6 +48,25 @@ namespace QuanLyCuaHangBanDienThoai
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
 
+                    return i > 0;
+                }
+            }
+        }
+
+        public bool insertDetail(int id)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = cnn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "insertDetailAccount";
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cnn.Open();
+                    int i = cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    MessageBox.Show("Ngon");
                     return i > 0;
                 }
             }
@@ -181,6 +200,28 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
             return false;
+        }
+
+        public string checkID(string username)
+        {
+           
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand("select id from tblAccount where username = N'" + username + "'", cnn))
+                {
+                    cnn.Open();
+                    using (SqlDataReader rd = cmd.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                           accountId = rd["id"].ToString();
+                        }
+                        rd.Close();
+                    }
+                    cnn.Close();
+                }
+            }
+            return accountId;
         }
 
         public bool changePassword(int id, String password)

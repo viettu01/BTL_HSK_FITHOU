@@ -72,9 +72,9 @@ namespace QuanLyCuaHangBanDienThoai
             this.groupBox1.Controls.Add(this.panel7);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 9);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(718, 278);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
@@ -101,7 +101,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel7.Controls.Add(this.label22);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(2, 18);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(714, 258);
             this.panel7.TabIndex = 16;
@@ -115,7 +115,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnLamMoi.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLamMoi.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnLamMoi.Location = new System.Drawing.Point(66, 226);
-            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLamMoi.Margin = new System.Windows.Forms.Padding(2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(114, 31);
             this.btnLamMoi.TabIndex = 24;
@@ -127,7 +127,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.tbTenKH.Enabled = false;
             this.tbTenKH.Location = new System.Drawing.Point(64, 46);
-            this.tbTenKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbTenKH.Margin = new System.Windows.Forms.Padding(2);
             this.tbTenKH.Name = "tbTenKH";
             this.tbTenKH.Size = new System.Drawing.Size(244, 23);
             this.tbTenKH.TabIndex = 1;
@@ -147,7 +147,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.cbSDTKH.FormattingEnabled = true;
             this.cbSDTKH.Location = new System.Drawing.Point(64, 2);
-            this.cbSDTKH.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSDTKH.Margin = new System.Windows.Forms.Padding(2);
             this.cbSDTKH.Name = "cbSDTKH";
             this.cbSDTKH.Size = new System.Drawing.Size(244, 25);
             this.cbSDTKH.TabIndex = 1;
@@ -174,7 +174,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThanhToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThanhToan.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThanhToan.Location = new System.Drawing.Point(598, 226);
-            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThanhToan.Margin = new System.Windows.Forms.Padding(2);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(114, 31);
             this.btnThanhToan.TabIndex = 5;
@@ -189,7 +189,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lbTongTien);
             this.panel1.Location = new System.Drawing.Point(314, 202);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(398, 20);
             this.panel1.TabIndex = 18;
@@ -236,7 +236,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.Column5});
             this.dtgvDSDT.EnableHeadersVisualStyles = false;
             this.dtgvDSDT.Location = new System.Drawing.Point(314, 2);
-            this.dtgvDSDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtgvDSDT.Margin = new System.Windows.Forms.Padding(2);
             this.dtgvDSDT.Name = "dtgvDSDT";
             this.dtgvDSDT.RowHeadersVisible = false;
             this.dtgvDSDT.RowHeadersWidth = 51;
@@ -303,7 +303,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.cbMaDT.FormattingEnabled = true;
             this.cbMaDT.Location = new System.Drawing.Point(64, 91);
-            this.cbMaDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbMaDT.Margin = new System.Windows.Forms.Padding(2);
             this.cbMaDT.Name = "cbMaDT";
             this.cbMaDT.Size = new System.Drawing.Size(244, 25);
             this.cbMaDT.TabIndex = 2;
@@ -313,7 +313,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.tbGiaBan.Enabled = false;
             this.tbGiaBan.Location = new System.Drawing.Point(64, 185);
-            this.tbGiaBan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGiaBan.Margin = new System.Windows.Forms.Padding(2);
             this.tbGiaBan.Name = "tbGiaBan";
             this.tbGiaBan.Size = new System.Drawing.Size(117, 23);
             this.tbGiaBan.TabIndex = 14;
@@ -322,7 +322,7 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.tbDacDiem.Enabled = false;
             this.tbDacDiem.Location = new System.Drawing.Point(64, 139);
-            this.tbDacDiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbDacDiem.Margin = new System.Windows.Forms.Padding(2);
             this.tbDacDiem.Name = "tbDacDiem";
             this.tbDacDiem.Size = new System.Drawing.Size(244, 23);
             this.tbDacDiem.TabIndex = 2;
@@ -346,7 +346,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.btnThemDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemDT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnThemDT.Location = new System.Drawing.Point(193, 226);
-            this.btnThemDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemDT.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemDT.Name = "btnThemDT";
             this.btnThemDT.Size = new System.Drawing.Size(114, 31);
             this.btnThemDT.TabIndex = 4;
@@ -368,7 +368,7 @@ namespace QuanLyCuaHangBanDienThoai
             // nudSoLuong
             // 
             this.nudSoLuong.Location = new System.Drawing.Point(264, 185);
-            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nudSoLuong.Margin = new System.Windows.Forms.Padding(2);
             this.nudSoLuong.Minimum = new decimal(new int[] {
             1,
             0,
@@ -403,7 +403,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Location = new System.Drawing.Point(10, 288);
-            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(2);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.Size = new System.Drawing.Size(718, 258);
             this.crystalReportViewer1.TabIndex = 19;
@@ -417,7 +417,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.Controls.Add(this.crystalReportViewer1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BanHang";
             this.Text = "Bán hàng";
             this.Load += new System.EventHandler(this.BanHang_Load);

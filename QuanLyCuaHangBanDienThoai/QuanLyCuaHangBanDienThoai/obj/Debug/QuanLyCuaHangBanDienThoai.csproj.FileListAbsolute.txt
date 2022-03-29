@@ -55,7 +55,6 @@ C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHa
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\bin\Debug\stdole.dll
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.csproj.AssemblyReference.cache
-C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.BaoCao.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Login.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Properties.Resources.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuanLy.resources
@@ -145,8 +144,8 @@ D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCu
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.BanHang.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.DoiMatKhau.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.Thongke.resources
-C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeDoanhThu.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeNhanvien.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongKeSLĐT.resources
 C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuenMK.resources
 D:\FITHOU\Hướng sự kiện\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.QuenMK.resources
+C:\Users\Admin\source\repos\BTL_HSK_FITHOU\QuanLyCuaHangBanDienThoai\QuanLyCuaHangBanDienThoai\obj\Debug\QuanLyCuaHangBanDienThoai.ThongkeHoaDon.resources

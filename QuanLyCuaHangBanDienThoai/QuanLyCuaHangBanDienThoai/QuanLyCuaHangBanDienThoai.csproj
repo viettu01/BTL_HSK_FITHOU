@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrytalReport\ThongkeHĐ.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThongkeHĐ.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Database\AccountDao.cs" />
     <Compile Include="BanHang.cs">
       <SubType>Form</SubType>
@@ -174,6 +180,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Database\CustomerDao.cs" />
+    <Compile Include="ThongkeHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongkeHoaDon.Designer.cs">
+      <DependentUpon>ThongkeHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuenMK.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +237,10 @@
     </Compile>
     <EmbeddedResource Include="BanHang.resx">
       <DependentUpon>BanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrytalReport\ThongkeHĐ.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ThongkeHĐ.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DoiMatKhau.resx">
       <DependentUpon>DoiMatKhau.cs</DependentUpon>
@@ -304,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyCuaHangDienThoai.resx">
       <DependentUpon>QuanLyCuaHangDienThoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongkeHoaDon.resx">
+      <DependentUpon>ThongkeHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ThongKeNhanvien.resx">
       <DependentUpon>ThongKeNhanvien.cs</DependentUpon>

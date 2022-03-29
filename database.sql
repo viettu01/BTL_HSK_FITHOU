@@ -20,7 +20,7 @@ CREATE TABLE tblAccount
 	birthday DATETIME NULL
 );
 alter table tblAccount add  status int
-
+select id from tblAccount where username=N'NV01'
 select * from tblAccount
 --BẢNG KHÁCH HÀNG--
 CREATE TABLE tblCustomer
@@ -80,6 +80,11 @@ CREATE TABLE tblDetailBillOut
 );
 ALTER TABLE tblDetailBillOut ADD CONSTRAINT PK_tblChiTietXuat PRIMARY KEY(billOutId, phoneId)
 
+create table tblDetailAccount
+(
+	accountId INT FOREIGN KEY REFERENCES dbo.tblAccount(id) NOT NULL,
+	loginAt DATETIME NOT NULL 
+);
 
 GO
 --View xem danh sách nhà sản xuất
@@ -170,7 +175,17 @@ BEGIN
 	INSERT INTO dbo.tblAccount (role, username, password, fullName, phone, birthday,status)
 	VALUES (@role, @username, @password, @fullName, @phone, @birthday,1)
 END
+--thủ tục thêm chi tiết đăng nhập tài khoản
 
+go
+Create PROC insertDetailAccount 
+(@id int)
+AS
+BEGIN
+	INSERT INTO dbo.tblDetailAccount (accountId,loginAt)
+	VALUES (@id,GETDATE())
+END
+exec insertDetailAccount @id=1
 GO
 --Thủ tục xóa tài khoản theo id
 CREATE PROC deleteAccountById (@id INT)
@@ -468,6 +483,15 @@ group by YEAR(tblBillOut.createdAt) ,MONTH(tblBillOut.createdAt)
 
 order by sum(tblPhone.price*tblDetailBillOut.quantity) desc
 select distinct [Năm] from TKĐT
+
+--thống kê slđn củ nhân viên
+select YEAR(tblDetailAccount.loginAt) AS [Năm],MONTH(tblDetailAccount.loginAt) as[Tháng], accountId as [Mã],COUNT( accountId) as[Sl]
+from tblDetailAccount join tblAccount on tblAccount.id=tblDetailAccount.accountId
+group by YEAR(tblDetailAccount.loginAt) ,MONTH(tblDetailAccount.loginAt) ,accountId
+
+
+
+
 /*select * from TKĐT
 WHERE [Năm] like '%2022%' and [Tháng]like'%%'
 order by [Doanh thu] desc
