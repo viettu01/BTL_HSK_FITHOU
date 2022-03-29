@@ -20,6 +20,10 @@ CREATE TABLE tblAccount
 	birthday DATETIME NULL
 );
 alter table tblAccount add  status int
+alter table tblAccount add  lastloginat datetime
+
+
+
 select id from tblAccount where username=N'NV01'
 select * from tblAccount
 --BẢNG KHÁCH HÀNG--
@@ -172,12 +176,16 @@ alter PROC insertAccount (@role NVARCHAR(20), @username NVARCHAR(50), @password 
 							@fullName NVARCHAR(30), @phone VARCHAR(12), @birthday DATETIME)
 AS
 BEGIN
-	INSERT INTO dbo.tblAccount (role, username, password, fullName, phone, birthday,status)
-	VALUES (@role, @username, @password, @fullName, @phone, @birthday,1)
+	INSERT INTO dbo.tblAccount (role, username, password, fullName, phone, birthday,status,lastloginat)
+	VALUES (@role, @username, @password, @fullName, @phone, @birthday,1,GETDATE())
 END
+
+update tblAccount set lastloginat= '3/29/2022 4:45:00 PM' WHERE username =N'admin'
+
+
 --thủ tục thêm chi tiết đăng nhập tài khoản
 
-go
+
 Create PROC insertDetailAccount 
 (@id int)
 AS

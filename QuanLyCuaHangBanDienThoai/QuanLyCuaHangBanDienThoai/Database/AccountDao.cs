@@ -9,7 +9,7 @@ namespace QuanLyCuaHangBanDienThoai
     class AccountDao
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
-        string accountId;
+        string accountId,lasttimelogin;
         public DataTable findAll()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -66,11 +66,12 @@ namespace QuanLyCuaHangBanDienThoai
                     cnn.Open();
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
-                    MessageBox.Show("Ngon");
+                  
                     return i > 0;
                 }
             }
         }
+
 
         public bool update(int id, String role, String username, String password, String fullName, String phone, DateTime birthday)
         {
@@ -202,26 +203,28 @@ namespace QuanLyCuaHangBanDienThoai
             return false;
         }
 
-        public string checkID(string username)
+
+
+        public string checkLasttimeLogin(String username)
         {
-           
+
             using (SqlConnection cnn = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("select id from tblAccount where username = N'" + username + "'", cnn))
+                using (SqlCommand cmd = new SqlCommand("select lastloginat from tblAccount where username = N'" + username + "'", cnn))
                 {
                     cnn.Open();
                     using (SqlDataReader rd = cmd.ExecuteReader())
                     {
                         while (rd.Read())
                         {
-                           accountId = rd["id"].ToString();
+                            lasttimelogin = rd["lastloginat"].ToString();
                         }
                         rd.Close();
                     }
                     cnn.Close();
                 }
             }
-            return accountId;
+            return lasttimelogin;
         }
 
         public bool changePassword(int id, String password)
@@ -260,7 +263,7 @@ namespace QuanLyCuaHangBanDienThoai
         {
             using (SqlConnection cnn = new SqlConnection(constr))
             {
-                String sql = "UPDATE dbo.tblAccount SET status = " +status+ " WHERE username = '" + username+"'";
+                String sql = "UPDATE dbo.tblAccount SET status = " +status+ " WHERE username = N'" + username+"'";
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cnn.Open();
@@ -272,6 +275,25 @@ namespace QuanLyCuaHangBanDienThoai
             }
         }
 
+        public bool changeLastTimeLogin(string username)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "UPDATE dbo.tblAccount SET lastloginat = '" + DateTime.Now + "' WHERE username = N'" + username + "'";
+               
+                    using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                    {
+                        cnn.Open();
+                   
+                        int i = cmd.ExecuteNonQuery();
+                        cnn.Close();
+
+                        return i > 0;
+                    }
+          
+                
+            }
+        }
         public DataTable search(String role, String username, String fullName, String phone)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -298,6 +320,7 @@ namespace QuanLyCuaHangBanDienThoai
 
         public int login(String username, String password)
         {
+            
             using (SqlConnection cnn = new SqlConnection(constr))
             {
                 String sql = "SELECT * FROM showAllAccount WHERE [Tên đăng nhập] = N'" + username + "'";
@@ -313,13 +336,30 @@ namespace QuanLyCuaHangBanDienThoai
                                 return 0; //Tên đăng nhập không tồn tại
                             else
                             {
+                                
                                 foreach (DataRow dr in dt.Rows)
                                 {
+                                    //lock 1p khi đn quá 3 lần
+
                                     if (dr["Trạng thái"].Equals("Khóa"))
                                     {
+                                        if(DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse( checkLasttimeLogin(username)))<=0)
+                                        {
+                                            /*MessageBox.Show(DateTime.Now.AddMinutes(-1).ToString());
+                                            MessageBox.Show(checkLasttimeLogin(username).ToString());*/
+
+                                            changeStatus(username, 1);
+                                            if (dr["Mật khẩu"].Equals(password))
+                                            {
+                                                Program.accountId = int.Parse(dr["ID"].ToString());
+                                                Program.role = dr["Quyền"].ToString();
+                                                return 1; //Đúng mật khẩu và tên đăng nhập
+                                            }
+                                        }
+                                            
                                         return 3; //tài khoản bị khóa
-                                    }    
-                                    else if(dr["Mật khẩu"].Equals(password))
+                                    }
+                                    else if (dr["Mật khẩu"].Equals(password))
                                     {
                                         Program.accountId = int.Parse(dr["ID"].ToString());
                                         Program.role = dr["Quyền"].ToString();

@@ -26,6 +26,8 @@ namespace QuanLyCuaHangBanDienThoai
             String username = tbTenDangNhap.Text;
             String password = tbMatKhau.Text;
 
+            accountDao.changeLastTimeLogin(username);
+
             if (accountDao.login(username, password) == 0)
                 errorProviderLogin.SetError(tbTenDangNhap, "Tên đăng nhập không tồn tại");
             else
@@ -43,7 +45,7 @@ namespace QuanLyCuaHangBanDienThoai
             if (dem > 3)
             {
                 accountDao.changeStatus(tbTenDangNhap.Text, 0);
-                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu");
+                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu 1");
 
                 return;
             }
@@ -52,12 +54,14 @@ namespace QuanLyCuaHangBanDienThoai
             {
                 new QuanLyCuaHangDienThoai().Show();
                 this.Hide();
-                accountDao.insertDetail(Int32.Parse( accountDao.checkID(username)));
+                accountDao.insertDetail(Program.accountId);
+                
+                
 
             }
 
             if (accountDao.login(username, password) == 3)
-                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu");
+                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu 2");
         }
 
         private void tbTenDangNhap_Validating(object sender, CancelEventArgs e)
@@ -71,7 +75,7 @@ namespace QuanLyCuaHangBanDienThoai
             else
                 errorProviderLogin.SetError(tbTenDangNhap, "");
 
-            MessageBox.Show(accountDao.checkID(username));
+           
         }
 
         private void lbQuenMK_Click(object sender, EventArgs e)
