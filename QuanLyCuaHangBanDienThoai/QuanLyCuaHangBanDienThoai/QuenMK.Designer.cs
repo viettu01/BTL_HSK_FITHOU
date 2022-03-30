@@ -45,41 +45,46 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             // tbTênĐN
             // 
-            this.tbTênĐN.Location = new System.Drawing.Point(143, 23);
+            this.tbTênĐN.Location = new System.Drawing.Point(191, 28);
+            this.tbTênĐN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbTênĐN.Name = "tbTênĐN";
-            this.tbTênĐN.Size = new System.Drawing.Size(134, 20);
+            this.tbTênĐN.Size = new System.Drawing.Size(177, 22);
             this.tbTênĐN.TabIndex = 0;
             this.tbTênĐN.Validating += new System.ComponentModel.CancelEventHandler(this.tbTênĐN_Validating_1);
             // 
             // tbSDT
             // 
-            this.tbSDT.Location = new System.Drawing.Point(143, 63);
+            this.tbSDT.Location = new System.Drawing.Point(191, 78);
+            this.tbSDT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbSDT.Name = "tbSDT";
-            this.tbSDT.Size = new System.Drawing.Size(134, 20);
+            this.tbSDT.Size = new System.Drawing.Size(177, 22);
             this.tbSDT.TabIndex = 1;
             this.tbSDT.Validating += new System.ComponentModel.CancelEventHandler(this.txSDT_Validating);
             // 
             // tbMKm
             // 
-            this.tbMKm.Location = new System.Drawing.Point(143, 105);
+            this.tbMKm.Location = new System.Drawing.Point(191, 129);
+            this.tbMKm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMKm.Name = "tbMKm";
-            this.tbMKm.Size = new System.Drawing.Size(134, 20);
+            this.tbMKm.Size = new System.Drawing.Size(177, 22);
             this.tbMKm.TabIndex = 2;
             this.tbMKm.Validating += new System.ComponentModel.CancelEventHandler(this.tbMKm_Validating);
             // 
             // tbMKml
             // 
-            this.tbMKml.Location = new System.Drawing.Point(143, 155);
+            this.tbMKml.Location = new System.Drawing.Point(191, 191);
+            this.tbMKml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMKml.Name = "tbMKml";
-            this.tbMKml.Size = new System.Drawing.Size(134, 20);
+            this.tbMKml.Size = new System.Drawing.Size(177, 22);
             this.tbMKml.TabIndex = 3;
             this.tbMKml.Validating += new System.ComponentModel.CancelEventHandler(this.tbMKml_Validating);
             // 
             // btnDoiMK
             // 
-            this.btnDoiMK.Location = new System.Drawing.Point(143, 204);
+            this.btnDoiMK.Location = new System.Drawing.Point(191, 251);
+            this.btnDoiMK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDoiMK.Name = "btnDoiMK";
-            this.btnDoiMK.Size = new System.Drawing.Size(134, 23);
+            this.btnDoiMK.Size = new System.Drawing.Size(179, 28);
             this.btnDoiMK.TabIndex = 4;
             this.btnDoiMK.Text = "Đổi mât khẩu";
             this.btnDoiMK.UseVisualStyleBackColor = true;
@@ -93,9 +98,10 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(86, 112);
+            this.label1.Location = new System.Drawing.Point(115, 132);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(66, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "Mật khẩu";
             // 
@@ -103,9 +109,10 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(86, 30);
+            this.label2.Location = new System.Drawing.Point(115, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Tên ĐN:";
             // 
@@ -113,9 +120,10 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(86, 70);
+            this.label3.Location = new System.Drawing.Point(115, 81);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.Size = new System.Drawing.Size(40, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "SĐT:";
             // 
@@ -123,17 +131,18 @@ namespace QuanLyCuaHangBanDienThoai
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(86, 162);
+            this.label4.Location = new System.Drawing.Point(115, 194);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Nhập lại:";
             // 
             // QuenMK
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(764, 450);
+            this.ClientSize = new System.Drawing.Size(1019, 554);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -144,6 +153,7 @@ namespace QuanLyCuaHangBanDienThoai
             this.Controls.Add(this.tbSDT);
             this.Controls.Add(this.tbTênĐN);
             this.ForeColor = System.Drawing.Color.Black;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "QuenMK";
             this.Text = "Quên mật khẩu";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

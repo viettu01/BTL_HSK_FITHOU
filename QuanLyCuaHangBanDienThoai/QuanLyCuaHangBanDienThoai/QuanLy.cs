@@ -152,9 +152,10 @@ namespace QuanLyCuaHangBanDienThoai
             btnSuaDT.Visible = false;
             btnXoaDT.Visible = false;
 
-            lbGiaMin.Visible = true;
-            lbGiaMax.Visible = true;
-            mtbGiaMax.Visible = true;
+            //Tìm kiếm theo khoảng giá
+            //lbGiaMin.Visible = true;
+            //lbGiaMax.Visible = true;
+            //mtbGiaMax.Visible = true;
 
             btnLuuDT.Text = "Tìm";
         }
@@ -603,10 +604,8 @@ namespace QuanLyCuaHangBanDienThoai
             btnTimKiemNV.Visible = false;
             btnThemNV.Visible = false;
             btnXoaNV.Visible = false;
-            btnMoK.Visible = true;
+            //btnMoK.Visible = true;
             btnLuuDT.Text = "Lưu";
-
-           
         }
 
         private void btnXoaNV_Click(object sender, EventArgs e)
@@ -641,6 +640,11 @@ namespace QuanLyCuaHangBanDienThoai
 
             btnLuuNV.Text = "Tìm";
             btnMoK.Visible = false;
+        }
+
+        private void btnTimKiemNamSinh_Click(object sender, EventArgs e)
+        {
+            loadDataToDataGridView(dtgvNV, accountDao.searchBirthday(tbStartYear.Text, tbEndYear.Text));
         }
 
         private void btnLamMoiNV_Click(object sender, EventArgs e)
@@ -1000,15 +1004,19 @@ namespace QuanLyCuaHangBanDienThoai
             }
             String[] row = new string[] { cbMaDT.Text, namePhone, nudSoLuong.Value.ToString(), tbGiaNhap.Text };
             dtgvDSDTC.Rows.Add(row);
-            for (int i = 0; i < dtgvDSDTC.Rows.Count - 1; i++)
-            {
-                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                dtgvDSDTC[4, i] = linkCell;
-                dtgvDSDTC[4, i].Value = "Delete";
-            }
+
+            //Tạo nut delete sản phẩm trong bảng chờ
+            //for (int i = 0; i < dtgvDSDTC.Rows.Count - 1; i++)
+            //{
+            //    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+            //    dtgvDSDTC[4, i] = linkCell;
+            //    dtgvDSDTC[4, i].Value = "Delete";
+            //}
+
             //dtgvDSDTC.Rows[e.RowIndex].Cells[4].Value = "Delete";
         }
 
+        //Hàm thực hiện chức năng xóa sản phẩm
         private void dtgvDSDTC_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4)
@@ -1044,7 +1052,7 @@ namespace QuanLyCuaHangBanDienThoai
             btnThemHDN.Enabled = false;
 
             btnTimKiemHDN.Visible = false;
-            btnSuaHDN.Visible = false;
+            //btnSuaHDN.Visible = false;
             btnXoaHDN.Visible = false;
 
             btnLuuHDN.Text = "Lưu";
@@ -1061,7 +1069,7 @@ namespace QuanLyCuaHangBanDienThoai
             btnLamMoiHDN.Enabled = true;
 
             btnThemHDN.Enabled = false;
-            btnSuaHDN.Enabled = false;
+            //btnSuaHDN.Enabled = false;
 
             btnTimKiemHDN.Visible = false;
             btnThemHDN.Visible = false;
@@ -1081,7 +1089,7 @@ namespace QuanLyCuaHangBanDienThoai
             btnLuuHDN.Enabled = true;
             btnLamMoiHDN.Enabled = true;
 
-            btnSuaHDN.Visible = false;
+            //btnSuaHDN.Visible = false;
             btnThemHDN.Visible = false;
             btnXoaHDN.Visible = false;
 
@@ -1137,22 +1145,23 @@ namespace QuanLyCuaHangBanDienThoai
                             MessageBox.Show("Thêm hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else if (btnSuaHDN.Visible == true)
-                {
-                    bool check = false;
+                //Sủa số lượng hoặc đơn giá của sản phẩm trong chi tiết hóa đơn
+                //else if (btnSuaHDN.Visible == true)
+                //{
+                //    bool check = false;
 
-                    for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
-                    {
-                        String phoneId = dtgvDSDTC.Rows[rows].Cells[0].Value.ToString();
-                        int quantity = int.Parse(dtgvDSDTC.Rows[rows].Cells[2].Value.ToString());
-                        double price = double.Parse(dtgvDSDTC.Rows[rows].Cells[3].Value.ToString());
+                //    for (int rows = 0; rows < dtgvDSDTC.Rows.Count - 1; rows++)
+                //    {
+                //        String phoneId = dtgvDSDTC.Rows[rows].Cells[0].Value.ToString();
+                //        int quantity = int.Parse(dtgvDSDTC.Rows[rows].Cells[2].Value.ToString());
+                //        double price = double.Parse(dtgvDSDTC.Rows[rows].Cells[3].Value.ToString());
 
-                        check = billInDao.updateBillIn(idBillIn, phoneId, price, quantity);
-                    }
+                //        check = billInDao.updateBillIn(idBillIn, phoneId, price, quantity);
+                //    }
 
-                    if (check)
-                        MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                //    if (check)
+                //        MessageBox.Show("Sửa hóa đơn thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
                 QuanLy_Load(sender, e);
             }
         }
@@ -1180,12 +1189,12 @@ namespace QuanLyCuaHangBanDienThoai
 
             btnTimKiemHDN.Visible = true;
             btnThemHDN.Visible = true;
-            btnSuaHDN.Visible = true;
+            //btnSuaHDN.Visible = true;
             btnXoaHDN.Visible = true;
 
             btnTimKiemHDN.Enabled = true;
             btnThemHDN.Enabled = true;
-            btnSuaHDN.Enabled = false;
+            //btnSuaHDN.Enabled = false;
             btnXoaHDN.Enabled = false;
             btnLuuHDN.Enabled = false;
             btnLamMoiHDN.Enabled = false;
@@ -1238,18 +1247,19 @@ namespace QuanLyCuaHangBanDienThoai
                 dtgvDSDTC.Rows.Add(row);
             }
 
-            for (int i = 0; i < billInDao.getAllDetailBillIn(idBillIn).Rows.Count; i++)
-            {
-                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                dtgvDSDTC[4, i] = linkCell;
-                dtgvDSDTC[4, i].Value = "Delete";
-            }
+            //Tạo nut delete xóa sản phẩm trong chi tiết hóa đơn
+            //for (int i = 0; i < billInDao.getAllDetailBillIn(idBillIn).Rows.Count; i++)
+            //{
+            //    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+            //    dtgvDSDTC[4, i] = linkCell;
+            //    dtgvDSDTC[4, i].Value = "Delete";
+            //}
 
             checkDeletePhoneBillIn = true;
 
             btnLamMoiHDN.Enabled = true;
             btnXoaHDN.Enabled = true;
-            btnSuaHDN.Enabled = true;
+            //btnSuaHDN.Enabled = true;
         }
         #endregion
 
@@ -1291,12 +1301,13 @@ namespace QuanLyCuaHangBanDienThoai
                 dtgvDTHDX.Rows.Add(row);
             }
 
-            for (int i = 0; i < billOutDao.getAllDetailBillOut(idBillOut).Rows.Count; i++)
-            {
-                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                dtgvDTHDX[6, i] = linkCell;
-                dtgvDTHDX[6, i].Value = "Delete";
-            }
+            //Tạo nút delete xóa sản phẩm trong chi tiết hóa đơn xuất
+            //for (int i = 0; i < billOutDao.getAllDetailBillOut(idBillOut).Rows.Count; i++)
+            //{
+            //    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+            //    dtgvDTHDX[6, i] = linkCell;
+            //    dtgvDTHDX[6, i].Value = "Delete";
+            //}
 
             checkDeletePhoneBillOut = true;
 

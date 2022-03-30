@@ -73,15 +73,18 @@ namespace QuanLyCuaHangBanDienThoai
 
                 if (cbSDTKH.Text != "" && nameCustomer == "")
                 {
-                    DialogResult dialogResult = MessageBox.Show("Khách hàng chưa có trong danh sách. Mời bạn thêm mới.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.OK)
-                    {
-                        QuanLy quanLy = new QuanLy();
-                        quanLy.tabControl1.SelectedIndex = 3;
-                        quanLy.mtbSDTKH.Text = cbSDTKH.Text;
-                        quanLy.btnThemKH_Click(sender, e);
-                        quanLy.Show();
-                    }
+                    MessageBox.Show("Khách hàng chưa có trong danh sách. Mời bạn thêm mới.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    //Tụ chuyển hướng khi không có khách hàng
+                    //DialogResult dialogResult = MessageBox.Show("Khách hàng chưa có trong danh sách. Mời bạn thêm mới.", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    //if (dialogResult == DialogResult.OK)
+                    //{
+                    //    QuanLy quanLy = new QuanLy();
+                    //    quanLy.tabControl1.SelectedIndex = 3;
+                    //    quanLy.mtbSDTKH.Text = cbSDTKH.Text;
+                    //    quanLy.btnThemKH_Click(sender, e);
+                    //    quanLy.Show();
+                    //}
                 }
             }
         }
@@ -110,10 +113,11 @@ namespace QuanLyCuaHangBanDienThoai
                 }
                 tbDacDiem.Text = dacDiem;
                 tbGiaBan.Text = price;
-                if (quantity != "" && double.Parse(quantity) == 0) 
-                {
-                    MessageBox.Show("Sản phẩm đã hết. Vui lòng chọn sản phẩm khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+
+                //if (quantity != "" && double.Parse(quantity) == 0) 
+                //{
+                //    MessageBox.Show("Sản phẩm đã hết. Vui lòng chọn sản phẩm khác!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
             }
         }
 

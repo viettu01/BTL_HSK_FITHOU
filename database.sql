@@ -164,11 +164,27 @@ BEGIN
 END
 
 GO
---View xem danh sách tài khoản
+--View xem danh sách tài khoản có số lần đăng nhập
 alter VIEW showAllAccount
 AS
-	SELECT id AS [ID], role AS [Quyền], username AS [Tên đăng nhập], password AS [Mật khẩu], fullName AS [Họ tên], phone AS [SĐT], birthday AS [Ngày sinh],IIF(status=1,N'Bình thường',N'Khóa') as[Trạng thái]
-	FROM dbo.tblAccount
+	SELECT id AS [ID], role AS [Quyền], username AS [Tên đăng nhập], password AS [Mật khẩu], fullName AS [Họ tên], 
+			phone AS [SĐT], birthday AS [Ngày sinh], IIF(status=1, N'Bình thường', N'Khóa') AS [Trạng thái], 
+			ISNULL(COUNT(b.loginAt), 0) AS [Số lần đăng nhập]
+	FROM dbo.tblAccount a LEFT JOIN dbo.tblDetailAccount b ON b.accountId = a.id
+	GROUP BY IIF(status = 1, N'Bình thường', N'Khóa'),
+             a.role,
+             a.username,
+             a.password,
+             a.fullName,
+             a.phone,
+             a.birthday, a.id
+
+--View ban đầu 0 có số lần đăng nhập
+alter VIEW showAllAccount
+AS
+	SELECT id AS [ID], role AS [Quyền], username AS [Tên đăng nhập], password AS [Mật khẩu], fullName AS [Họ tên], 
+			phone AS [SĐT], birthday AS [Ngày sinh], IIF(status=1, N'Bình thường', N'Khóa') AS [Trạng thái]
+	FROM dbo.tblAccount 
 
 GO
 --Thủ tục thêm tài khoản
@@ -497,7 +513,11 @@ select YEAR(tblDetailAccount.loginAt) AS [Năm],MONTH(tblDetailAccount.loginAt) 
 from tblDetailAccount join tblAccount on tblAccount.id=tblDetailAccount.accountId
 group by YEAR(tblDetailAccount.loginAt) ,MONTH(tblDetailAccount.loginAt) ,accountId
 
-
+create view QuantityLoginOfAccount
+as
+	select  accountId as [Mã],tblDetailAccount.loginAt as[Thời gian],COUNT( accountId) as[Sl]
+	from tblDetailAccount join tblAccount on tblAccount.id=tblDetailAccount.accountId
+	group by accountId,tblDetailAccount.loginAt
 
 
 /*select * from TKĐT
@@ -517,3 +537,5 @@ select top(1) * from TKDT
 group by [Năm],[Tháng],[SLĐT bán],[Doanh thu]
 order by Max([Doanh thu]) desc*/
 
+GO
+SELECT * FROM dbo.showAllAccount WHERE ID = 1

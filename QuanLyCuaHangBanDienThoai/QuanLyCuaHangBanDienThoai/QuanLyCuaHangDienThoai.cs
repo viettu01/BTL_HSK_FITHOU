@@ -28,6 +28,9 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
 
+            //Hiện thị số lần đăng nhập của tài khoản đang đăng nhập
+            //label1.Text = "Số lần đăng nhập " + new AccountDao().showTime(Program.accountId);
+
             //if (Program.role.Equals("Nhân viên"))
             //{
             //    toolStripMenuItemQuanLy.Visible = false;

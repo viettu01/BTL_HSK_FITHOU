@@ -26,8 +26,6 @@ namespace QuanLyCuaHangBanDienThoai
             String username = tbTenDangNhap.Text;
             String password = tbMatKhau.Text;
 
-            accountDao.changeLastTimeLogin(username);
-
             if (accountDao.login(username, password) == 0)
                 errorProviderLogin.SetError(tbTenDangNhap, "Tên đăng nhập không tồn tại");
             else
@@ -42,23 +40,36 @@ namespace QuanLyCuaHangBanDienThoai
             else
                 errorProviderLogin.SetError(tbMatKhau, "");
 
-            if (dem > 3)
-            {
-                accountDao.changeStatus(tbTenDangNhap.Text, 0);
-                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu 1");
+            //Nhập quá 3 lần thì sẽ khóa tài khoản
+            //if (dem > 3)
+            //{
+            //    accountDao.changeStatus(tbTenDangNhap.Text, 0);
+            //    //MessageBox.Show("Tài khoản đã bị khóa, mời bạn liên hệ với admin để lấy lại mật khẩu");
+            //    MessageBox.Show("Bạn chờ 1 phút sau để đăng nhập vào chương trình");
+            //    dem = 0;
 
-                return;
-            }
+            //    return;
+            //}
+            //else if (dem == 3)
+            //{
+            //    accountDao.changeLastTimeLogin(username);
+            //}
 
             if (accountDao.login(username, password) == 1)
             {
+                accountDao.changeLastTimeLogin(username);
                 accountDao.insertDetail(Program.accountId);
+                //accountDao.changeStatus(tbTenDangNhap.Text, 1);
+                /*MessageBox.Show("đntc");*/
+
                 new QuanLyCuaHangDienThoai().Show();
                 this.Hide();
             }
-
-            if (accountDao.login(username, password) == 3)
-                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu 2");
+            else if (accountDao.login(username, password) == 3)
+            {
+                MessageBox.Show("Tài khoản đã bị khóa , mời bạn liên hệ với admin để lấy lại mật khẩu");
+                //MessageBox.Show("Bạn chờ 5 phút sau để đăng nhập vào chương trình");
+            }
         }
 
         private void tbTenDangNhap_Validating(object sender, CancelEventArgs e)
@@ -75,8 +86,9 @@ namespace QuanLyCuaHangBanDienThoai
 
         private void lbQuenMK_Click(object sender, EventArgs e)
         {
-            QuenMK quenMK = new QuenMK();
-            quenMK.Show();
+            MessageBox.Show("Vui lòng liên hệ với admin để lấy lại mật khẩu", "Thông báo");
+            //QuenMK quenMK = new QuenMK();
+            //quenMK.Show();
         }
     }
 }

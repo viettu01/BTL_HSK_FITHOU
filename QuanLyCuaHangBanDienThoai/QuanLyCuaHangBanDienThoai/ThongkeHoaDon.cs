@@ -82,5 +82,16 @@ namespace QuanLyCuaHangBanDienThoai
             dtpNgaytu.CustomFormat = " ";
             dtpNgayden.CustomFormat = " ";
         }
+
+        private void btnLoc_Click(object sender, EventArgs e)
+        {
+            ReportDocument rp = new ReportDocument();
+            String path = Path.GetFullPath(@"../../CrytalReport/ThongkeHĐ.rpt");
+            rp.Load(path);
+            rp.RecordSelectionFormula = "YEAR({FullDetailBillOut.Ngày lập}) = "+tbNam.Text+" AND MONTH({FullDetailBillOut.Ngày lập}) = " + tbThang.Text;
+
+            crvBill.ReportSource = rp;
+            crvBill.Refresh();
+        }
     }
 }

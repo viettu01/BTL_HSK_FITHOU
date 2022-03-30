@@ -9,7 +9,8 @@ namespace QuanLyCuaHangBanDienThoai
     class AccountDao
     {
         String constr = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
-        string lasttimelogin;
+        //string lasttimelogin;
+
         public DataTable findAll()
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -71,7 +72,6 @@ namespace QuanLyCuaHangBanDienThoai
                 }
             }
         }
-
 
         public bool update(int id, String role, String username, String password, String fullName, String phone, DateTime birthday)
         {
@@ -203,8 +203,6 @@ namespace QuanLyCuaHangBanDienThoai
             return false;
         }
 
-
-
         public string checkLasttimeLogin(String username)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -216,14 +214,16 @@ namespace QuanLyCuaHangBanDienThoai
                     {
                         while (rd.Read())
                         {
-                            lasttimelogin = rd["lastloginat"].ToString();
+                            //lasttimelogin = rd["lastloginat"].ToString();
+                            return rd["lastloginat"].ToString();
                         }
                         rd.Close();
                     }
                     cnn.Close();
                 }
             }
-            return lasttimelogin;
+            //return lasttimelogin;
+            return "";
         }
 
         public bool changePassword(int id, String password)
@@ -283,16 +283,14 @@ namespace QuanLyCuaHangBanDienThoai
                 using (SqlCommand cmd = new SqlCommand(sql, cnn))
                 {
                     cnn.Open();
-
                     int i = cmd.ExecuteNonQuery();
                     cnn.Close();
 
                     return i > 0;
                 }
-
-
             }
         }
+
         public DataTable search(String role, String username, String fullName, String phone)
         {
             using (SqlConnection cnn = new SqlConnection(constr))
@@ -339,18 +337,25 @@ namespace QuanLyCuaHangBanDienThoai
                                     //lock 1p khi đn quá 3 lần
                                     if (dr["Trạng thái"].Equals("Khóa"))
                                     {
-                                        if (DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse(checkLasttimeLogin(username))) <= 0)
-                                        {
-                                            /*MessageBox.Show(DateTime.Now.AddMinutes(-1).ToString());
-                                            MessageBox.Show(checkLasttimeLogin(username).ToString());*/
-                                            changeStatus(username, 1);
-                                            if (dr["Mật khẩu"].Equals(password))
-                                            {
-                                                Program.accountId = int.Parse(dr["ID"].ToString());
-                                                Program.role = dr["Quyền"].ToString();
-                                                return 1; //Đúng mật khẩu và tên đăng nhập
-                                            }
-                                        }
+                                        /*MessageBox.Show(DateTime.Now.AddMinutes(-1).ToString());
+                                        MessageBox.Show(checkLasttimeLogin(username).ToString());*/
+
+                                        //if (DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse(checkLasttimeLogin(username))) >= 0)
+                                        //{
+                                        //    changeStatus(username, 1);
+                                        //    if (dr["Mật khẩu"].Equals(password))
+                                        //    {
+                                        //        Program.accountId = int.Parse(dr["ID"].ToString());
+                                        //        Program.role = dr["Quyền"].ToString();
+                                        //        return 1; //Đúng mật khẩu và tên đăng nhập
+                                        //    }
+                                        //}
+
+                                        //else
+                                        //{
+                                        //    TimeSpan time = DateTime.Now.Subtract(DateTime.Parse(checkLasttimeLogin(username)));
+                                        //    MessageBox.Show("Bạn chờ " + time.Minutes + " phút sau để đăng nhập vào chương trình");
+                                        //}
                                         return 3; //tài khoản bị khóa
                                     }
                                     else if (dr["Mật khẩu"].Equals(password))
@@ -368,6 +373,67 @@ namespace QuanLyCuaHangBanDienThoai
                     return -1;
                 }
             }
+        }
+
+        public DataTable searchBirthday(String startYear, String endYear)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String whereSql = "";
+                if (startYear != "" && endYear == "")
+                {
+                    whereSql = "YEAR([Ngày sinh]) >= " + startYear;
+                }
+                else if (startYear == "" && endYear != "")
+                {
+                    whereSql = "YEAR([Ngày sinh]) <= " + endYear;
+                }
+                else
+                {
+                    whereSql = "YEAR([Ngày sinh]) >= " + startYear + " AND YEAR([Ngày sinh]) <= " + endYear;
+                }
+
+                String sql = "SELECT * FROM dbo.showAllAccount WHERE " + whereSql;
+
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllAccount"))
+                        {
+                            ad.Fill(dt);
+                            return dt;
+                        }
+                    }
+                }
+            }
+        }
+
+        public int showTime(int accountId)
+        {
+            using (SqlConnection cnn = new SqlConnection(constr))
+            {
+                String sql = "SELECT * FROM dbo.showAllAccount WHERE ID = " + accountId;
+                //MessageBox.Show(sql);
+
+                using (SqlCommand cmd = new SqlCommand(sql, cnn))
+                {
+                    cmd.CommandType = CommandType.Text;
+                    using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+                    {
+                        using (DataTable dt = new DataTable("showAllAccount"))
+                        {
+                            ad.Fill(dt);
+                            foreach (DataRow dr in dt.Rows)
+                            {
+                                return int.Parse(dr["Số lần đăng nhập"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            return -1;
         }
     }
 }
