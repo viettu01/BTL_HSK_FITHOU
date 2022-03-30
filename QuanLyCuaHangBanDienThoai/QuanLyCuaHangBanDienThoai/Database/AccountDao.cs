@@ -339,11 +339,11 @@ namespace QuanLyCuaHangBanDienThoai
                                     //lock 1p khi đn quá 3 lần
                                     if (dr["Trạng thái"].Equals("Khóa"))
                                     {
-                                        if (DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse(checkLasttimeLogin(username))) <= 0)
+                                        /*MessageBox.Show(DateTime.Now.AddMinutes(-1).ToString());
+                                        MessageBox.Show(checkLasttimeLogin(username).ToString());*/
+                                        if (DateTime.Compare(DateTime.Now.AddMinutes(-1), DateTime.Parse(checkLasttimeLogin(username))) >= 0)
                                         {
-                                            /*MessageBox.Show(DateTime.Now.AddMinutes(-1).ToString());
-                                            MessageBox.Show(checkLasttimeLogin(username).ToString());*/
-                                            changeStatus(username, 1);
+                                            
                                             if (dr["Mật khẩu"].Equals(password))
                                             {
                                                 Program.accountId = int.Parse(dr["ID"].ToString());
@@ -351,6 +351,10 @@ namespace QuanLyCuaHangBanDienThoai
                                                 return 1; //Đúng mật khẩu và tên đăng nhập
                                             }
                                         }
+                                        else
+                                        {
+                                            MessageBox.Show("Bạn chờ 5 phút sau để đăng nhập vào chương trình");
+                                        }    
                                         return 3; //tài khoản bị khóa
                                     }
                                     else if (dr["Mật khẩu"].Equals(password))

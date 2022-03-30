@@ -497,7 +497,11 @@ select YEAR(tblDetailAccount.loginAt) AS [Năm],MONTH(tblDetailAccount.loginAt) 
 from tblDetailAccount join tblAccount on tblAccount.id=tblDetailAccount.accountId
 group by YEAR(tblDetailAccount.loginAt) ,MONTH(tblDetailAccount.loginAt) ,accountId
 
-
+create view QuantityLoginOfAccount
+as
+	select  accountId as [Mã],tblDetailAccount.loginAt as[Thời gian],COUNT( accountId) as[Sl]
+	from tblDetailAccount join tblAccount on tblAccount.id=tblDetailAccount.accountId
+	group by accountId,tblDetailAccount.loginAt
 
 
 /*select * from TKĐT
