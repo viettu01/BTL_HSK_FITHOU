@@ -143,12 +143,13 @@ namespace QuanLyCuaHangBanDienThoai
             String[] row = new string[] { cbMaDT.Text, namePhone, nudSoLuong.Value.ToString(), tbGiaBan.Text, total.ToString() };
             dtgvDSDT.Rows.Add(row);
 
-            for (int rows = 0; rows < dtgvDSDT.Rows.Count - 1; rows++)
-            {
-                DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-                dtgvDSDT[5, rows] = linkCell;
-                dtgvDSDT[5, rows].Value = "Delete";
-            }
+            //Chức năng xóa sản phẩm trong danh sách chờ
+            //for (int rows = 0; rows < dtgvDSDT.Rows.Count - 1; rows++)
+            //{
+            //    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
+            //    dtgvDSDT[5, rows] = linkCell;
+            //    dtgvDSDT[5, rows].Value = "Delete";
+            //}
 
             btnThanhToan.Enabled = true;
         }

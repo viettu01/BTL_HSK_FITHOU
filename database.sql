@@ -539,3 +539,4 @@ order by Max([Doanh thu]) desc*/
 
 GO
 SELECT * FROM dbo.showAllAccount WHERE ID = 1
+
